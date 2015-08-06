@@ -39,6 +39,9 @@
 							<li><a href="../mypage/myinfo">내정보</a></li>
 							<li><a href="../mypage/scrapinfo">스크랩목록</a></li>
 							<li><a href="../customer/help">도움말</a></li>
+							<security:authorize ifAnyGranted="ROLE_ADMIN">
+							<li><a href="../customer/help">관리하기</a></li>
+							</security:authorize>
 							<li><a href="${ctxName}/j_spring_security_logout">로그아웃</a></li>
 							<li><a href="../post/postcourse">+작성하기</a></li>
 						</ul>
