@@ -26,6 +26,8 @@ public interface TravelDiaryDao {
 
 	public int addTravelDiary(TravelDiary travelDiary) ;
 	
-	public int removeTravelDiary(String code); 
+	public int removeTravelDiary(String code);
+
+	public void addBeforeTravelDiary(TravelDiary diary); 
 	
 }
