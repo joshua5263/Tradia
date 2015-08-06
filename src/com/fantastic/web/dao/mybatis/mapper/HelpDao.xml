@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.HelpDao">
+
+	<select id="getHelps" resultType="com.fantastic.web.vo.Help">
+		SELECT * FROM HELPS
+	</select>
+
+	<select id="getHelp" resultType="com.fantastic.web.vo.Help">
+		SELECT * FROM HELPS where
+		CODE = #{code}
+	</select>
+	
+	<update id="addHelp" parameterType="com.fantastic.web.vo.Help">
+		<selectKey keyProperty="code" order="BEFORE" resultType="string">
+			SELECT ISNULL(MAX(CAST(CODE AS INT)),0) +1 Code FROM HELPS
+		</selectKey>
+			INSERT INTO HELPS(
+			Code
+			, Title
+			, Regdate
+			, AdminId
+			, Contents)
+			VALUES(#{code},#{title},getDate(),#{adminId},#{contents})
+		</update>
+
+	<delete id="removeHelp" parameterType="string">
+		DELETE HELPS WHERE code =
+		#{code}
+	</delete>
+
+</mapper>

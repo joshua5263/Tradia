@@ -1,0 +1,84 @@
+@CHARSET "UTF-8";
+
+/* #travel-diary{
+	
+	border: 2px soild red;
+} */
+
+#travel-diary{
+	
+	float: left;
+}
+
+#travel-diary fieldset{
+	
+	border: 2px solid;
+	width:480px;
+	height:543px;
+	position: relative;
+	background-color: rgba( 255, 255, 255, 0.7 );
+}
+
+#travel-diary nav{
+	border:1px solid red;
+	height: 90px;
+	position:relative;
+}
+
+/* 회원 프로필 사진 */
+#travel-diary nav li:FIRST-CHILD{
+	border:1px solid red;
+	left: 30px;
+	top: 10px;
+	width:51px;
+	height: 51px;
+	position:absolute;
+}
+
+/* 회원 아이디 */
+#travel-diary nav li:FIRST-CHILD+li{
+	border:1px solid red;
+	left: 25px;
+	top: 66px;
+	width:61px;
+	height: 15px;
+	line-height:15px;
+	position:absolute;
+	font-size: 12px;
+}
+
+/* 등록날짜 */
+#travel-diary nav li:FIRST-CHILD+li+li{
+	border:1px solid red;
+	left: 111px;
+	top: 10px;
+	width:150px;
+	height: 10px;
+	line-height:10px;
+	position:absolute;
+	font-size: 12px;
+}
+
+/* 여행기 제목 */
+#travel-diary nav li:FIRST-CHILD+li+li+li{
+	border:1px solid red;
+	left: 111px;
+	top: 25px;
+	width:280px;
+	height: 30px;
+	line-height: 30px;
+	position:absolute;
+	font-size: 22px;
+}
+
+/* 여행기 제목 a태그 */
+#travel-diary nav li:FIRST-CHILD+li+li+li a{
+	color : black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#travel-diary fieldset section{
+	
+	height: 100px;
+}

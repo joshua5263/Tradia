@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.CommentDao">
+	<select id="getComments" parameterType="string" resultType="com.fantastic.web.vo.Comment">
+		SELECT * FROM CommentView 
+	</select>
+	
+	<select id="getComment" parameterType="string" resultType="com.fantastic.web.vo.Comment">
+		SELECT * FROM CommentView Where  TravelCode = #{travelCode}
+	</select>
+	
+	<insert id="addComment" parameterType="com.fantastic.web.vo.Comment">
+		<selectKey keyProperty="code" order="BEFORE" resultType="String">
+		 select isnull(max(cast(code as int)), 0)+1 code from comment
+		</selectKey>
+		
+		insert into Comment
+		(Code, TravelCode, MemberID, RegDate, Contents) 
+		values(#{code}, #{travelCode}, #{memberID}, getDate(), #{contents})
+	</insert>
+	
+	<delete id="removeComment" parameterType="string">
+      DELETE Comment WHERE Code = #{code}
+    </delete>
+</mapper>

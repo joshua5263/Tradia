@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   
+<mapper namespace="com.fantastic.web.dao.TravelDiaryDao">
+
+	<select id="getTravelDiarys" parameterType="String"
+		resultType="com.fantastic.web.vo.TravelDiary">
+		SELECT * FROM TravelView  ORDER BY REGDATE DESC
+	</select>
+	
+	<select id="getTravelDiarysOne" parameterType="String"
+		resultType="com.fantastic.web.vo.TravelDiary">
+		SELECT * FROM TravelView WHERE MemberID = #{memberID}
+	</select>
+	
+	<select id="getTravelDiary" parameterType="String"
+		resultType="com.fantastic.web.vo.TravelDiary">
+		SELECT * FROM TravelView WHERE Code = #{code}
+	</select>
+
+	<update id="addTravelDiary" parameterType="com.fantastic.web.vo.TravelDiary">
+		<selectKey keyProperty="code" order="BEFORE" resultType="string">
+			select isnull (max(cast(Code as int)),0)+1 code from TravelDiary
+		</selectKey>
+
+		INSERT INTO TravelDiary(Code, Title, FellowTraveler, TotalCost, StartDate, LastDate,
+		                                   Memo, Share, RegDate, MemberID)
+		VALUES(#{code}, #{Title}, #{fellowTraveler}, #{totalCost}, #{startDate}, #{startDate},
+					 #{memo}, ${share}, ${regDate}, ${memberID})
+	</update>
+
+	<delete id="removeTravelDiary" parameterType="String">
+		DELETE TravelDiary WHERE Code = #{code}
+	</delete>
+
+
+</mapper>

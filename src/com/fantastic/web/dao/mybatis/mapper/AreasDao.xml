@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.AreasDao">
+   <select id="getAreas" parameterType="string" resultType="com.fantastic.web.vo.Areas">
+      SELECT * FROM AREAS
+   </select>
+
+   <insert id="addAreas" parameterType="com.fantastic.web.vo.Areas">
+      <selectKey keyProperty="code" order="BEFORE" resultType="String">
+       select isnull(max(cast(code as int)), 0)+1 code from areas
+      </selectKey>      
+      INSERT INTO Areas(Code, FirstAdd, LastAdd, Name, Propertice, MemberID) 
+      VALUES(#{code}, #{firstAdd}, #{lastAdd}, #{name}, #{propertice}, #{memberId} )
+   </insert>
+   
+   <delete id="removeAreas" parameterType="string">
+      DELETE AREAS WHERE code = #{code}
+   </delete>
+   
+   
+   
+   
+</mapper>

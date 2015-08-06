@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.LikeDao">
+	<select id="getLikes" resultType="com.fantastic.web.vo.Likes">
+		SELECT * FROM LIKES
+	</select>
+	
+	<select id="getLike" resultType="com.fantastic.web.vo.Likes" parameterType="string">
+		SELECT * FROM LIKES WHERE MemberId = #{memberID}
+	</select>
+	
+	<insert id="addLike" parameterType="com.fantastic.web.vo.Likes">
+			INSERT INTO LIKES(
+			MemberID,
+			TravelCode,
+			LikeDate)
+			VALUES(
+			#{memberID},
+			#{travelCode},
+			getDate())
+		</insert>
+
+	<delete id="removeLike" parameterType="com.fantastic.web.vo.Likes">
+		DELETE LIKES WHERE MemberID = #{memberID} and TravelCode = #{travelCode}
+	</delete>
+</mapper>

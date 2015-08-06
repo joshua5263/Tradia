@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"	
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation=
+    	"http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	
+	<!-- 데이터 서비스 설정 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
+	    <property name="url" value="jdbc:sqlserver://db.newlecture.com;database=fantasticdb"></property>
+	    <property name="username" value="fantastic4"></property>
+	    <property name="password" value="1390"></property>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" 
+			value="classpath:com/fantastic/web/dao/mybatis/mapper/*.xml" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+   
+	<bean id="AdminDao" class="com.fantastic.web.dao.mybatis.MybatisAdminDao" />
+	<bean id="AreasDao" class="com.fantastic.web.dao.mybatis.MybatisAreasDao" />
+	<bean id="CommentDao" class="com.fantastic.web.dao.mybatis.MybatisCommentDao" />
+	<bean id="CourseDao" class="com.fantastic.web.dao.mybatis.MybatisCourseDao" />
+	<bean id="HelpDao" class="com.fantastic.web.dao.mybatis.MybatisHelpDao" />
+	<bean id="LikesDao" class="com.fantastic.web.dao.mybatis.MybatisLikesDao" />
+	<bean id="MemberDao" class="com.fantastic.web.dao.mybatis.MybatisMemberDao" />
+	<bean id="NoticeDao" class="com.fantastic.web.dao.mybatis.MybatisNoticeDao" />
+	<bean id="ScrapDao" class="com.fantastic.web.dao.mybatis.MybatisScrapDao" />
+	<bean id="TravelDiaryDao" class="com.fantastic.web.dao.mybatis.MybatisTravelDiaryDao" />	
+
+    <!-- more bean definitions for services go here -->
+
+</beans>

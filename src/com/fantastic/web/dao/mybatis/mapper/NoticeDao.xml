@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.NoticeDao">
+
+	<select id="getNotices" resultType="com.fantastic.web.vo.Notice">
+		SELECT * FROM NOTICES
+	</select>
+
+
+	<update id="addNotice" parameterType="com.fantastic.web.vo.Notice">
+		<selectKey keyProperty="code" order="BEFORE" resultType="string">
+			SELECT ISNULL(MAX(CAST(CODE AS INT)),0) +1 Code FROM NOTICES
+		</selectKey>
+			INSERT INTO NOTICES(
+			Code
+			, Title
+			, Regdate
+			, AdminId
+			, Contents)
+			VALUES(#{code},#{title},getDate(),#{adminId},#{contents})
+		</update>
+
+	<delete id="removeNotice" parameterType="string">
+		DELETE NOTICES WHERE code =
+		#{code}
+	</delete>
+
+</mapper>

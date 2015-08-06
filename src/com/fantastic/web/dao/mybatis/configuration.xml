@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration    
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+   <environments default="development">
+      <environment id="development">
+         <transactionManager type="JDBC"/>
+         <dataSource type="POOLED">
+            <property name ="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name ="url" value="jdbc:sqlserver://211.238.142.250:1433;"/>
+            <property name ="username" value="fantastic4"/>
+            <property name ="password" value="1390"/>
+      </dataSource>
+   </environment>
+</environments>
+   
+   <mappers>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/MemberDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/TravelDiaryDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/CourseDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/ScrapDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/LikesDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/CommentDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/AreasDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/HelpDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/NoticeDao.xml"/>
+      <mapper resource="com/fantastic/web/dao/mybatis/mapper/AdminDao.xml"/>
+   </mappers>
+        
+</configuration>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.CourseDao">
+   <select id="getCourses" resultType="com.fantastic.web.vo.Course">
+      SELECT * FROM CourseView
+   </select>
+   
+      <select id="getCourse" parameterType= "string" resultType="com.fantastic.web.vo.Course">
+      SELECT * FROM CourseView where TravelCode = #{travelCode}
+   </select>
+   
+   <insert id="addCourse" parameterType="com.fantastic.web.vo.Course">
+      <selectKey keyProperty="code" order="BEFORE" resultType="String">
+         select isnull(max(cast(code as int)), 0)+1 code from course
+      </selectKey>
+
+      insert into Course
+      (Code, Cost, Memo,
+      <!--  Pic1, Pic2, Pic3,
+      Pic4, Pic5,--> Feeling, Traffic,
+      CsDate, TravelCode, AreasCode)
+      values(#{code}, #{cost}, #{memo},
+      <!-- #{pic1}, #{pic2},
+      #{pic3}, #{pic4}, #{pic5}, --> #{feeling}, #{traffic},
+      #{csDate}, 
+      #{travelCode}, #{areasCode})
+   </insert>
+   <delete id="removeCourse" parameterType="string">
+      DELETE Course WHERE Code = #{code}
+
+   </delete>
+
+</mapper>

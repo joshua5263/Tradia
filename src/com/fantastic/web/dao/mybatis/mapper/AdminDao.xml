@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fantastic.web.dao.AdminDao">
+	<select id="getAdmins" parameterType="string" resultType="com.fantastic.web.vo.Admin">
+<!-- 		SELECT M.num, M.Adminid, M.Appointed FROM (select ROW_NUMBER() OVER (ORDER BY
+		Appointed DESC) NUM,
+		Admins.* FROM Admins WHERE ${field} LIKE '%${query}%'
+		WHERE M.num BETWEEN 1 + (${page} - 1) * 10 and 10 * ${page}; -->
+		select * from Admins
+	</select>
+	
+	<select id="getAdmin"  parameterType="string" resultType="com.fantastic.web.vo.Admin">
+		SELECT * FROM Admins WHERE id LIKE '%${key}%'
+	</select>
+	
+	<insert id="addAdmin" parameterType="com.fantastic.web.vo.Admin">
+	insert into Admins (AdminID) values (#{adminID})
+	</insert>
+	
+<!-- 	<delete id="removeAdmin" parameterType="string">
+		delete Admins where AdminID = #{id}
+	</delete> -->
+
+	<delete id="removeAdmin" parameterType="com.fantastic.web.vo.Admin">
+		delete Admins where AdminID = #{adminID}
+	</delete>
+	
+	
+</mapper>

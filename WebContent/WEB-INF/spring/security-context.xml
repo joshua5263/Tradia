@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"	
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation=
+    	"http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+        
+    <http>    
+    	<form-login 
+    		login-page="/intro/intro"
+    		default-target-url="/selectpreferlocation/selectpreferlocation"	
+   		/>
+   		<logout logout-success-url="/intro/intro"/>
+    	<!-- 인증/권한 필요한 페이지 -->
+    	<!-- <intercept-url pattern="/selectpreferlocation/selectpreferlocation" access="ROLE_USER, ROLE_ADMIN"/>
+    	<intercept-url pattern="/customer/help" access="ROLE_ADMIN"/> -->
+    </http>
+    
+    <!-- 유저정보 -->
+    <authentication-manager>
+    	<authentication-provider>
+    		<jdbc-user-service 
+    			data-source-ref="dataSource"
+    			users-by-username-query="
+    				SELECT ID USERID, Password PASSWORD, 1 ENABLED
+    				FROM MEMBERS 
+    				WHERE ID=?
+    			"
+    			authorities-by-username-query="
+    				SELECT ID USERID, Levels AUTHORITIES
+    				FROM MEMBERS 
+    				WHERE ID=?
+    				"
+   			/>    	
+    		<!-- <user-service>
+    			<user name="newlec" password="111" authorities="ROLE_ADMIN, ROLE_USER"/>
+    			<user name="dragon" password="111" authorities="ROLE_USER"/>
+    		</user-service> -->
+    	</authentication-provider>
+    </authentication-manager>
+
+</beans:beans>
