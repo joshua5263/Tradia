@@ -6,68 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Tradia</title>
+
+<link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
+<script type="text/javascript" src="../resource/js/modernizr.js"></script>
+
+<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
-	<header>
-		<h1>
-			<a href="" alt="Tradia">Tradia</a>
-		</h1>
+	
+	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
 
-		<section>
-			<h1>메인 메뉴</h1>
+	<div id="body" class="wrap-content">
+	
+	<!-- 어사이드영역 -->
+	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
 
-			<section>
-				<h1>여행기 검색 폼</h1>
-				<form>
-					<legend>통합검색</legend>
-					<label>검색</label> <input type="text" value="가고싶은 여행지를 검색하세요" /> <input
-						type="submit" value="검색" />
-				</form>
-			</section>
-
-			<nav>
-				<h1>프로필</h1>
-				<ul>
-					<li>ProfilePicture</li>
-					<li>MemberId</li>
-					<li><a href=""> ButtonImage</a>
-						<ul class="sub">
-							<li><a href="">MyPage</a></li>
-							<li><a href="">내정보</a></li>
-							<li><a href="">스크랩목록</a></li>
-							<li><a href="">도움말</a></li>
-							<li><a href="">로그아웃</a></li>
-							<li><a href="">+작성하기</a></li>
-						</ul></li>
-				</ul>
-			</nav>
-		</section>
-
-	</header>
-
-	<aside>
-		<h1>SelectPreferLocation</h1>
-
-		<section>
-			<h1>PreferLocationButton</h1>
-
-			<form>
-				<filedset> <legend>지역선택</legend> <label class="지역선택"
-					for="location">지역선택</label> <input type="radio" name="location">전국
-				<input type="radio" name="location">서울 <input type="radio"
-					name="location">경기 <input type="radio" name="location">인천
-				<input type="radio" name="location">강원 <input type="radio"
-					name="location">충청 <input type="radio" name="location">대전
-				<input type="radio" name="location">전라 <input type="radio"
-					name="location">광주 <input type="radio" name="location">경상
-				<input type="radio" name="location">대구 <input type="radio"
-					name="location">울산 <input type="radio" name="location">부산
-				<input type="radio" name="location">제주 </filedset>
-			</form>
-		</section>
-	</aside>
-
-	<main>
+	<main id="main">
 	<section>
 		<h1>포스트 쓰기</h1>
 
@@ -100,10 +55,10 @@
 	</main>
 
 
-	<aside></aside>
+	</div>
 
 
-	<footer>
+	<footer id="footer">
 		<section>
 			<h1>Tradia</h1>
 

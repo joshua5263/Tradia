@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getTravelDiarys" parameterType="String"
 		resultType="com.fantastic.web.vo.TravelDiary">
-		SELECT * FROM TravelView order by regDate
+		SELECT * FROM TravelView order by regDate DESC
 	</select>
 	
 	<select id="getTravelDiarysOne" parameterType="String"

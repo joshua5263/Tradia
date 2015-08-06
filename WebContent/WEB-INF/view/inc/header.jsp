@@ -23,7 +23,7 @@
 					<fieldset>
 						<legend class="hidden">통합검색</legend>
 						<label class="hidden">검색</label> 
-							<input type="text" value="가고싶은 여행지를 검색하세요" /> 
+							<input type="text" value="가고싶은 여행지를 검색하세요" style="font-family: 서울남산체 EB; font-size: 16px;"  /> 
 							<input class="button" type="submit" value="검색" />
 					</fieldset>
 				</form>

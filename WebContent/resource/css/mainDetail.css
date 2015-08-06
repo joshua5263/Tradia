@@ -1,0 +1,261 @@
+@CHARSET "UTF-8";
+
+	#main{
+		background: none;
+	}
+	
+	
+	/* ------------------------여행 총괄 정보 (고정)------------------------------------- */
+	/* 배경 */
+	#travel-information{
+		border:1px solid red;
+		width: 720px;
+		min-height: 200px;
+		height: inherit;
+		padding-left:150px;
+		padding-right:150px;
+		background-color: rgba( 255, 255, 255, 0.7 );
+		position:relative;
+	}
+	
+	/* 회원 프로필 사진 */
+	#travel-information > section li:FIRST-CHILD{
+	border:1px solid red;
+	left: 150px;
+	top: 10px;
+	width:51px;
+	height: 51px;
+	position:absolute;
+	}
+	
+	/* 회원 아이디 */
+	#travel-information section li:FIRST-CHILD+li{
+	border:1px solid red;
+	left: 145px;
+	top: 66px;
+	width:61px;
+	height: 15px;
+	line-height:15px;
+	position:absolute;
+	font-size: 12px;
+	text-align: center;
+	}
+	
+	/* 등록날짜 */
+	#travel-information section li:FIRST-CHILD+li+li{
+	border:1px solid red;
+	left: 231px;
+	top: 10px;
+	width:150px;
+	height: 10px;
+	line-height:10px;
+	position:absolute;
+	font-size: 12px;
+	}
+	
+	/* 여행기 제목 */
+	#travel-information section li:FIRST-CHILD+li+li+li{
+	border:1px solid red;
+	left: 231px;
+	top: 25px;
+	width:280px;
+	height: 30px;
+	line-height: 30px;
+	position:absolute;
+	font-size: 18px;
+	}
+	
+	/* 동행인 */
+	#travel-information section li:FIRST-CHILD+li+li+li+li{
+	border:1px solid red;
+	left: 521px;
+	top: 25px;
+	width:80px;
+	height: 30px;
+	line-height: 30px;
+	position:absolute;
+	font-size: 18px;
+	}
+	
+	/* 수정 버튼 */
+	#travel-information section li:FIRST-CHILD+li+li+li+li+li{
+	border:1px solid red;
+	right: 310px;
+	top: 10px;
+	width:30px;
+	height: 25px;
+	line-height: 25px;
+	position:absolute;
+	font-size: 15px;
+	text-align: center;
+	}
+	
+	/* 삭제 버튼 */
+	#travel-information section li:FIRST-CHILD+li+li+li+li+li+li{
+	border:1px solid red;
+	right: 270px;
+	top: 10px;
+	width:30px;
+	height: 25px;
+	line-height: 25px;
+	position:absolute;
+	font-size: 15px;
+	text-align: center;
+	}
+	
+	/* 좋아요 이미지 */
+	#travel-information section li:FIRST-CHILD+li+li+li+li+li+li+li{
+	border:1px solid red;
+	right: 210px;
+	top: 10px;
+	width:50px;
+	height: 50px;
+	line-height: 30px;
+	position:absolute;
+	font-size: 22px;
+	}
+	
+	/* 스크랩 이미지*/
+	#travel-information section li:FIRST-CHILD+li+li+li+li+li+li+li+li{
+	border:1px solid red;
+	right: 150px;
+	top: 10px;
+	width:50px;
+	height: 50px;
+	line-height: 30px;
+	position:absolute;
+	font-size: 22px;
+	}
+	
+	
+	/* start */
+	#travel-information > nav li:FIRST-CHILD{
+	/* border:1px solid red; */
+	left: 150px;
+	top: 120px;
+	width:74px;
+	height: 32px;
+	line-height: 32px;
+	text-align:center;
+	position:absolute;
+	background: #00b49d;
+	color: white;
+	}
+	
+	/* -----------------------코스 정보------------------------------------ */
+	#travel-cource-information{
+		margin-top:10px;
+		border:1px solid red;
+		width: 720px;
+		min-height: 200px;
+		height: inherit;
+		padding-left:150px;
+		padding-right:150px;
+		background-color: rgba( 255, 255, 255, 0.7 );
+		position:relative;
+		padding-bottom: 20px;
+		padding-top : 20px;
+		
+	}
+	
+	#travel-cource-information h1{
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-size: 24px;
+		color: black;
+	
+	}
+	
+	/* 여행 Detail */
+	
+	#travel-cource-information section:FIRST-CHILD{
+		background: white;
+	}
+	
+	/* 여행일 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD{
+		font-size: 13px;
+	}
+	
+	/* 여행제목 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li{
+		font-size: 24px;
+	}
+	
+	/* 코스번호 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li{
+		font-size: 24px;
+	}
+	
+	/* 내용 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li+li{
+		font-size: 14px;
+	}
+	
+	/* 느낌 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li+li+li{
+		font-size: 14px;
+	}
+	
+	/* 금액 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li+li+li+li{
+		font-size: 12px;
+	}
+	
+	/*큰 사진 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li+li+li+li+li+li+li+li{
+		border:1px red solid;
+		width: 658px;
+		height: 386px;
+	}
+	
+	/*작은 사진1 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li+li+li+li+li+li+li+li+li{
+		border:1px red solid;
+		width: 131px;
+		height: 118px;
+	}
+	
+	/*작은 사진2 */
+	#travel-cource-information section:FIRST-CHILD ul li:FIRST-CHILD+li+li+li+li+li+li+li+li+li+li+li{
+		border:1px red solid;
+		width: 131px;
+		height: 118px;
+	}
+	
+	
+	/* 여행후기 */
+	#travel-cource-information section:FIRST-CHILD+section ul li:FIRST-CHILD{
+		border-top: 1px #0085e2 solid;
+		color: red;
+		font-size: 18px;
+		padding-top: 10px;
+	
+	}
+	
+	#travel-cource-information section:FIRST-CHILD+section ul li:FIRST-CHILD+li{
+		font-size: 18px;
+		text-align: right;
+	}
+	
+	#travel-cource-information section:FIRST-CHILD+section ul li:FIRST-CHILD+li+li{
+		font-size: 18px;
+		text-align: right;
+	
+	}
+	
+	
+	
+	
+	/* ------------------------댓글 -------------------------------------------*/
+	#reply{
+		margin-top:10px;
+		border:1px solid red;
+		width: 720px;
+		min-height: 200px;
+		height: inherit;
+		padding-left:150px;
+		padding-right:150px;
+		background-color: rgba( 255, 255, 255, 0.7 );
+		position:relative;
+	}

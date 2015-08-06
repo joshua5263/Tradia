@@ -11,7 +11,7 @@ public class Course {
    private String pic3;
    private String pic4;
    private String pic5;
-   private int feeling;
+   private String feeling;
    private int traffic;
    private String csDate;
    private String travelCode;
@@ -75,10 +75,10 @@ public class Course {
    public void setPic5(String pic5) {
       this.pic5 = pic5;
    }
-   public int getFeeling() {
+   public String getFeeling() {
       return feeling;
    }
-   public void setFeeling(int feeling) {
+   public void setFeeling(String feeling) {
       this.feeling = feeling;
    }
    public int getTraffic() {

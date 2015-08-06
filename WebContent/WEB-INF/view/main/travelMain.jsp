@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -98,7 +99,7 @@
    </aside> -->
 
 
-	<main id="main">
+	<main id="main" class="wrap-content">
 	<section>
 
 		<h1 class="hidden">지역 페이지</h1>
@@ -117,17 +118,17 @@
 		
 				<c:forEach var="n" items="${List}" varStatus="tc">
 				
-				<fieldset>
+				<div id="travel-diary-fieldset">
 					<h1 class="hidden">여행기${tc.count}</h1>
 		    
 					<nav>
 						<h1 class="hidden">여행기 ${tc.count}등록정보</h1>
 						<ul>
-							<li><a href="">${n.mpic}</a></li>
+							<li><a href=""><img src="../resource/images/header-profile-pic.png">${n.mpic}</a></li>
 							<li><a href="">${n.memberID}</a></li>
-							<li>${n.regDate}</li>
+							<li><fmt:formatDate value="${n.regDate}" pattern="yyyy년MM월dd일" /></li>
 							<li><a href="travelDetail?tcode=${n.code}">${n.title}</a></li> 
-							<li>좋아요 이미지 ${n.likeCnt}</li>
+							<li><img src="../resource/images/btn-like.png"> ${n.likeCnt}</li>
 							
 						</ul>						
 					</nav>
@@ -158,8 +159,9 @@
 							</c:forEach>
 						</section>
 					</section>
+					</div>
 							</c:forEach>
-				</fieldset>
+				
 		</section>
 
 	</section>
