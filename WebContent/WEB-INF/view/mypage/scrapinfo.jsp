@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -125,27 +126,25 @@
       
    <main id="main" class="clearfix:after">
      	 <section id="my-info">
-            <div>
-               <dd class="hidden">내 소개</dd>
-               <textarea id="txtContent" rows="15" cols="16" class="txtContent"
-                  name="content"></textarea>
-            </div>
-            <div>
-               <dd>
-                  <a href="mypage">My Page</a>
-               </dd>
-            </div>
-            <div>
-               <dd>
-                  <a href="myinfo">내 정보</a>
-               </dd>
-            </div>
-            <div>
-               <dd>
-                  <a href="scrapinfo">스크랩 목록</a>
-               </dd>
-            </div>
-         </section>
+					<div>
+						<dd class="hidden">내 소개</dd>
+						<textarea id="txtContent" rows="15" cols="16" 
+						class="txtContent" name="content">${m.profile }</textarea>
+						<label class="hidden">수정</label> <input id="reg" type="submit"
+							value="수정" />
+					</div>
+					<div>
+						<dd>
+							<a href="mypage">My Page</a>
+						</dd>
+						<dd>
+							<a href="myinfo">내 정보</a>
+						</dd>
+						<dd>
+							<a href="scrapinfo">스크랩 목록</a>
+						</dd>
+					</div>
+				</section>
   		 <section id="normal-info">
 			   <h1>스크랩 목록</h1>
 				   <section>

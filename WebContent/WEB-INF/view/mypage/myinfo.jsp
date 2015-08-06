@@ -8,7 +8,8 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/modernizr.js"></script>
 <%-- <%String memberId = (String)session.getAttribute("mid");%> --%>
 <%-- <%
 	MemberDao memberDao = new MybatisMemberDao();
@@ -87,21 +88,13 @@
 	height: inherit;
 }
 
-#my-info {
-	height: inherit;
-	width: 140px;
-	float: left;
-	min-height: 300px;
-	margin: 10px;
-}
-
 #normal-info {
 	height: inherit;
 	width: 700px;
 	float: left;
 	min-height: 300px;
 	background: white;
-	margin: 10px;
+	margin-top: 10px;
 	font-family: SeoulNamsan;
 	font-size: 15px;
 	font-weight: bold;
@@ -139,10 +132,6 @@
 	width: 130px;
 	height: 20px;
 	border: 1px solid #50b4ff;
-}
-
-.first-info {
-	margin-left: 30px;
 }
 
 #button {
@@ -214,20 +203,18 @@
 				<section id="my-info">
 					<div>
 						<dd class="hidden">내 소개</dd>
-						<textarea id="txtContent" rows="15" cols="16" class="txtContent"
-							name="content"></textarea>
+						<textarea id="txtContent" rows="15" cols="16" 
+						class="txtContent" name="content">${m.profile }</textarea>
+						<label class="hidden">수정</label> <input id="reg" type="submit"
+							value="수정" />
 					</div>
 					<div>
 						<dd>
 							<a href="mypage">My Page</a>
 						</dd>
-					</div>
-					<div>
 						<dd>
 							<a href="myinfo">내 정보</a>
 						</dd>
-					</div>
-					<div>
 						<dd>
 							<a href="scrapinfo">스크랩 목록</a>
 						</dd>

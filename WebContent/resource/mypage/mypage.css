@@ -1,1 +1,38 @@
+
+
 @CHARSET "UTF-8";
+#my-info {
+	height: inherit;
+	width: 140px;
+	float: left;
+	min-height: 300px;
+	margin: 10px;
+	padding-left: 9px;
+	}
+
+#reg {
+	margin-left: 100px;
+	/* overflow: hidden; */
+}
+
+#my-info div+div {
+	border: 2px solid skyblue;
+	width: 127px;
+	margin-top: 7px;
+}
+
+#my-info dd {
+	text-align: center;
+	width: 127px;
+	height: 25px;
+	border-top: 2px solid skyblue;
+	
+}
+
+#my-info dd:FIRST-CHILD {
+	border-top: none;
+}
+
+.first-info {
+	margin-left: 30px;
+}
