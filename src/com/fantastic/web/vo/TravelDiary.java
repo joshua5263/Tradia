@@ -12,7 +12,7 @@ public class TravelDiary {
 	
 	private String code;
 	private String title;
-	private int fellowTraveler;
+	private String fellowTraveler;
 	private int totalCost;
 	private String startDate;
 	private String lastDate;
@@ -65,10 +65,10 @@ public class TravelDiary {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getFellowTraveler() {
+	public String getFellowTraveler() {
 		return fellowTraveler;
 	}
-	public void setFellowTraveler(int fellowTraveler) {
+	public void setFellowTraveler(String fellowTraveler) {
 		this.fellowTraveler = fellowTraveler;
 	}
 	public int getTotalCost() {

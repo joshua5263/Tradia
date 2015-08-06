@@ -28,6 +28,6 @@ public interface TravelDiaryDao {
 	
 	public int removeTravelDiary(String code);
 
-	public void addBeforeTravelDiary(TravelDiary diary); 
+	public int addBeforeTravelDiary(TravelDiary diary); 
 	
 }

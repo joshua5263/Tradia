@@ -12,15 +12,12 @@ import com.fantastic.web.vo.TravelDiary;
 
 public class MybatisTravelDiaryDao implements TravelDiaryDao {
 
+	@Autowired
 	private SqlSession session;
 	
-	//SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();
-	/*SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();*/
-	
-	 @Autowired
-	   public void setSession(SqlSession session) {
+	   /*public void setSession(SqlSession session) {
 			this.session = session;
-		}
+		}*/
 	
 	@Override
 	public List<TravelDiary> getTravelDiarys(int page, String field, String query) {
@@ -108,27 +105,23 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		
 		return result;*/
 	}
-	   @Override
-		public int removeTravelDiary(String code) {
-		
-		//SqlSession session = factory.openSession();
-		int result = 0;
-		
-		
-			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-			result = dao.removeTravelDiary(code);
-		
-		
-		return result;
-}
+	@Override
+	public int removeTravelDiary(String code) {
 
+		int result = 0;
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		result = dao.removeTravelDiary(code);
+
+		return result;
+	}
 
 	@Override
-	public void addBeforeTravelDiary(TravelDiary diary) {
-		//SqlSession session = factory.openSession();
-		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-
-			dao.addBeforeTravelDiary(diary);
+	public int addBeforeTravelDiary(TravelDiary diary) {
 		
+		int result = 0;
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		result = dao.addBeforeTravelDiary(diary);
+		
+		return result;
 	}
 }

@@ -11,7 +11,7 @@ public class Member {
    private String picture;
    private String background;
    private String levels;
-    private String profile;
+   private String profile;
    private Date regDate;
    private int gender;
    private Date birthday;

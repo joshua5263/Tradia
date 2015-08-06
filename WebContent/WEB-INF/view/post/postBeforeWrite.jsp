@@ -20,8 +20,9 @@
 				<h1>여행기 검색 폼</h1>
 				<form>
 					<legend>통합검색</legend>
-					<label>검색</label> <input type="text" value="가고싶은 여행지를 검색하세요" /> <input
-						type="submit" value="검색" />
+					<label>검색</label>
+					<input type="text" value="가고싶은 여행지를 검색하세요" />
+					<input	type="submit" value="검색" />
 				</form>
 			</section>
 
@@ -50,19 +51,25 @@
 
 		<section>
 			<h1>PreferLocationButton</h1>
-
 			<form>
-				<filedset> <legend>지역선택</legend> <label class="지역선택"
-					for="location">지역선택</label> <input type="radio" name="location">전국
-				<input type="radio" name="location">서울 <input type="radio"
-					name="location">경기 <input type="radio" name="location">인천
-				<input type="radio" name="location">강원 <input type="radio"
-					name="location">충청 <input type="radio" name="location">대전
-				<input type="radio" name="location">전라 <input type="radio"
-					name="location">광주 <input type="radio" name="location">경상
-				<input type="radio" name="location">대구 <input type="radio"
-					name="location">울산 <input type="radio" name="location">부산
-				<input type="radio" name="location">제주 </filedset>
+				<filedset>
+					<legend>지역선택</legend>
+					<label class="지역선택" for="location">지역선택</label>
+					<input type="radio" name="location">전국
+					<input type="radio" name="location">서울
+					<input type="radio"	name="location">경기
+					<input type="radio" name="location">인천
+					<input type="radio" name="location">강원
+					<input type="radio"	name="location">충청
+					<input type="radio" name="location">대전
+					<input type="radio" name="location">전라
+					<input type="radio"	name="location">광주
+					<input type="radio" name="location">경상
+					<input type="radio" name="location">대구
+					<input type="radio"	name="location">울산
+					<input type="radio" name="location">부산
+					<input type="radio" name="location">제주
+				</filedset>
 			</form>
 		</section>
 	</aside>
@@ -74,19 +81,23 @@
 		<form method="post">
 			<fieldset>
 				<legend>제목입력</legend>
-				<label>제목</label> <input type="text" id="title" name="title" />
+				<label>제목</label>
+				<input type="text" id="title" name="title" />
 
 				<legend>동행인입력</legend>
-				<label>동행인</label> <select id="fellowTraveler" name="fellowTraveler">
-					<option value="1">1~3</option>
-					<option value="2">4~6</option>
-					<option value="3">7~</option>
+				<label>동행인</label>
+				<select id="fellowTraveler" name="fellowTraveler">
+					<option value="family">가족</option>
+					<option value="solo">나홀로</option>
+					<option value="friend" selected>친구</option>
+					<option value="couple">연인</option>
 				</select>
 
 				<legend>기간입력</legend>
-				<label>여행을 시작한 날</label> <input type="date" id="startDate"
-					name="startDate" /> <label>여행의 마지막 날</label> <input type="date"
-					id="lastDate" name="lastDate" />
+				<label>여행을 시작한 날</label>
+				<input type="date" id="startDate"	name="startDate" />
+				<label>여행의 마지막 날</label>
+				<input type="date"	id="lastDate" name="lastDate" />
 
 				<h1>버튼 목록</h1>
 				<p>
