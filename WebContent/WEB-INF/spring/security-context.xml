@@ -17,7 +17,6 @@
      <beans:bean 
     	id="tradiaAuthenticationSuccessHandler" 
     	class="com.fantastic.web.dao.controller.TradiaAuthenticationSuccessHandler">
-    
     </beans:bean>
         
     <http>    
