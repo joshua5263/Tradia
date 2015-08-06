@@ -5,68 +5,68 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.vo.TravelDiary;
 
 public class MybatisTravelDiaryDao implements TravelDiaryDao {
 
-	SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();
+	private SqlSession session;
+	
+	//SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();
 	/*SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();*/
+	
+	 @Autowired
+	   public void setSession(SqlSession session) {
+			this.session = session;
+		}
 	
 	@Override
 	public List<TravelDiary> getTravelDiarys(int page, String field, String query) {
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		List<TravelDiary> list = null;
-		try{
+		
 			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 			list = dao.getTravelDiarys(page, field, query);
-		} finally{
-			session.close();
-		}
+		
 
 		return list;
 	}
 	
 	@Override
 	public List<TravelDiary> getTravelDiarys(int page) {
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		List<TravelDiary> list = null;
-		try{
+		
 			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);		
 			list = dao.getTravelDiarys(page);
-		}finally{
-			session.close();
-		}
+		
 		
 		return list;
 	}
 	
 	@Override
 	public List<TravelDiary> getTravelDiarys() {
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		List<TravelDiary> list = null;
-		try{
+		
 			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 			list = dao.getTravelDiarys();
-		}finally {
-			session.close();
-		}
+		
 		
 		return list;
 	}
 
 	@Override
 	public List<TravelDiary> getTravelDiarysOne(String memberID) {
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		List<TravelDiary> list = null;
 		
-		try{
+		
 			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);		
 			list = dao.getTravelDiarysOne(memberID);
-		}finally {
-			session.close();
-		}
+		
 		
 		return list;
 	}
@@ -74,32 +74,25 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	/*하나의 여행기를 조회*/
 	@Override
 	public TravelDiary getTravelDiary(String code) {
-	      SqlSession session = factory.openSession();
+	     // SqlSession session = factory.openSession();
 	      TravelDiary diary = null;
 	      
-	      try {
+	      
 	    	  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 	    	  diary = dao.getTravelDiary(code);
-	      }finally {
-	    	  session.close();
-	      }
+	      
 
 	      return diary;
 	}
 
 	@Override
 	public int addTravelDiary(TravelDiary travelDiary) {
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		int result = 0;
-		try {
+		
 			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 			result = dao.addTravelDiary(travelDiary);
-			session.commit();
-		}finally {
-			/*try가 정상실행되어 commit()이 실행됐다면 rollback()이 실행되어도 취소될 수 없다.*/
-			session.rollback();
-			session.close();
-		}
+	
 		
 		return result;
 		
@@ -118,18 +111,13 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	   @Override
 		public int removeTravelDiary(String code) {
 		
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		int result = 0;
 		
-		try{
+		
 			TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 			result = dao.removeTravelDiary(code);
-			session.commit();
-		}
-		finally{
-			session.rollback();
-			session.close();
-		}
+		
 		
 		return result;
 }
@@ -137,17 +125,10 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 
 	@Override
 	public void addBeforeTravelDiary(TravelDiary diary) {
-		SqlSession session = factory.openSession();
+		//SqlSession session = factory.openSession();
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 
-		try {
 			dao.addBeforeTravelDiary(diary);
-			session.commit();
-		}finally {
-			session.rollback();
-			session.close();
-		}
-		
 		
 	}
 }

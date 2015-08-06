@@ -19,7 +19,7 @@ import com.fantastic.web.vo.TravelDiary;
 public class PostWriteController{
 
 	//	GET 요청을 받을 경우
-	@RequestMapping(value = "postBeforeWirte", method = RequestMethod.GET)
+	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.GET)
 	public String postBeforeWrite() {
 
 		return "/WEB-INF/view/post/postBeforeWrite.jsp";
@@ -27,7 +27,7 @@ public class PostWriteController{
 	
 	
 	//POST 요청을 받을 경우
-	@RequestMapping(value = "postBeforeWirte", method = RequestMethod.POST)
+	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.POST)
 	public String postBeforeWrite(TravelDiary d, HttpServletRequest req){
 		
 		TravelDiaryDao dao = new MybatisTravelDiaryDao();

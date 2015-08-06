@@ -43,7 +43,7 @@
 							<li><a href="../customer/help">관리하기</a></li>
 							</security:authorize>
 							<li><a href="${ctxName}/j_spring_security_logout">로그아웃</a></li>
-							<li><a href="../post/postcourse">+작성하기</a></li>
+							<li><a href="../post/postBeforeWrite">+작성하기</a></li>
 						</ul>
 				</ul>
 			</nav>

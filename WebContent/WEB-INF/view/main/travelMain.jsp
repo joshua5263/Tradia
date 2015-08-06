@@ -23,7 +23,8 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
+
 
 <%-- <header id="header" class="wrap-content">
       <h1>

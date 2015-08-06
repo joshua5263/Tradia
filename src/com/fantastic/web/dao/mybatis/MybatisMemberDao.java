@@ -14,12 +14,6 @@ public class MybatisMemberDao implements MemberDao {
 	
 	private SqlSession session;
 	
-	
-	
-   /*SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();*/
-   
-   /*SqlSessionFactory factory = new SqlFantasticSessionFactory()
-         .getSqlSessionFactory();*/
 
    @Autowired
    public void setSession(SqlSession session) {
