@@ -93,15 +93,13 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		result = dao.addBeforeTravelDiary(diary);
 		
 		return result;
-	} 
+	}
 
-/*	@Override
-	public int addBeforeTravelDiary(TravelDiary diary) {
+	@Override
+	public String getLastCode(String memberID) {
 		
-		int result = 0;
-		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-		result = dao.addBeforeTravelDiary(diary);
 		
-		return result;
-	}*/
+		
+		return null;
+	} 
 }
