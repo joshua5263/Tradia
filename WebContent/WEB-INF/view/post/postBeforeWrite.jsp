@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,10 @@
 				<legend>제목입력</legend>
 				<label>제목</label>
 				<input type="text" id="title" name="title" />
+				<p>
+					<security:authentication property="name"/>
+				</p>
+				
 
 				<legend>동행인입력</legend>
 				<label>동행인</label>
