@@ -145,7 +145,7 @@
 	/* -----------------------코스 정보------------------------------------ */
 	#travel-cource-information{
 		margin-top:10px;
-		border:1px solid red;
+		border:2px solid red;
 		width: 720px;
 		min-height: 200px;
 		height: inherit;
@@ -170,6 +170,7 @@
 	
 	#travel-cource-information section:FIRST-CHILD{
 		background: white;
+		border: 2px solid #0085e2;
 	}
 	
 	/* 여행일 */

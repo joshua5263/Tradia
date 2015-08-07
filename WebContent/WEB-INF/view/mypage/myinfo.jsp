@@ -4,9 +4,12 @@
 <%@page import="com.fantastic.web.dao.MemberDao"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/modernizr.js"></script>
 <%-- <%String memberId = (String)session.getAttribute("mid");%> --%>
 <%-- <%
 	MemberDao memberDao = new MybatisMemberDao();
@@ -57,153 +60,131 @@
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 
 <style>
-/* /* body {
-   background: url("../../resource/images/background.png");
-}
 
 .quick-menu {
-   height: 65px;
-   width: 100%;
-   position: fixed;
-   /* left: ?; */
-   top: 0px;
-   background: white;
+	height: 65px;
+	width: 100%;
+	position: fixed;
+	/* left: ?; */
+	top: 0px;
+	background: white;
 }
 
 .content-wrapper {
-   width: 960px;
-   height: 100%;
-   /* height: inherit; */
-   margin-left: auto;
-   margin-right: auto;
-   /* background: yellow;   
+	width: 960px;
+	height: 100%;
+	/* height: inherit; */
+	margin-left: auto;
+	margin-right: auto;
+	/* background: yellow;   
    opacity: 0.3; */
-} */
+}
 
 #main-menu {
-   height: 65px;
+	height: 65px;
 }
-
-/* #footer {
-   height: inherit;
-   
-} */
 
 #information {
-   height: inherit;
-}
-
-/* #aside {
-   height: inherit;
-   width: 80px;
-   /*    background: blue; */
-   float: left;
-   margin-top: 65px;
-   min-height: 450px;
-} */
-
-/* #body {
-   height: 300px;
-   background: beige;
-} */
-/* #profile {
-   width: 880px;
-   background: #50b4ff;
-   float: left;
-   margin-top: 65px;
-   min-height: 300px;
-} */
-
-#my-info {
-   height: inherit;
-   width: 140px;
-   float: left;
-   min-height: 300px;
-   margin: 10px;
+	height: inherit;
 }
 
 #normal-info {
-   height: inherit;
-   width: 700px;
-   float: left;
-   min-height: 300px;
-   background: white;
-   margin: 10px;
-   font-family: SeoulNamsan;
-   font-size: 15px;
-   font-weight: bold;
+	height: inherit;
+	width: 700px;
+	float: left;
+	min-height: 300px;
+	background: white;
+	margin-top: 10px;
+	font-family: SeoulNamsan;
+	font-size: 15px;
+	font-weight: bold;
+/* 	border: 1px dotted red; */
 }
 
 #normal-info-title {
-   margin: 20px;
-   font-size: 20px;
+	margin: 20px;
+	font-size: 20px;
+}
+
+#normal-info nav {
+/* 	border: 1px solid blue; */
+	display: inline-block;
+	width: 700px;
+}
+
+#normal-info dt, dd {
+/* 	border: 1px dotted blue; */
+	display: inline-block;
+}
+
+#normal-info dt {
+	width: 80px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#normal-info dd {
+	text-align: center;
 }
 
 #normal-info input[type="text"] {
-   background: grey;
-   width: 200px;
-   height: 25px;
-   border: 1px solid #50b4ff;
-}
-
-.first-info {
-   margin-left: 150px;
-}
-
-.gender-margin {
-   margin-left: 50px;
-}
-#normal-info dt, dd {
-   margin:20px;
+	background: grey;
+	width: 130px;
+	height: 20px;
+	border: 1px solid #50b4ff;
 }
 
 #button {
-   margin-top: 10px;
-   margin-bottom: 20px;
-   margin-left: 283px;
-   width: 134px;
-   height: 48px;
-   border: 0px;
-   background: url("../resource/images/btn_modify.png");
-   text-indent: -999px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 283px;
+	width: 134px;
+	height: 48px;
+	border: 0px;
+	background: url("../resource/images/btn_modify.png");
+	text-indent: -999px;
 }
 
 .hidden {
-   display: none !important;
-} */
+	display: none !important;
+}
+
+.left {
+	float: left;
+}
 </style>
 </head>
 
 <body>
-   <header>
-      <jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
-   </header>
-   
- <!-- 바디영역 -->
-	
+	<header>
+		<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
+	</header>
+
+	<!-- 바디영역 -->
+
 	<div id="body" class="wrap-content clearfix">
-	
-	<!-- 어사이드영역 -->
-	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
-      
-      <main id = "main">
+
+		<!-- 어사이드영역 -->
+		<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
+
+		<main id="main">
 
 
-			<section>
+		<section>
 			<h1 class="hidden">프로필정보</h1>
-			
+
 			<section id="profile-bg">
 				<h1 class="hidden">프로필배경</h1>
 				<section>
 					<h1 class="hidden">프로필사진</h1>
 					<ul id="profile">
 						<li id="profile-pic"></li>
-						<li><security:authentication property="name"/></li>
+						<li><security:authentication property="name" /></li>
 					</ul>
 				</section>
 			</section>
-	
-     <!--  <nav id="profile">
+
+			<!--  <nav id="profile">
          <h1 class="hidden">프로필</h1>
          <form method="post">
             <ul>
@@ -218,92 +199,93 @@
             </ul>
          </form>
       </nav> -->
-      <section id="information">
-         <section id="my-info">
-            <div>
-               <dd class="hidden">내 소개</dd>
-               <textarea id="txtContent" rows="15" cols="16" class="txtContent"
-                  name="content"></textarea>
-            </div>
-            <div>
-               <dd>
-                  <a href="mypage">My Page</a>
-               </dd>
-            </div>
-            <div>
-               <dd>
-                  <a href="myinfo">내 정보</a>
-               </dd>
-            </div>
-            <div>
-               <dd>
-                  <a href="scrapinfo">스크랩 목록</a>
-               </dd>
-            </div>
-         </section>
-         <section>
-            <section id="normal-info">
-            <h1 class="hidden">기본정보</h1>
+			<section id="information">
+				<section id="my-info">
+					<div>
+						<dd class="hidden">내 소개</dd>
+						<textarea id="txtContent" rows="15" cols="16" 
+						class="txtContent" name="content">${m.profile }</textarea>
+						<label class="hidden">수정</label> <input id="reg" type="submit"
+							value="수정" />
+					</div>
+					<div>
+						<dd>
+							<a href="mypage">My Page</a>
+						</dd>
+						<dd>
+							<a href="myinfo">내 정보</a>
+						</dd>
+						<dd>
+							<a href="scrapinfo">스크랩 목록</a>
+						</dd>
+					</div>
+				</section>
 
-               <form method="post">
-               <h1 id="normal-info-title">프로필정보</h1>
-                  <dl>
-                     <dt>ID</dt>
-                     <dd class="first-info"><security:authentication property="name"/></dd>
-                     <dt>비밀번호</dt>
-                     <dd class="first-info">${m.password}</dd>
+				<section id="normal-info">
+					<h1 class="hidden">기본정보</h1>
+					<form method="post">
+						<h1 id="normal-info-title">프로필정보</h1>
+						<dl>
+						<nav>
+							<dt>ID</dt>
+							<dd class="first-info">${m.id}</dd>
+						</nav>
+						<nav>
+							<dt>비밀번호</dt>
+							<dd class="first-info">새 비밀번호</dd>
+							<dd><input type="text" name="password"/><dd>
+							<dd class="first-info">새 비밀번호 확인</dd>
+							<dd><input type="text" name="password2"/></dd>
+						</nav>
+						<nav>
+							<dt>생년월일</dt>
+							<dd class="first-info"><fmt:formatDate value="${m.birthday}" pattern="yyyy-MM-dd" /></dd>
 
-                     <label>새 비밀번호</label>
-                     <input class="first-info" type="text" name="password">
-                     <label>새 비밀번호 확인</label>
-                     <input type="text" name="password2">
+							<label class="hidden">생년월일 입력</label>
+							<input type="date" name="birthday">
+						</nav>
+						<nav>
+							<dt>성별</dt>
 
-                     <dt>생년월일</dt>
-                     <dd class="first-info">${m.birthday}</dd>
+							<c:if test="${m.gender == 0}">
+								<dd class="first-info">남</dd>
+							</c:if>
+							<c:if test="${m.gender == 1}">
+								<dd class="first-info">여</dd>
+							</c:if>
 
-                     <label class="hidden">생년월일 입력</label>
-                     <input class="first-info" type="date" name="birthday">
+							<label class="hidden" for="gender">성별선택</label>
+							<!-- <label>성별</label>
+						<input type="text" name="gender"> -->
 
-                     <dt>성별</dt>
+							<c:if test="${m.gender == 0}">
+								<input class="first-info" type="radio" name="gender"
+									checked="checked" value="man">남
+						<input type="radio" name="gender" value="1">녀
+						</c:if>
+							<c:if test="${m.gender == 1}">
+								<input class="first-info" type="radio" name="gender" value="0">남
+						<input type="radio" name="gender"
+									checked="checked" value="woman">녀
+						</c:if>
+							<c:if test="${m.gender == null}">
+								<input class="first-info" type="radio" name="gender" value="0">남
+						<input  type="radio" name="gender" value="1">녀
+						</c:if>
+						</dl>
+						</nav>
+						<label class="hidden">수정</label> <input id="button" type="submit"
+							value="수정" />
+					</form>
+				</section>
+			</section>
+		</section>
+		</main>
+	</div>
+	<!-- -------------------------------------------------------------------------------------------- -->
+	<!-- 푸터영역 -->
 
-                     <c:if test="${m.gender == 0}">
-                        <dd class="first-info">남</dd>
-                     </c:if>
-                     <c:if test="${m.gender == 1}">
-                        <dd class="first-info">여</dd>
-                     </c:if>
-
-                     <label class="hidden" for="gender">성별선택</label>
-
-                     <!-- <label>성별</label>
-                  <input type="text" name="gender"> -->
-
-                     <c:if test="${m.gender == 0}">
-                        <input class="first-info" type="radio" name="gender" checked="checked" value="man">남
-                  <input class="gender-margin" type="radio" name="gender" value="1">녀
-                  </c:if>
-                     <c:if test="${m.gender == 1}">
-                        <input class="first-info" type="radio" name="gender" value="0">남
-                  <input class="gender-margin" type="radio" name="gender" checked="checked" value="woman">녀
-                  </c:if>
-                     <c:if test="${m.gender == null}">
-                        <input class="first-info" type="radio" name="gender" value="0">남
-                  <input class="gender-margin" type="radio" name="gender" value="1">녀
-                  </c:if>
-                  </dl>
-                  <label class="hidden">수정</label>
-                  <input id="button" type="submit" value="수정" />
-               </form>
-
-            </section>
-         </section>
-         </section>
-      </main>
-      </div>
-<!-- -------------------------------------------------------------------------------------------- -->
-<!-- 푸터영역 -->
-	
-	<footer id="footer"  class="wrap-content">
+	<footer id="footer" class="wrap-content">
 		<section>
 			<h1>Tradia</h1>
 

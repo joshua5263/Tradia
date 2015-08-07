@@ -22,6 +22,8 @@
 	<!-- 어사이드영역 -->
 	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
 
+
+
 	<main id="main">
 	<section>
 		<h1>포스트 쓰기</h1>
@@ -29,19 +31,23 @@
 		<form method="post">
 			<fieldset>
 				<legend>제목입력</legend>
-				<label>제목</label> <input type="text" id="title" name="title" />
+				<label>제목</label>
+				<input type="text" id="title" name="title" />
 
 				<legend>동행인입력</legend>
-				<label>동행인</label> <select id="fellowTraveler" name="fellowTraveler">
-					<option value="1">1~3</option>
-					<option value="2">4~6</option>
-					<option value="3">7~</option>
+				<label>동행인</label>
+				<select id="fellowTraveler" name="fellowTraveler">
+					<option value="family">가족</option>
+					<option value="solo">나홀로</option>
+					<option value="friend" selected>친구</option>
+					<option value="couple">연인</option>
 				</select>
 
 				<legend>기간입력</legend>
-				<label>여행을 시작한 날</label> <input type="date" id="startDate"
-					name="startDate" /> <label>여행의 마지막 날</label> <input type="date"
-					id="lastDate" name="lastDate" />
+				<label>여행을 시작한 날</label>
+				<input type="date" id="startDate"	name="startDate" />
+				<label>여행의 마지막 날</label>
+				<input type="date"	id="lastDate" name="lastDate" />
 
 				<h1>버튼 목록</h1>
 				<p>

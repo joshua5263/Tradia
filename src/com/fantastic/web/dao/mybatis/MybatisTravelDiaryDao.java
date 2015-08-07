@@ -86,13 +86,13 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	       return t;
 	 } 
 
-
 	@Override
-	public void addBeforeTravelDiary(TravelDiary diary) {
-		//SqlSession session = factory.openSession();
-		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-
-			dao.addBeforeTravelDiary(diary);
+	public int addBeforeTravelDiary(TravelDiary diary) {
 		
+		int result = 0;
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		result = dao.addBeforeTravelDiary(diary);
+		
+		return result;
 	}
 }
