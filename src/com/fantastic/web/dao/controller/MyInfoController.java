@@ -1,6 +1,7 @@
 package com.fantastic.web.dao.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,8 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fantastic.web.dao.CommentDao;
 import com.fantastic.web.dao.MemberDao;
+import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.vo.Member;
+import com.fantastic.web.vo.TravelDiary;
 
 
 @Controller
@@ -19,13 +23,24 @@ import com.fantastic.web.vo.Member;
 public class MyInfoController{
 	
 	private MemberDao memberDao;
-	
+	private TravelDiaryDao travelDiaryDao;
+	private CommentDao commentDao;
 	
 	@Autowired
 	public void setMemberDao(MemberDao memberDao) {
 		this.memberDao = memberDao;
 	}
+	
+	@Autowired
+	public void setCommentDao(CommentDao commentDao) {
+	      this.commentDao = commentDao;
+	}
 
+	@Autowired
+	public void setTravelDiaryDao(TravelDiaryDao travelDiaryDao) {
+		this.travelDiaryDao = travelDiaryDao;
+	}
+	
 	@RequestMapping(value= "myinfo", method=RequestMethod.GET)
 	public String myinfo(Member m, Model model, Principal principal, HttpServletRequest request){
 		
@@ -53,13 +68,29 @@ public class MyInfoController{
 	}
 	
 	@RequestMapping(value= "mypage", method=RequestMethod.GET)
-	public String mypage(){
+	public String mypage(Member m, Model model, Principal principal, HttpServletRequest request){
 		
+		String memberID = principal.getName();
+		
+		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
+		
+		List<TravelDiary> travelDiary = travelDiaryDao.getTravelDiarysOne(memberID);
+	    model.addAttribute("td", travelDiary);
+	      
 		return "/WEB-INF/view/mypage/mypage.jsp";
 	}
 
 	@RequestMapping(value= "scrapinfo", method=RequestMethod.GET)
-	public String scrapinfo(){
+	public String scrapinfo(Member m, Model model, Principal principal, HttpServletRequest request){
+		
+		String memberID = principal.getName();
+		
+		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
+		
+		List<TravelDiary> travelDiary = travelDiaryDao.getTravelDiarysOne(memberID);
+	    model.addAttribute("td", travelDiary);
 		
 		return "/WEB-INF/view/mypage/scrapinfo.jsp";
 	}

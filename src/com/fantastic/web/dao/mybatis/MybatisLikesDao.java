@@ -3,21 +3,22 @@ package com.fantastic.web.dao.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fantastic.web.dao.LikesDao;
 import com.fantastic.web.vo.Likes;
 
+
+
 public class MybatisLikesDao implements LikesDao {
 
-	SqlSessionFactory factory = new SqlFantasticSessionFactory()
-			.getSqlSessionFactory();
+	@Autowired
+	 private SqlSession session;
 
 	@Override
 	public List<Likes> getLikes(int page, String field, String query) {
 		// TODO Auto-generated method stub
 
-		SqlSession session = factory.openSession();
 		LikesDao dao = session.getMapper(LikesDao.class);
 
 		return dao.getLikes(1, "", "");
@@ -27,7 +28,6 @@ public class MybatisLikesDao implements LikesDao {
 	public List<Likes> getLikes(int page) {
 		// TODO Auto-generated method stub
 
-		SqlSession session = factory.openSession();
 		LikesDao dao = session.getMapper(LikesDao.class);
 
 		return dao.getLikes(page);
@@ -37,7 +37,6 @@ public class MybatisLikesDao implements LikesDao {
 	public List<Likes> getLikes() {
 		// TODO Auto-generated method stub
 
-		SqlSession session = factory.openSession();
 		LikesDao dao = session.getMapper(LikesDao.class);
 
 		return dao.getLikes();
@@ -45,28 +44,22 @@ public class MybatisLikesDao implements LikesDao {
 
 	@Override
 	public Likes getLike(String memberID) {
-		SqlSession session = factory.openSession();
+
 		LikesDao dao = session.getMapper(LikesDao.class);
 		
 		return dao.getLike(memberID);
 	}
 	
 	@Override
-	public int addLike(Likes like) {
-		// TODO Auto-generated method stub
-		
-		SqlSession session = factory.openSession();
+	public int addLike(Likes like) 
+	{
 		int result = 0;
 
-		try {
-			LikesDao dao = session.getMapper(LikesDao.class);
-			result = dao.addLike(like);
-			session.commit();
-		} finally {
-			session.rollback();
-			session.close();
-		}
-		return result;
+		LikesDao dao = session.getMapper(LikesDao.class);
+		result = dao.addLike(like);
+		
+        return result;
+		  
 	}
 
 	/*@Override
@@ -94,8 +87,6 @@ public class MybatisLikesDao implements LikesDao {
 	public int removeLike(Likes like) {
 		// TODO Auto-generated method stub
 
-		SqlSession session = factory.openSession();
-		
 		int result = 0;
 		try {
 
