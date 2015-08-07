@@ -46,8 +46,10 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	 public List<TravelDiary> getTravelDiarysOne(String memberID) {
 	  
 	  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);  
+	  CourseDao couseDao = session.getMapper(CourseDao.class);
+      CommentDao commentDao = session.getMapper(CommentDao.class);
 	  
-	  return dao.getTravelDiarysOne(memberID);
+      return dao.getTravelDiarysOne(memberID);
 	 }
 	 
 
