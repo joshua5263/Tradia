@@ -24,7 +24,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- CONVERT 사용하는 addBeforeTravelDiary -->
-	<!-- mssql에서 알아서 캐스트하기 때문에 CONVERT 불필요 -->
 	<!-- <insert id="addBeforeTravelDiary" parameterType="com.fantastic.web.vo.TravelDiary">
 		<selectKey keyProperty="code" order="BEFORE" resultType="string">
 			select isnull (max(cast(Code as int)),0)+1 code from TravelDiary
@@ -41,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select isnull (max(cast(Code as int)),0)+1 code from TravelDiary
 		</selectKey>
 		INSERT INTO TravelDiary(Code, Title, FellowTraveler, StartDate, LastDate, MemberID)
-		VALUES(#{code}, #{title}, ${fellowTraveler}, #{startDate}, #{lastDate}, #{memberID})
+		VALUES(#{code}, #{title}, #{fellowTraveler}, #{startDate}, #{lastDate}, #{memberID})
 	</insert>
 	
 	<!-- 원본 -->

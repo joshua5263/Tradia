@@ -45,11 +45,15 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	 @Override
 	 public List<TravelDiary> getTravelDiarysOne(String memberID) {
 	  
-	  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);  
-	  CourseDao couseDao = session.getMapper(CourseDao.class);
-      CommentDao commentDao = session.getMapper(CommentDao.class);
-	  
-      return dao.getTravelDiarysOne(memberID);
+		  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		  CourseDao courseDao = session.getMapper(CourseDao.class);
+		  
+		  List<TravelDiary> list = dao.getTravelDiarysOne(memberID);
+		  
+		  for(TravelDiary t:list)
+		    t.setOneCourse(courseDao.getCourse(t.getCode()));
+		  
+		  return list;
 	 }
 	 
 
@@ -86,9 +90,18 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	       t.setTravelCommnet(commentDao.getComment(code));
 	       
 	       return t;
-	 } 
+	 }
 
 	@Override
+	public int addBeforeTravelDiary(TravelDiary diary) {
+		int result = 0;
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		result = dao.addBeforeTravelDiary(diary);
+		
+		return result;
+	} 
+
+/*	@Override
 	public int addBeforeTravelDiary(TravelDiary diary) {
 		
 		int result = 0;
@@ -96,5 +109,5 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		result = dao.addBeforeTravelDiary(diary);
 		
 		return result;
-	}
+	}*/
 }
