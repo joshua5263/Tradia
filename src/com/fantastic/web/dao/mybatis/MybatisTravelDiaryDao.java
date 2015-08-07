@@ -90,9 +90,18 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	       t.setTravelCommnet(commentDao.getComment(code));
 	       
 	       return t;
-	 } 
+	 }
 
 	@Override
+	public int addBeforeTravelDiary(TravelDiary diary) {
+		int result = 0;
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		result = dao.addBeforeTravelDiary(diary);
+		
+		return result;
+	} 
+
+/*	@Override
 	public int addBeforeTravelDiary(TravelDiary diary) {
 		
 		int result = 0;
@@ -100,5 +109,5 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		result = dao.addBeforeTravelDiary(diary);
 		
 		return result;
-	}
+	}*/
 }
