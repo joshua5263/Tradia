@@ -45,9 +45,15 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	 @Override
 	 public List<TravelDiary> getTravelDiarysOne(String memberID) {
 	  
-	  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);  
-	  
-	  return dao.getTravelDiarysOne(memberID);
+		  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		  CourseDao courseDao = session.getMapper(CourseDao.class);
+		  
+		  List<TravelDiary> list = dao.getTravelDiarysOne(memberID);
+		  
+		  for(TravelDiary t:list)
+		    t.setOneCourse(courseDao.getCourse(t.getCode()));
+		  
+		  return list;
 	 }
 	 
 

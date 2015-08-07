@@ -6,11 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.fantastic.web.dao.CommentDao">
 	<select id="getComments" parameterType="string" resultType="com.fantastic.web.vo.Comment">
-		SELECT * FROM CommentView 
+		SELECT * FROM CommentView ORDER BY REGDATE DESC
 	</select>
 	
 	<select id="getComment" parameterType="string" resultType="com.fantastic.web.vo.Comment">
-		SELECT * FROM CommentView Where  TravelCode = #{travelCode}
+		SELECT * FROM CommentView Where TravelCode = #{travelCode} ORDER BY REGDATE ASC
 	</select>
 	
 	<insert id="addComment" parameterType="com.fantastic.web.vo.Comment">
