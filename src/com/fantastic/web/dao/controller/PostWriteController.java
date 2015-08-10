@@ -20,11 +20,18 @@ import com.fantastic.web.vo.TravelDiary;
 @RequestMapping("/post/*")
 public class PostWriteController{
 	private TravelDiaryDao dao;
+	private CourseDao courseDao;
 
 	@Autowired
 	public void setDao(TravelDiaryDao dao) {
 		this.dao = dao;
 	}
+	
+	@Autowired
+	public void setCourseDao(CourseDao courseDao) {
+		this.courseDao = courseDao;
+	}
+
 
 
 	//	GET 요청을 받을 경우
@@ -39,18 +46,12 @@ public class PostWriteController{
 	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.POST)
 	public String postBeforeWrite(TravelDiary d, Principal principal){
 		
-		/*String code;*/
-		
-		//로그인 페이지 적용 아직 안했으므로 사용
-		/*d.setMemberID("kwonan");*/
 		String mid=principal.getName();
+		
 		//VO를 DAO를 통해서 DB로 전송
 		d.setMemberID(mid);
 		dao.addBeforeTravelDiary(d);
 
-		/*code = d.getCode();
-		req.setAttribute("code", code);*/
-		//postCourse 컨트롤러를 호출
 		 return "redirect:postCourseWrite";
 	}
 	
@@ -62,10 +63,10 @@ public class PostWriteController{
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
 	public String postCourseWrite(Course course, HttpServletRequest req){
-		course.setTravelCode((String) req.getAttribute("travelCode"));
-		CourseDao dao = new MybatisCourseDao();
+		/*course.setTravelCode((String) req.getAttribute("travelCode"));*/
 		course.setCsDate("2015-06-06");
-		dao.addCourse(course);
+		course.setFeeling("good");
+		courseDao.addCourse(course);
 		
 		return "redirect:";
 	}
