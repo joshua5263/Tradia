@@ -22,12 +22,14 @@ public interface TravelDiaryDao {
 	
 	public List<TravelDiary> getTravelDiarysOne(String memberID);
 	
+	public List<TravelDiary> getTravelDiaryScarp(String code);
+    
 	public TravelDiary getTravelDiary(String code);
-
+	
 	public int addTravelDiary(TravelDiary travelDiary) ;
 	
 	public int removeTravelDiary(String code);
 
 	public int addBeforeTravelDiary(TravelDiary diary); 
-	
+
 }

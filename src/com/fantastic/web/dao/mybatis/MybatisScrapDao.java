@@ -3,12 +3,13 @@ package com.fantastic.web.dao.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fantastic.web.dao.mybatis.SqlFantasticSessionFactory;
+import com.fantastic.web.dao.CourseDao;
 import com.fantastic.web.dao.ScrapDao;
+import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.vo.Scrap;
+import com.fantastic.web.vo.TravelDiary;
 
 public class MybatisScrapDao implements ScrapDao{
 
@@ -24,7 +25,7 @@ public class MybatisScrapDao implements ScrapDao{
 		return dao.getScraps(1, "", "");
 	}
 
-	@Override
+/*	@Override
 	public List<Scrap> getScraps(int page) {
 		// TODO Auto-generated method stub
 
@@ -32,7 +33,7 @@ public class MybatisScrapDao implements ScrapDao{
 		
 		return dao.getScraps(page);
 	}
-
+*/
 	@Override
 	public List<Scrap> getScraps() {
 		// TODO Auto-generated method stub
@@ -75,4 +76,19 @@ public class MybatisScrapDao implements ScrapDao{
 		return result;
 	}
 
+	@Override
+	public List<Scrap> getScraps(String scrapID) {
+				
+		CourseDao courseDao = session.getMapper(CourseDao.class);
+		ScrapDao scrapDao = session.getMapper(ScrapDao.class);
+			 
+		List<Scrap> list = scrapDao.getScraps(scrapID);
+			 
+		  for(Scrap sc:list)
+			    sc.setOneCourse(courseDao.getCourse(sc.getCode()));
+			 
+		return list;		
+		
+		
+	}
 }
