@@ -9,20 +9,19 @@
 <title>Tradia</title>
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
+<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 
-<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body>
-	
+	<!-- 헤더 영역 -->
 	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
-
+	
 	<div id="body" class="wrap-content">
 	
 	<!-- 어사이드영역 -->
 	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
-
 
 
 	<main id="main">

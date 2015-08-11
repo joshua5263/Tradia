@@ -32,4 +32,6 @@ public interface TravelDiaryDao {
 
 	public int addBeforeTravelDiary(TravelDiary diary); 
 
+	public String getLastCode(String memberID);
+
 }

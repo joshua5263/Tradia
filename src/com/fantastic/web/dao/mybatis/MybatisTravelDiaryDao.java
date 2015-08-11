@@ -115,4 +115,12 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		
 		return result;
 	}
+
+	@Override
+	public String getLastCode(String memberID) {
+		
+		
+		
+		return null;
+	} 
 }
