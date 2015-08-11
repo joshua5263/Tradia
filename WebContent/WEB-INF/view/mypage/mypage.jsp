@@ -1,20 +1,20 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link href="../resource/mypage/mypage.css" rel="stylesheet"
-	type="text/css" />
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <style type="text/css">
-	#aaa {
-	border: 1px red solid;	
-}
 
+#aaa {
+	border: 1px red solid;
+}
 </style>
+
 <title>Insert title here</title>
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/modernizr.js"></script>
@@ -162,7 +162,7 @@
 									<section>
 										<c:forEach var="c" items="${n.oneCourse}" varStatus="cc">
 
-											<h1>${td.count}- ${cc.count}코스 이미지</h1>
+											<h1>${td.count}-${cc.count}코스 이미지</h1>
 											<ul>
 												<li>${c.pic1}</li>
 												<li>${c.pic2}</li>
