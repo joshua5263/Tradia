@@ -103,9 +103,9 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 
 	@Override
 	public String getLastCode(String memberID) {
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		String lastCode = dao.getLastCode(memberID);
 		
-		
-		
-		return null;
+		return lastCode;
 	} 
 }

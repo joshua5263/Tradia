@@ -25,7 +25,7 @@
 		         <section>
 		            <h1>코스 정보</h1>
 		      
-		         <form action="" method="post">
+		         <form action="postCourseWrite" method="post">
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
@@ -37,20 +37,22 @@
 		
 		            <fieldset>
 		               <legend>교통 수단</legend>
+		               <input type="radio" id="walk" value="walk" name="traffic">               
 		               <label for = "walk" >도보</label>
-		               <input type="checkbox" id = "walk" value="0" />               
+		               <input type="radio" id="car" value="car" name="traffic">               
 		               <label for = "car">차</label>
-		               <input type="checkbox" id = "car" value="1" />               
+		               <input type="radio" id="subway" value="subway" name="traffic">               
 		               <label for = "subway">지하철</label>
-		               <input type="checkbox" id = "subway" value="2" />               
+		               <input type="radio" id="taxi" value="taxi" name="traffic">               
 		               <label for = taxi>택시</label>
-		               <input type="checkbox" id = "taxi" value="3" />               
+		               <input type="radio" id="train" value="train" name="traffic">               
 		               <label for = "train">기차</label>
-		               <input type="checkbox" id = "train" value="4" />               
-		               <label for = "waflylk">비행기</label>
-		               <input type="checkbox" id = "fly" value="5" />               
-		               <label for = "walshipk">배</label>
-		               <input type="checkbox" id = "ship" value="6" />               
+		               <input type="radio" id="fly" value="fly" name="traffic">               
+		               <label for = "fly">비행기</label>
+		               <input type="radio" id="ship" value="ship" name="traffic">               
+		               <label for = "ship">배</label>
+		               <input type="radio" id="other" value="other" name="traffic">               
+		               <label for = "other">기타</label>
 		            </fieldset>
 		            
 		            <legend>경비입력</legend>
@@ -91,7 +93,7 @@
 		      
 		            <h1>버튼 목록</h1>
 		            <p>
-		               <a href="">코스추가</a>
+		               <input type="submit" value="코스 추가">
 		               <a href=""><input type="submit" value="임시 저장"></a>
 		               <a href=""><input type="submit" value="후기 작성"></a>
 		            </p>

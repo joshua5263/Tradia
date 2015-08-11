@@ -1,6 +1,7 @@
 package com.fantastic.web.dao.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -62,13 +63,18 @@ public class PostWriteController{
 	}
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
-	public String postCourseWrite(Course course, HttpServletRequest req){
-		/*course.setTravelCode((String) req.getAttribute("travelCode"));*/
-		course.setCsDate("2015-06-06");
-		course.setFeeling("good");
+	public String postCourseWrite(Course course, Principal principal){
+		/*로그인한 멤버의 id를 얻어옴*/
+		String memberID = principal.getName();
+		
+		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		String lastCode = dao.getLastCode(memberID);
+		/*얻어온 DiaryCode를 추가*/
+		course.setTravelCode(lastCode);
+		
 		courseDao.addCourse(course);
 		
-		return "redirect:";
+		return "redirect:postCourseWrite";
 	}
 	
 	
