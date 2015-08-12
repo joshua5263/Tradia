@@ -1,13 +1,18 @@
 package com.fantastic.web.vo;
 
 import java.util.Date;
+
 import java.util.List;
+
 
 public class Scrap {
 
 	private String memberID;
 	private String travelCode;
-	private String scrapDate;
+
+	private Date scrapDate;
+
+
 
 	private String code;
 	private String title;
@@ -20,11 +25,20 @@ public class Scrap {
 	private Date regDate;
 	private String mpic;
 	private int likeCnt;
+
 	
 	private String scrapID;
 
 	private List<Course> oneCourse;
 	
+
+	public Date getScrapDate() {
+		return scrapDate;
+	}
+
+	public void setScrapDate(Date scrapDate) {
+		this.scrapDate = scrapDate;
+	}
 
 	public List<Course> getOneCourse() {
 		return oneCourse;
@@ -145,14 +159,5 @@ public class Scrap {
 	public void setTravelCode(String travelCode) {
 		this.travelCode = travelCode;
 	}
-
-	public String getScrapDate() {
-		return scrapDate;
-	}
-
-	public void setScrapDate(String scrapDate) {
-		this.scrapDate = scrapDate;
-	}
-
-
 }
+

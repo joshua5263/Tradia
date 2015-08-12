@@ -121,20 +121,20 @@
 									<fieldset>
 										<legend>지역선택</legend>
 										<label class="지역선택" for="preferLocation">지역선택</label> 
-											<input type="radio" name="preferLocation" value="0" checked>전국
-											<input type="radio" name="preferLocation" value="1">서울
-											<input type="radio" name="preferLocation" value="2">경기
-											<input type="radio" name="preferLocation" value="3">인천
-											<input type="radio" name="preferLocation" value="4">강원 
-											<input type="radio" name="preferLocation" value="5">충청
-											<input type="radio" name="preferLocation" value="6">대전
-											<input type="radio" name="preferLocation" value="7">전라 
-											<input type="radio" name="preferLocation" value="8">광주
-											<input type="radio" name="preferLocation" value="9">경상 
-											<input type="radio" name="preferLocation" value="10">대구 
-											<input type="radio" name="preferLocation" value="11">울산
-											<input type="radio" name="preferLocation" value="12">부산 
-											<input type="radio" name="preferLocation" value="13">제주
+											<input type="radio" name="preferLocation" value="전국" checked>전국
+											<input type="radio" name="preferLocation" value="서울시">서울
+											<input type="radio" name="preferLocation" value="경기도">경기
+											<input type="radio" name="preferLocation" value="인천시">인천
+											<input type="radio" name="preferLocation" value="강원도">강원 
+											<input type="radio" name="preferLocation" value="충청도">충청
+											<input type="radio" name="preferLocation" value="대전시">대전
+											<input type="radio" name="preferLocation" value="전라도">전라 
+											<input type="radio" name="preferLocation" value="광주시">광주
+											<input type="radio" name="preferLocation" value="경상도">경상 
+											<input type="radio" name="preferLocation" value="대구시">대구 
+											<input type="radio" name="preferLocation" value="울산시">울산
+											<input type="radio" name="preferLocation" value="부산시">부산 
+											<input type="radio" name="preferLocation" value="제주도">제주
 											<br/>
 											<input type="submit" name=prefer-location value="선호지역선택하기">
 									</fieldset>

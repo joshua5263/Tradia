@@ -41,6 +41,8 @@ public class MybatisLikesDao implements LikesDao {
 
 		return dao.getLikes();
 	}
+	
+	
 
 	@Override
 	public Likes getLike(String memberID) {
@@ -48,6 +50,14 @@ public class MybatisLikesDao implements LikesDao {
 		LikesDao dao = session.getMapper(LikesDao.class);
 		
 		return dao.getLike(memberID);
+	}
+	
+	@Override
+	public Likes getPageLike(String memberID, String travelCode) {
+		// TODO Auto-generated method stub
+		LikesDao dao = session.getMapper(LikesDao.class);
+		
+		return dao.getPageLike(memberID, travelCode);
 	}
 	
 	@Override
@@ -88,18 +98,12 @@ public class MybatisLikesDao implements LikesDao {
 		// TODO Auto-generated method stub
 
 		int result = 0;
-		try {
 
 			LikesDao dao = session.getMapper(LikesDao.class);
 			result = dao.removeLike(like);
-			session.commit();
-		} 
-		
-		finally {
-			session.rollback();
-			session.close();
-		}
+
 		return result;
 	}
+
 
 }

@@ -24,8 +24,9 @@ public class TravelDiary {
 	private int likeCnt;
 	
 	private List<Course> oneCourse;
-	private List<Comment> travelCommnet;
-	
+
+	private List<Comment> travelCommnet;	
+
 	public List<Course> getOneCourse() {
 		return oneCourse;
 	}

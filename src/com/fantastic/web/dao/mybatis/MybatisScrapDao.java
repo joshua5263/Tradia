@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fantastic.web.dao.CourseDao;
 import com.fantastic.web.dao.ScrapDao;
-import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.vo.Scrap;
-import com.fantastic.web.vo.TravelDiary;
 
 public class MybatisScrapDao implements ScrapDao{
 

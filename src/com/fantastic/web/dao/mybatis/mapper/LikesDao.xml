@@ -9,7 +9,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getLike" resultType="com.fantastic.web.vo.Likes" parameterType="string">
-		SELECT * FROM LIKES WHERE MemberId = #{memberID}
+		SELECT * FROM LIKES WHERE MemberID = #{memberID}
+	</select>
+	
+	<select id="getPageLike" resultType="com.fantastic.web.vo.Likes" >
+		SELECT * FROM LIKES WHERE MemberID like" #%{param1}% and TravelCode = #{param2}
 	</select>
 	
 	<insert id="addLike" parameterType="com.fantastic.web.vo.Likes">

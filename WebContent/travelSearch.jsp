@@ -27,76 +27,12 @@
 	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
 
 
-<%-- <header id="header" class="wrap-content">
-      <h1>
-         <a href="" alt="Tradia"><img src="../resource/images/logo.png"></a>
-      </h1>
-
-      <section>
-         <h1 class="hidden">메인 메뉴</h1>
-
-         <section>
-            <h1 class="hidden">여행기 검색 폼</h1>
-            <form id = "travel-search-form">
-               <legend class="hidden">통합검색</legend>
-               <label>검색</label> <input type="text" value="가고싶은 여행지를 검색하세요" /> 
-               <input type="submit" value="검색" />
-            </form>
-         </section>
-
-         <nav id="profile-menu">
-            <h1 class="hidden">프로필</h1>
-            <ul>
-               <li>ProfilePicture</li>
-               <li><security:authentication property="name" /></li>
-               <li>ButtonImage</li>
-            </ul>
-         </nav>
-
-         <nav>
-            <h1 class="hidden">프로필목록</h1>
-            <ul>
-               <li><a href="" alt="MyPage">MyPage</a></li>
-               <li><a href="" alt="내정보">내정보</a></li>
-               <li><a href="" alt="스크랩목록">스크랩목록</a></li>
-               <li><a href="" alt="도움말">도움말</a></li>
-               <li><a href="" alt="로그아웃">로그아웃</a></li>
-               <li><a href="" alt="작성하기">+작성하기</a></li>
-            </ul>
-         </nav>
-      </section>
-
-   </header> --%>
 
 	<div id="body" class="wrap-content">
 	
 	<!-- 어사이드영역 -->
 	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
-	
-  <!--  <aside id="aside">
-      <h1>SelectPreferLocation</h1>
 
-      <section>
-         <h1>PreferLocationButton</h1>
-         <ul>
-            <li>전국</li>
-            <li>서울</li>
-            <li>경기</li>
-            <li>인천</li>
-            <li>강원</li>
-            <li>충청</li>
-            <li>대전</li>
-            <li>전라</li>
-            <li>광주</li>
-            <li>경상</li>
-            <li>대구</li>
-            <li>울산</li>
-            <li>부산</li>
-            <li>제주</li>
-
-         </ul>
-      </section>
-   </aside> -->
 
 
 	<main id="main" class="wrap-content">
@@ -120,15 +56,15 @@
 				
 				<div id="travel-diary-fieldset">
 					<h1 class="hidden">여행기${tc.count}</h1>
-		    		<c:forEach var="t" items="${n.travelDiaries}">
+		    
 					<nav>
 						<h1 class="hidden">여행기 ${tc.count}등록정보</h1>
 						<ul>
-							<li><a href=""><img src="../resource/images/header-profile-pic.png">${t.mpic}</a></li>
-							<li><a href="">${t.memberID}</a></li>
-							<li><fmt:formatDate value="${t.regDate}" pattern="yyyy년MM월dd일" /></li>
-							<li><a href="travelDetail?tcode=${t.code}">${t.title}</a></li> 
-							<li><img src="../resource/images/btn-like.png"> ${t.likeCnt}</li>
+							<li><a href=""><img src="../resource/images/header-profile-pic.png">${n.picture}</a></li>
+							<li><a href="">${n.memberID}</a></li>
+							<li><fmt:formatDate value="${n.regDate}" pattern="yyyy년MM월dd일" /></li>
+							<li><a href="travelDetail?tcode=${n.code}">${n.title}</a></li> 
+							<li><img src="../resource/images/btn-like.png"> ${n.likeCnt}</li>
 							
 						</ul>						
 					</nav>
@@ -159,7 +95,6 @@
 							</c:forEach>
 						</section>
 					</section>
-					</c:forEach>
 					</div>
 							</c:forEach>
 				
