@@ -3,10 +3,8 @@ package com.fantastic.web.dao.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fantastic.web.dao.mybatis.SqlFantasticSessionFactory;
 import com.fantastic.web.dao.ScrapDao;
 import com.fantastic.web.vo.Scrap;
 

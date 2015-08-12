@@ -1,10 +1,12 @@
 package com.fantastic.web.vo;
 
+import java.util.Date;
+
 public class Scrap {
 	
 	private String memberID;
 	private String travelCode;
-	private String scrapDate;
+	private Date scrapDate;
 	
 	public String getMemberID() {
 		return memberID;
@@ -18,12 +20,13 @@ public class Scrap {
 	public void setTravelCode(String travelCode) {
 		this.travelCode = travelCode;
 	}
-	public String getScrapDate() {
+	public Date getScrapDate() {
 		return scrapDate;
 	}
-	public void setScrapDate(String scrapDate) {
+	public void setScrapDate(Date scrapDate) {
 		this.scrapDate = scrapDate;
 	}
+
 	
 }
 

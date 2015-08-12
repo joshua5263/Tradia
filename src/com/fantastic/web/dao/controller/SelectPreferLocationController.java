@@ -55,7 +55,7 @@ public class SelectPreferLocationController{
 			request.setAttribute("m", m);*/
 			
 	
-			int preferLocation = Integer.parseInt(request.getParameter("preferLocation"));
+			String preferLocation = request.getParameter("preferLocation");
 			/*response.getWriter().println(preferLocation);*/
 			
 			/*Member member = new Member();*/

@@ -13,6 +13,8 @@ public interface LikesDao {
 	public List<Likes> getLikes();
 	
 	public Likes getLike(String memberID);
+	
+	public Likes getPageLike(String memberID, String travelCode);
 
 	public int addLike(Likes like);
 	

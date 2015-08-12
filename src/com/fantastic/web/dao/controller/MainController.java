@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fantastic.web.dao.CommentDao;
 import com.fantastic.web.dao.LikesDao;
+import com.fantastic.web.dao.ScrapDao;
 import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.vo.Comment;
 import com.fantastic.web.vo.Likes;
+import com.fantastic.web.vo.Scrap;
 import com.fantastic.web.vo.TravelDiary;
 
 @Controller 
@@ -23,8 +25,14 @@ public class MainController {
    private TravelDiaryDao travelDiaryDao;
    private CommentDao commentDao;
    private LikesDao likesDao;
+   private ScrapDao scrapDao; 
    
    @Autowired
+   public void setScrapDao(ScrapDao scrapDao) {
+	this.scrapDao = scrapDao;
+}
+
+@Autowired
    public void setLikesDao(LikesDao likesDao) {
 	this.likesDao = likesDao;
 }
@@ -72,6 +80,7 @@ public class MainController {
    public String travelDetail(Model model, String tcode, String cmcode){
       
       commentDao.removeComment(cmcode);
+      
       model.addAttribute("tcode",tcode);
 
       return "redirect:travelDetail";
@@ -80,16 +89,48 @@ public class MainController {
       
    @RequestMapping(value="add_like")
    public String addLike(Model model, Likes like,String tcode, Principal principal){
-      
-	  like.setMemberID(principal.getName());
-	  like.setTravelCode(tcode);
-	   
-	  likesDao.addLike(like);
 
-	  
+	  	  
+	  Likes dummy = likesDao.getPageLike(principal.getName(),tcode);
+      if(dummy!=null){
+      
+    	  like.setMemberID(principal.getName());
+    	  like.setTravelCode(tcode);
+    	  
+    	  likesDao.removeLike(like);
+          model.addAttribute("tcode",tcode);
+      }
+      else{
+    	  like.setMemberID(principal.getName());
+    	  like.setTravelCode(tcode);
+    	   
+    	  likesDao.addLike(like);
+
+    	  
+          model.addAttribute("tcode",tcode);
+  
+      
+      }
+      
+     
+      return "redirect:travelDetail";
+   }
+   
+   @RequestMapping(value="add_scrap")
+   public String addScrap(Model model, Scrap scrap,String tcode, Principal principal){
+	   
+	  scrap.setMemberID(principal.getName());
+	  scrap.setTravelCode(tcode);
+   
+	  scrapDao.addScrap(scrap);
+  
       model.addAttribute("tcode",tcode);
 
+      
+      
       return "redirect:travelDetail";
+      
+      
       
    }
    
