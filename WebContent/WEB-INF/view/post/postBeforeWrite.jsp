@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,20 +9,19 @@
 <title>Tradia</title>
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
+<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 
-<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 
 </head>
 <body>
-	
+	<!-- 헤더 영역 -->
 	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
-
+	
 	<div id="body" class="wrap-content">
 	
 	<!-- 어사이드영역 -->
 	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
-
 
 
 	<main id="main">
@@ -33,6 +33,10 @@
 				<legend>제목입력</legend>
 				<label>제목</label>
 				<input type="text" id="title" name="title" />
+				<p>
+					<security:authentication property="name"/>
+				</p>
+				
 
 				<legend>동행인입력</legend>
 				<label>동행인</label>

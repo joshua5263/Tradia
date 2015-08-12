@@ -3,42 +3,39 @@ package com.fantastic.web.dao.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.fantastic.web.dao.mybatis.SqlFantasticSessionFactory;
+import com.fantastic.web.dao.CourseDao;
 import com.fantastic.web.dao.ScrapDao;
 import com.fantastic.web.vo.Scrap;
 
 public class MybatisScrapDao implements ScrapDao{
 
-	
-	SqlSessionFactory factory = new SqlFantasticSessionFactory().getSqlSessionFactory();
+	@Autowired
+	 private SqlSession session;
 
 	@Override
 	public List<Scrap> getScraps(int page, String field, String query) {
 		// TODO Auto-generated method stub
-		
-		SqlSession session = factory.openSession();
+
 		ScrapDao dao = session.getMapper(ScrapDao.class);
 		
 		return dao.getScraps(1, "", "");
 	}
 
-	@Override
+/*	@Override
 	public List<Scrap> getScraps(int page) {
 		// TODO Auto-generated method stub
-		
-		SqlSession session = factory.openSession();
+
 		ScrapDao dao = session.getMapper(ScrapDao.class);
 		
 		return dao.getScraps(page);
 	}
-
+*/
 	@Override
 	public List<Scrap> getScraps() {
 		// TODO Auto-generated method stub
-		
-		SqlSession session = factory.openSession();
+
 		ScrapDao dao = session.getMapper(ScrapDao.class);
 		
 		return dao.getScraps();
@@ -47,8 +44,7 @@ public class MybatisScrapDao implements ScrapDao{
 	@Override
 	public Scrap getScrap(String memberID) {
 		// TODO Auto-generated method stub
-		
-		SqlSession session = factory.openSession();
+
 		ScrapDao dao = session.getMapper(ScrapDao.class);
 		
 		return dao.getScrap(memberID);
@@ -57,35 +53,40 @@ public class MybatisScrapDao implements ScrapDao{
 	@Override
 	public int addScrap(Scrap scrap) {
 		// TODO Auto-generated method stub
-		SqlSession session = factory.openSession();
+
 		int result = 0;
 
-		try {
 			ScrapDao dao = session.getMapper(ScrapDao.class);
 			result = dao.addScrap(scrap);
-			session.commit();
-		} finally {
-			session.rollback();
-			session.close();
-		}
+
 		return result;
 	}
 
 	@Override
 	public int removeScrap(Scrap scrap) {
 		// TODO Auto-generated method stub
-		SqlSession session = factory.openSession();
+
 		int result = 0;
 
-		try {
 			ScrapDao dao = session.getMapper(ScrapDao.class);
 			result = dao.removeScrap(scrap);
-			session.commit();
-		} finally {
-			session.rollback();
-			session.close();
-		}
+
 		return result;
 	}
 
+	@Override
+	public List<Scrap> getScraps(String scrapID) {
+				
+		CourseDao courseDao = session.getMapper(CourseDao.class);
+		ScrapDao scrapDao = session.getMapper(ScrapDao.class);
+			 
+		List<Scrap> list = scrapDao.getScraps(scrapID);
+			 
+		  for(Scrap sc:list)
+			    sc.setOneCourse(courseDao.getCourse(sc.getCode()));
+			 
+		return list;		
+		
+		
+	}
 }

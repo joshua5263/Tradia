@@ -16,9 +16,17 @@ public class Member {
    private int gender;
    private Date birthday;
 
-   public Date getBirthday() {
-      return birthday;
-   }
+	public String getPreferLocation() {
+		return preferLocation;
+	}
+
+	public void setPreferLocation(String preferLocation) {
+		this.preferLocation = preferLocation;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
    public void setBirthday(Date birthday) {
       this.birthday = birthday;
    }
@@ -40,12 +48,7 @@ public class Member {
    public void setPassword(String password) {
       this.password = password;
    }
-   public String getPreferLocation() {
-      return preferLocation;
-   }
-   public void setPreferLocation(String preferLocation) {
-      this.preferLocation = preferLocation;
-   }
+
    public String getPicture() {
       return picture;
    }

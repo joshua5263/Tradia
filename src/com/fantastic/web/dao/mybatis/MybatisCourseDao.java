@@ -78,7 +78,7 @@ public List<Course> searchCourse(String headerQuery) {
 	List<Course> list = session.selectList("searchCourse", params);
 	
 	for(Course c:list){
-		c.setTravelDiary(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
+		c.setTravelDiaries(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
 		c.setOneCourse(courseDao.getCourse(c.getTravelCode()));
 	}
 	
@@ -94,7 +94,7 @@ public List<Course> preferLocaCourse(String preferLocation) {
 	List<Course> list = courseDao.preferLocaCourse(preferLocation);	
 	
 	for(Course c:list){
-		c.setTravelDiary(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
+		c.setTravelDiaries(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
 		c.setOneCourse(courseDao.getCourse(c.getTravelCode()));
 	}
 	
@@ -109,7 +109,7 @@ public List<Course> preferLocaCourses() {
 	List<Course> list = courseDao.preferLocaCourses();
 	
 	for(Course c:list){
-		c.setTravelDiary(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
+		c.setTravelDiaries(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
 		c.setOneCourse(courseDao.getCourse(c.getTravelCode()));
 	}
 	

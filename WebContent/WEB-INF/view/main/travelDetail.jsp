@@ -50,8 +50,10 @@
 		            <li>- ${td.fellowTraveler}와 함께</li>
 		            <li><a>수정</a></li>
 		             <li><a>삭제</a></li>
-		            <li><img src="../resource/images/btn-like.png">(${td.likeCnt })</li>
-		            <li><img src="../resource/images/btn-scrap.png"> </li>
+		            <li><a href="add_like?tcode=${td.code}">
+		                <img src="../resource/images/btn-like.png">(${td.likeCnt }) </a></li>
+		            <li><a href="add_scrap?tcode=${td.code}">
+		                 <img src="../resource/images/btn-scrap.png"> </a></li>
 		         </ul>
 		      </section>
 		

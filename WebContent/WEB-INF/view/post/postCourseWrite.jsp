@@ -1,138 +1,109 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tradia</title>
+
+<link href="../resource//css/reset.css" rel="stylesheet" type="text/css"></link>
+<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../resource/js/modernizr.js"></script>
 </head>
 <body>
-	<header>
-		<h1>
-			<a href="" alt="Tradia">Tradia</a>
-		</h1>
-
-		<section>
-			<h1>메인 메뉴</h1>
-
-			<section>
-				<h1>여행기 검색 폼</h1>
-				<form>
-					<legend>통합검색</legend>
-					<label>검색</label> <input type="text" value="가고싶은 여행지를 검색하세요" /> <input
-						type="submit" value="검색" />
-				</form>
-			</section>
-			<nav>
-				<h1>프로필</h1>
-				<ul>
-					<li>ProfilePicture</li>
-					<li>MemberId</li>
-					<li><a href=""> ButtonImage</a>
-						<ul class="sub">
-							<li><a href="">MyPage</a></li>
-							<li><a href="">내정보</a></li>
-							<li><a href="">스크랩목록</a></li>
-							<li><a href="">도움말</a></li>
-							<li><a href="">로그아웃</a></li>
-							<li><a href="">+작성하기</a></li>
-						</ul>
-				</ul>
-			</nav>
-		</section>
-	</header>
-
-	<aside>
-		<h1>SelectPreferLocation</h1>
-		<section>
-			<h1>PreferLocationButton</h1>
-			<form>
-				<filedset>
-					<legend>지역선택</legend>
-					<label class="지역선택" for="location">지역선택</label>
-					<input type="radio" name="location">전국
-					<input type="radio" name="location">서울
-					<input type="radio" name="location">경기
-					<input type="radio" name="location">인천
-					<input type="radio" name="location">강원
-					<input type="radio" name="location">충청
-					<input type="radio" name="location">대전
-					<input type="radio" name="location">전라
-					<input type="radio"	name="location">광주
-					<input type="radio" name="location">경상
-					<input type="radio" name="location">대구
-					<input type="radio"	name="location">울산
-					<input type="radio" name="location">부산
-					<input type="radio" name="location">제주
-				</filedset>
-			</form>
-		</section>
-	</aside>
-
-	<main>
-	<section>
-		<h1>포스트 쓰기</h1>
-		<section>
-			<h1>코스 정보</h1>
-			<form  method="post">
-
-				<legend>장소검색</legend>
-				<label>장소</label>
-				<input type="text" />
-				<input type="submit" value="검색" />
-
-				<legend>날짜</legend>
-				<input type="date" value="date" name="csDate">
-
-				<fieldset>
-					<legend>교통 수단</legend>
-					<input type="radio" id="walk" name="traffic" value="0"/><label for="walk">도보</label>
-					<input type="radio" id="car" name="traffic" value="1" /><label for="car">차</label>
-					<input type="radio" id="subway" name="traffic" value="2"/><label for="subway">지하철</label>
-					<input type="radio" id="taxi" name="traffic" value="3" /><label for="taxi">택시</label>
-					<input type="radio" id="train" name="traffic" value="4" /><label for="train">기차</label>
-					<input type="radio" id="plane" name="traffic" value="5" /><label for="plane">비행기</label>
-					<input type="radio" id="ship" name="traffic" value="6" /><label for="ship">배</label>
-				</fieldset>
-
-				<legend>경비입력</legend>
-				<label>경비</label> <input type="text" value="500000" name="cost"/>
-
-				<legend>사진입력</legend>
-				<label>사진</label> <input type="file" >
-				<fieldset>
-					<legend>느낌입력</legend>
-					<label class="느낌" for="feeling">느낌</label>
-					<input type="radio"	name="feeling" value="good" checked>좋음<img src="" alt="" />
-					<input type="radio"	name="feeling" value="boring">심심<img src="" alt="" />
-					<input type="radio" name="feeling" value="soso">보통<img src="" alt="" />
-					<input type="radio" name="feeling" value="bad">나쁨<img src="" alt="" />
-					<input type="radio" name="feeling" value="hate">싫음<img src="" alt="" />
-					<input type="radio" name="feeling" value="scorn">완전싫음<img src="" alt="" />
-				</fieldset>
-
-				<p>
-					<label>메모</label>
-					<textarea rows="10" cols="50" name="memo"></textarea>
-					<br>해당 코스의 후기를 남겨주세요!</br>
-				</p>
-				
-				<h1>버튼 목록</h1>
-				<p>코스추가
-					<a href=""><input type="submit" value="임시 저장"></a>
-					<a href=""><input type="submit" value="후기 작성"></a>
-				</p>
-			</form>
-		</section>
-	</section>
-	</main>
-
-
-	<aside></aside>
-
-
-	<footer>
+	<!-- 헤더 영역 -->
+	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
+	<div id="body" class="wrap-content">
+	
+	<!-- 어사이드영역 -->
+	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
+	
+	<main id="main">
+		      <section>
+		         <h1>포스트 쓰기</h1>
+		         <section>
+		            <h1>코스 정보</h1>
+		      
+		         <form action="postCourseWrite" method="post">
+		            
+		            <legend>장소검색</legend>
+		            <label>장소</label>
+		             <input type="text" />
+		             <input type="submit"   value="검색" />
+		             
+		             <legend>날짜</legend>
+		             <input type="date" name="csDate" value="date">
+		
+		            <fieldset>
+		               <legend>교통 수단</legend>
+		               <input type="radio" id="walk" value="walk" name="traffic">               
+		               <label for = "walk" >도보</label>
+		               <input type="radio" id="car" value="car" name="traffic">               
+		               <label for = "car">차</label>
+		               <input type="radio" id="subway" value="subway" name="traffic">               
+		               <label for = "subway">지하철</label>
+		               <input type="radio" id="taxi" value="taxi" name="traffic">               
+		               <label for = taxi>택시</label>
+		               <input type="radio" id="train" value="train" name="traffic">               
+		               <label for = "train">기차</label>
+		               <input type="radio" id="fly" value="fly" name="traffic">               
+		               <label for = "fly">비행기</label>
+		               <input type="radio" id="ship" value="ship" name="traffic">               
+		               <label for = "ship">배</label>
+		               <input type="radio" id="other" value="other" name="traffic">               
+		               <label for = "other">기타</label>
+		            </fieldset>
+		            
+		            <legend>경비입력</legend>
+		            <label>경비</label> <input name="cost" type="text" placeholder="ex)50000"/> 원
+		            
+		            <fieldset>
+			            <legend>사진입력</legend>
+			            <label>사진 1</label> <input type="file" /><br>
+			            <label>사진 2</label> <input type="file" /><br>
+			            <label>사진 3</label> <input type="file" /><br>
+			            <label>사진 4</label> <input type="file" /><br>
+			            <label>사진 5</label> <input type="file" /><br>
+		            </fieldset>
+		            <fieldset>
+		               <legend>느낌입력</legend>
+		               <label class="느낌" for="feel">느낌</label> 
+		               <input type="radio" id="veryGood" name="feeling" value="veryGood" checked>
+		               <label for="veryGood"><img src="../resource/images/feel-very-good.png" alt="매우 좋음" width="55"></label>
+		               
+		               <input type="radio" id="good" name="feeling" value="good" >
+		               <label for="good"><img src="../resource/images/feel-good.png" alt="좋음" width="55"></label>
+		               
+		               <input type="radio" id="normal" name="feeling" value="normal" >
+		               <label for="normal"><img src="../resource/images/feel-normal.png" alt="보통" width="55"></label>
+		               
+		               <input type="radio" id="notGood" name="feeling" value="notGood" >
+		               <label for="notGood"><img src="../resource/images/feel-not-good.png" alt="나쁨" width="55"></label>
+		               
+		               <input type="radio" id="veryNotGood" name="feeling" value="veryNotGood" >
+		               <label for="veryNotGood"><img src="../resource/images/feel-very-not-good.png" alt="매우 나쁨" width="55"></label>
+		            </fieldset>            
+		      
+		            <p>
+		               <label>메모</label>
+		               <textarea name="memo" rows="10" cols="50"></textarea>
+		               <br>해당 코스의 후기를 남겨주세요!</br>
+		            </p>
+		      
+		            <h1>버튼 목록</h1>
+		            <p>
+		               <input type="submit" value="코스 추가">
+		               <a href=""><input type="submit" value="임시 저장"></a>
+		               <a href=""><input type="submit" value="후기 작성"></a>
+		            </p>
+		            </form>         
+		         </section>
+		      </section>
+		   </main>
+	</div>
+	
+	<footer id="footer">
 		<section>
 			<h1>Tradia</h1>
 
@@ -167,13 +138,5 @@
 			</section>
 		</section>
 	</footer>
-
-
-
-
-
-
-
-
 </body>
 </html>
