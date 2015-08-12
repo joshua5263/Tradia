@@ -38,7 +38,7 @@ public class TradiaAuthenticationSuccessHandler implements AuthenticationSuccess
 		String type = m.getLevels();
 		
 		//일반 유저일 경우 로그인 성공 시 이동할 타겟 페이지
-		String targetUrl = "/main/travelMain";
+		String targetUrl = "/selectpreferlocation/selectpreferlocation";
 		
 		//역할에 따라 로그인 성공 시 이동할 타겟 페이지 조건문으로 설정
 		if(type.equals("ROLE_Admin")){

@@ -18,6 +18,10 @@ public interface TravelDiaryDao {
 			int page
 			);
 	
+	public List<TravelDiary> getTravelDiaries(String code);
+	
+	public List<TravelDiary> getTravelDiariesByPreferLoca(String preferLocation);
+	
 	public List<TravelDiary> getTravelDiarys();
 	
 	public List<TravelDiary> getTravelDiarysOne(String memberID);
@@ -29,5 +33,10 @@ public interface TravelDiaryDao {
 	public int removeTravelDiary(String code);
 
 	public int addBeforeTravelDiary(TravelDiary diary); 
+	
+	public List<TravelDiary> getTravelDiariesOfSearch(String code);
+	
+	
+
 	
 }

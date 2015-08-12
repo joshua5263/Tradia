@@ -42,6 +42,10 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	  
 	  return getTravelDiarys(1,"TITLE", "");
 	 }
+	 
+	
+	 
+	 
 	 @Override
 	 public List<TravelDiary> getTravelDiarysOne(String memberID) {
 	  
@@ -95,4 +99,43 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		
 		return result;
 	}
+
+	@Override
+	public List<TravelDiary> getTravelDiaries(String code) {
+		
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		List<TravelDiary> list = dao.getTravelDiaries(code);
+		
+		return list;
+	}
+
+	@Override
+	public List<TravelDiary> getTravelDiariesOfSearch(String code) {
+		
+		TravelDiaryDao dao = (TravelDiaryDao)session.getMapper(TravelDiaryDao.class);
+		CourseDao courseDao = session.getMapper(CourseDao.class);
+		
+		List<TravelDiary> travelList = dao.getTravelDiariesOfSearch(code);
+		
+		/*for(TravelDiary t:travelList){
+		    t.setOneCourse(courseDao.getCourse(t.getCode()));
+		}*/
+		
+		
+		return travelList;
+	}
+
+	@Override
+	public List<TravelDiary> getTravelDiariesByPreferLoca(String preferLocation) {
+		 TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		  CourseDao courseDao = session.getMapper(CourseDao.class);
+		  
+		  List<TravelDiary> list = dao.getTravelDiariesByPreferLoca(preferLocation);
+		  
+		  for(TravelDiary t:list)
+		    t.setOneCourse(courseDao.getCourse(t.getCode()));
+		  
+		  return list;
+	}
+
 }

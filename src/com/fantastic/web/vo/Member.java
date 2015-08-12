@@ -7,7 +7,7 @@ public class Member {
    
    private String id;
    private String password;
-   private int preferLocation;
+   private String preferLocation;
    private String picture;
    private String background;
    private String levels;
@@ -40,10 +40,10 @@ public class Member {
    public void setPassword(String password) {
       this.password = password;
    }
-   public int getPreferLocation() {
+   public String getPreferLocation() {
       return preferLocation;
    }
-   public void setPreferLocation(int preferLocation) {
+   public void setPreferLocation(String preferLocation) {
       this.preferLocation = preferLocation;
    }
    public String getPicture() {

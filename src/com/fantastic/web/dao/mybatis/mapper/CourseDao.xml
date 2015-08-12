@@ -33,5 +33,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       DELETE Course WHERE Code = #{code}
 
    </delete>
+   
+   <!-- 2015-08-10 jongha 헤더 검색 파트 -->
+	<select id="searchCourse" parameterType="String"
+		resultType="com.fantastic.web.vo.Course">
+		SELECT * FROM CourseView where AreasName LIKE '%${headerQuery}%' or AreasAdd Like '%${headerQuery}%'
+	</select>
+	
+	<select id="preferLocaCourse" parameterType="String"
+		resultType="com.fantastic.web.vo.Course">
+		SELECT * FROM CourseView where AreasAdd = #{preLoca}
+	</select>
+	
+	<select id="preferLocaCourses" parameterType="String"
+		resultType="com.fantastic.web.vo.Course">
+		SELECT * FROM CourseView
+	</select>
 
 </mapper>

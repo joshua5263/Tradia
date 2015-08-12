@@ -3,6 +3,7 @@ package com.fantastic.web.dao;
 import java.util.List;
 
 import com.fantastic.web.vo.Course;
+import com.fantastic.web.vo.TravelDiary;
 
 public interface CourseDao {
    
@@ -22,5 +23,9 @@ public interface CourseDao {
    
    public int removeCourse(String code);
    
+   public List<Course> searchCourse(String headerQuery);
    
+   public List<Course> preferLocaCourse(String preferLocation);
+   
+   public List<Course> preferLocaCourses();
 }

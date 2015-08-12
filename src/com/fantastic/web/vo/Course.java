@@ -1,5 +1,7 @@
 package com.fantastic.web.vo;
 
+import java.util.List;
+
 
 public class Course {
 	
@@ -19,10 +21,31 @@ public class Course {
    private String areasAdd;
    private String areasName;
    
+   private List<TravelDiary> travelDiaries;
+   private List<Course> oneCourse;
    
    
+   
+   
+   
+   public List<Course> getOneCourse() {
+	return oneCourse;
+	}
+	public void setOneCourse(List<Course> oneCourse) {
+		this.oneCourse = oneCourse;
+	}
+	public void setTravelDiaries(List<TravelDiary> travelDiaries) {
+		this.travelDiaries = travelDiaries;
+	}
+	public List<TravelDiary> getTravelDiaries() {
+	   return travelDiaries;
+   }
+   public void setTravelDiary(List<TravelDiary> travelDiaries) {
+	   this.travelDiaries = travelDiaries;
+   }
+	
    public String getCsDate() {
-	return csDate;
+	   return csDate;
    }
    public void setCsDate(String csDate) {
 	this.csDate = csDate;
