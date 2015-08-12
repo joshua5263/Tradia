@@ -131,8 +131,10 @@
 						<dd class="hidden">내 소개</dd>
 						<textarea id="txtContent" rows="15" cols="16" 
 						class="txtContent" name="content">${m.profile }</textarea>
-						<label class="hidden">수정</label> <input id="reg" type="submit"
-							value="수정" />
+					<form method="post">
+						<label class="hidden">수정</label> <input id="myProfileReg" type="submit"
+							value="수정" name="myProfileReg"/>
+					</form>
 					</div>
 					<div>
 						<dd>
@@ -211,11 +213,12 @@
 									</section>
 								</section>
 							</div>
+							<form action="scrap_del?scrap=${scrap }" method="post">
 							<div>
 							<label class="hidden">수정</label> 
-							<input id="scrap-del" type="submit" value="스크랩삭제" name="scrapDel"/>
-							</div>
-							value="수정" />
+							<input id="scrapDel" type="submit" value="스크랩삭제 ${scc.count}" name="scrapDel"/>
+							</div>	
+							</form>						
 						</c:forEach>
 	
 					</section>
