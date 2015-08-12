@@ -26,8 +26,6 @@ public class TravelDiary {
 	private List<Course> oneCourse;
 	private List<Comment> travelCommnet;
 	
-
-
 	public List<Course> getOneCourse() {
 		return oneCourse;
 	}

@@ -1,6 +1,7 @@
 package com.fantastic.web.dao.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,11 +21,18 @@ import com.fantastic.web.vo.TravelDiary;
 @RequestMapping("/post/*")
 public class PostWriteController{
 	private TravelDiaryDao dao;
+	private CourseDao courseDao;
 
 	@Autowired
 	public void setDao(TravelDiaryDao dao) {
 		this.dao = dao;
 	}
+	
+	@Autowired
+	public void setCourseDao(CourseDao courseDao) {
+		this.courseDao = courseDao;
+	}
+
 
 
 	//	GET 요청을 받을 경우
@@ -39,18 +47,12 @@ public class PostWriteController{
 	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.POST)
 	public String postBeforeWrite(TravelDiary d, Principal principal){
 		
-		/*String code;*/
-		
-		//로그인 페이지 적용 아직 안했으므로 사용
-		/*d.setMemberID("kwonan");*/
 		String mid=principal.getName();
+		
 		//VO를 DAO를 통해서 DB로 전송
 		d.setMemberID(mid);
 		dao.addBeforeTravelDiary(d);
 
-		/*code = d.getCode();
-		req.setAttribute("code", code);*/
-		//postCourse 컨트롤러를 호출
 		 return "redirect:postCourseWrite";
 	}
 	
@@ -61,13 +63,18 @@ public class PostWriteController{
 	}
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
-	public String postCourseWrite(Course course, HttpServletRequest req){
-		course.setTravelCode((String) req.getAttribute("travelCode"));
-		CourseDao dao = new MybatisCourseDao();
-		course.setCsDate("2015-06-06");
-		dao.addCourse(course);
+	public String postCourseWrite(Course course, Principal principal){
+		/*로그인한 멤버의 id를 얻어옴*/
+		String memberID = principal.getName();
 		
-		return "redirect:";
+		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		String lastCode = dao.getLastCode(memberID);
+		/*얻어온 DiaryCode를 추가*/
+		course.setTravelCode(lastCode);
+		
+		courseDao.addCourse(course);
+		
+		return "redirect:postCourseWrite";
 	}
 	
 	

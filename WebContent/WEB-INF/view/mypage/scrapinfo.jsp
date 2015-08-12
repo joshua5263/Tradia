@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -146,40 +147,80 @@
 					</div>
 				</section>
   		 <section id="normal-info">
-			   <h1>스크랩 목록</h1>
-				   <section>
-					   <fieldset>
-					      <h1>스크랩 여행기1</h1>
-					      <ul>
-					         <li>스크랩 회원사진</li>
-					         <li>스크랩 회원닉네임</li>
-					         <li>여행기 제목</li>
-					         <li>좋아요</li>
-					         <li>여행기코스</li>
-					         <li>여행사진1</li>
-					         <li>여행사진2</li>
-					         <li>여행사진3</li>
-					         <li>여행사진4</li>
-					      </ul>
-					   </fieldset>
-					   </section>
-					   
-					   <section>
-					   <fieldset>
-					      <h1>스크랩 여행기2</h1>
-					      <ul>
-					         <li>스크랩 회원사진</li>
-					         <li>스크랩 회원닉네임</li>
-					         <li>여행기 제목</li>
-					         <li>좋아요</li>
-					         <li>여행기코스</li>
-					         <li>여행사진1</li>
-					         <li>여행사진2</li>
-					         <li>여행사진3</li>
-					         <li>여행사진4</li>
-					      </ul>
-					   </fieldset>
-   				</section> 
+			<section id="aaa">
+
+					<h1 class="hidden">지역 페이지</h1>
+
+					<section>
+						<h1 class="hidden">선택 지역</h1>
+
+						<p>서울여행기</p>
+						<ul>
+							<li>추천순</li>
+							<li>최신순</li>
+						</ul>
+					</section>
+
+					<section id="travel-diary">
+							
+			
+						<c:forEach var="sds" items="${sc}" varStatus="scc">
+
+							<div id="travel-diary-fieldset">
+								<h1 class="hidden">여행기${scc.count}</h1>
+
+								<nav>
+									<h1 class="hidden">여행기 ${scc.count}등록정보</h1>
+									<ul>
+										<li><a href=""><img
+												src="../resource/images/header-profile-pic.png">${sds.mpic}</a></li>
+										<li><a href="">${sds.memberID}</a></li>
+										<li><fmt:formatDate value="${sds.regDate}"
+												pattern="yyyy년MM월dd일" /></li>
+										<li><a href="travelDetail?tcode=${sds.code}">${sds.title}</a></li>
+										<li><img src="../resource/images/btn-like.png">
+											${sds.likeCnt}</li>
+
+									</ul>
+								</nav>
+
+								<section>
+									<h1>여행기 ${scc.count}코스</h1>
+									<ul>
+										<li>Start</li>
+										<c:forEach var="c" items="${sds.oneCourse}">
+											<li><a href="">${c.areasName}</a></li>
+										</c:forEach>
+										<li>End</li>
+									</ul>
+								</section>
+
+								<section>
+									<h1>코스별 이미지</h1>
+									<section>
+										<c:forEach var="c" items="${sds.oneCourse}" varStatus="cc">
+
+											<h1>${scc.count}-${cc.count}코스 이미지</h1>
+											<ul>
+												<li>${c.pic1}</li>
+												<li>${c.pic2}</li>
+												<li>${c.pic3}</li>
+												<li>${c.pic4}</li>
+											</ul>
+										</c:forEach>
+									</section>
+								</section>
+							</div>
+							<div>
+							<label class="hidden">수정</label> 
+							<input id="scrap-del" type="submit" value="스크랩삭제" name="scrapDel"/>
+							</div>
+							value="수정" />
+						</c:forEach>
+	
+					</section>
+
+				</section>
    		</section> 
    	</main>
    </div>

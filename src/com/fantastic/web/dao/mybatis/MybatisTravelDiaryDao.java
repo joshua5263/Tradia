@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fantastic.web.dao.CommentDao;
 import com.fantastic.web.dao.CourseDao;
+import com.fantastic.web.dao.ScrapDao;
 import com.fantastic.web.dao.TravelDiaryDao;
+import com.fantastic.web.vo.Scrap;
 import com.fantastic.web.vo.TravelDiary;
 
 public class MybatisTravelDiaryDao implements TravelDiaryDao {
@@ -42,6 +44,20 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	  
 	  return getTravelDiarys(1,"TITLE", "");
 	 }
+	 public List<TravelDiary> getTravelDiaryScarp(String code) {
+		 
+		 TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		 CourseDao courseDao = session.getMapper(CourseDao.class);
+		 
+		 List<TravelDiary> list = dao.getTravelDiarysOne(code);
+		 
+		 for(TravelDiary t:list)
+			 t.setOneCourse(courseDao.getCourse(t.getCode()));
+		 
+		 return list;
+	 
+	 }
+	 
 	 @Override
 	 public List<TravelDiary> getTravelDiarysOne(String memberID) {
 	  
@@ -56,7 +72,6 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		  return list;
 	 }
 	 
-
 	 @Override
 	 public int addTravelDiary(TravelDiary travelDiary) {
 	  int result = 0;
@@ -82,14 +97,14 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	  // TODO Auto-generated method stub
 	    
 	    TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-	       CourseDao couseDao = session.getMapper(CourseDao.class);
-	       CommentDao commentDao = session.getMapper(CommentDao.class);
+	    CourseDao couseDao = session.getMapper(CourseDao.class);
+	    CommentDao commentDao = session.getMapper(CommentDao.class);
 	       
-	       TravelDiary t = dao.getTravelDiary(code);
-	       t.setOneCourse(couseDao.getCourse(code));
-	       t.setTravelCommnet(commentDao.getComment(code));
+	    TravelDiary t = dao.getTravelDiary(code);
+	    t.setOneCourse(couseDao.getCourse(code));
+	    t.setTravelCommnet(commentDao.getComment(code));
 	       
-	       return t;
+	    return t;
 	 }
 
 	@Override
@@ -99,15 +114,13 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		result = dao.addBeforeTravelDiary(diary);
 		
 		return result;
-	} 
+	}
 
-/*	@Override
-	public int addBeforeTravelDiary(TravelDiary diary) {
-		
-		int result = 0;
+	@Override
+	public String getLastCode(String memberID) {
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-		result = dao.addBeforeTravelDiary(diary);
+		String lastCode = dao.getLastCode(memberID);
 		
-		return result;
-	}*/
+		return lastCode;
+	} 
 }
