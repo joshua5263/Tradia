@@ -77,6 +77,10 @@ public class PostWriteController{
 		return "redirect:postCourseWrite";
 	}
 	
+	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.GET)
+	public String postAfterwordWrite() {
+		return "/WEB-INF/view/post/postAfterwordWrite.jsp";
+	}
 	
 	
 }

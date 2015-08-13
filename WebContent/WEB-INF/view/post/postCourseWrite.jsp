@@ -94,8 +94,9 @@
 		            <h1>버튼 목록</h1>
 		            <p>
 		               <input type="submit" value="코스 추가">
-		               <a href=""><input type="submit" value="임시 저장"></a>
-		               <a href=""><input type="submit" value="후기 작성"></a>
+		               <input type="submit" value="임시 저장"></a>
+		               <input type="submit" value="후기 작성"></a>
+		               
 		            </p>
 		            </form>         
 		         </section>

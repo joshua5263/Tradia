@@ -39,7 +39,7 @@ public class SpringSelectPreferLocationController extends HttpServlet{
 			/*response.getWriter().println(preferLocation);*/
 			
 			/*Member member = new Member();*/
-			m.setPreferLocation(preferLocation);
+			/*m.setPreferLocation(preferLocation);*/
 			
 			MemberDao mymemberDao = new MybatisMemberDao();
 			mymemberDao.preferLocaMember(m);
