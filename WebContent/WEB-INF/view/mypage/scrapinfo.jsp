@@ -82,6 +82,13 @@
    float: left;
    min-height: 300px;
 }
+
+#travel-diary-fieldset {
+	height: inherit;
+	width: 500px;
+	margin-top: 20px;
+	border: 1px blue solid;
+}
 </style>
 </head>
    <body class="content-wrapper clearfix:after">
@@ -125,110 +132,96 @@
    </form>
    </nav> -->
       
-   <main id="main" class="clearfix:after">
-     	 <section id="my-info">
-					<div>
-						<dd class="hidden">내 소개</dd>
-						<textarea id="txtContent" rows="15" cols="16" 
-						class="txtContent" name="content">${m.profile }</textarea>
-					<form method="post">
-						<label class="hidden">수정</label> <input id="myProfileReg" type="submit"
-							value="수정" name="myProfileReg"/>
-					</form>
-					</div>
-					<div>
-						<dd>
-							<a href="mypage">My Page</a>
-						</dd>
-						<dd>
-							<a href="myinfo">내 정보</a>
-						</dd>
-						<dd>
-							<a href="scrapinfo">스크랩 목록</a>
-						</dd>
-					</div>
-				</section>
-  		 <section id="normal-info">
+	<main id="main" class="clearfix:after">
+		<section id="my-info">
+			<div>
+				<dd class="hidden">내 소개</dd>
+				<textarea id="txtContent" rows="15" cols="16" 
+				class="txtContent" name="content">${m.profile }</textarea>
+				<form method="post">
+					<label class="hidden">수정</label> 
+					<input id="myProfileReg" type="submit" value="수정" name="myProfileReg"/>
+				</form>
+			</div>
+			<div>
+				<dd>
+					<a href="mypage">My Page</a>
+				</dd>
+				<dd>
+					<a href="myinfo">내 정보</a>
+				</dd>
+				<dd>
+					<a href="scrapinfo">스크랩 목록</a>
+				</dd>
+			</div>
+		</section>
+	  	<section id="normal-info">
 			<section id="aaa">
-
-					<h1 class="hidden">지역 페이지</h1>
-
-					<section>
-						<h1 class="hidden">선택 지역</h1>
-
-						<p>서울여행기</p>
-						<ul>
-							<li>추천순</li>
-							<li>최신순</li>
-						</ul>
-					</section>
-
-					<section id="travel-diary">
-							
-			
-						<c:forEach var="sds" items="${sc}" varStatus="scc">
-
-							<div id="travel-diary-fieldset">
-								<h1 class="hidden">여행기${scc.count}</h1>
-
-								<nav>
-									<h1 class="hidden">여행기 ${scc.count}등록정보</h1>
-									<ul>
-										<li><a href=""><img
-												src="../resource/images/header-profile-pic.png">${sds.mpic}</a></li>
-										<li><a href="">${sds.memberID}</a></li>
-										<li><fmt:formatDate value="${sds.regDate}"
-												pattern="yyyy년MM월dd일" /></li>
-										<li><a href="travelDetail?tcode=${sds.code}">${sds.title}</a></li>
-										<li><img src="../resource/images/btn-like.png">
-											${sds.likeCnt}</li>
-
-									</ul>
-								</nav>
-
-								<section>
-									<h1>여행기 ${scc.count}코스</h1>
-									<ul>
-										<li>Start</li>
-										<c:forEach var="c" items="${sds.oneCourse}">
-											<li><a href="">${c.areasName}</a></li>
-										</c:forEach>
-										<li>End</li>
-									</ul>
-								</section>
-
-								<section>
-									<h1>코스별 이미지</h1>
-									<section>
-										<c:forEach var="c" items="${sds.oneCourse}" varStatus="cc">
-
-											<h1>${scc.count}-${cc.count}코스 이미지</h1>
-											<ul>
-												<li>${c.pic1}</li>
-												<li>${c.pic2}</li>
-												<li>${c.pic3}</li>
-												<li>${c.pic4}</li>
-											</ul>
-										</c:forEach>
-									</section>
-								</section>
-							</div>
-							<form action="scrap_del?scrap=${scrap }" method="post">
-							<div>
-							<label class="hidden">수정</label> 
-							<input id="scrapDel" type="submit" value="스크랩삭제 ${scc.count}" name="scrapDel"/>
-							</div>	
-							</form>						
-						</c:forEach>
-	
-					</section>
-
+				<h1 class="hidden">지역 페이지</h1>
+				<section>
+					<h1 class="hidden">선택 지역</h1>
+					<p>서울여행기</p>
+					<ul>
+						<li>추천순</li>
+						<li>최신순</li>
+					</ul>
 				</section>
+				<section id="travel-diary">
+					<c:forEach var="sds" items="${sc}" varStatus="scc">
+						<div id="travel-diary-fieldset">
+							<h1 class="hidden">여행기${scc.count}</h1>
+							<nav>
+								<h1 class="hidden">여행기 ${scc.count}등록정보</h1>
+								<ul>
+									<li><a href=""><img
+											src="../resource/images/header-profile-pic.png">${sds.mpic}</a></li>
+									<li><a href="">${sds.memberID}</a></li>
+									<li><fmt:formatDate value="${sds.regDate}"
+											pattern="yyyy년MM월dd일" /></li>
+									<li><a href="travelDetail?tcode=${sds.code}">${sds.title}</a></li>
+									<li><img src="../resource/images/btn-like.png">
+										${sds.likeCnt}</li>
+								</ul>
+							</nav>
+							<section>
+								<h1>여행기 ${scc.count}코스</h1>
+								<ul>
+									<li>Start</li>
+									<c:forEach var="c" items="${sds.oneCourse}">
+										<li><a href="">${c.areasName}</a></li>
+									</c:forEach>
+									<li>End</li>
+								</ul>
+							</section>
+							<section>
+								<h1>코스별 이미지</h1>
+								<section>
+									<c:forEach var="c" items="${sds.oneCourse}" varStatus="cc">
+
+										<h1>${scc.count}-${cc.count}코스 이미지</h1>
+										<ul>
+											<li>${c.pic1}</li>
+											<li>${c.pic2}</li>
+											<li>${c.pic3}</li>
+											<li>${c.pic4}</li>
+										</ul>
+									</c:forEach>
+								</section>
+							</section>
+							<form action="scrap_del?sCode=${sds.travelCode}" method="post">
+
+					  		  <label class="hidden">스크랩삭제</label> 
+					  		  <input id="scrapDel" type="submit" value="스크랩삭제 ${scc.count }" />
+					
+					</form></div>
+					</c:forEach>
+				</section>
+			</section>
    		</section> 
    	</main>
-   </div>
+	</div>
    
-   <footer id="footer"> 
+   	<footer id="footer"> 
    	<section>
    		<h1>Tradia</h1>
 

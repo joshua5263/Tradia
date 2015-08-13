@@ -22,6 +22,4 @@ public interface ScrapDao {
 
 	public int removeScrap(Scrap scrap);
 
-	public int removeScrap(String memberID, String travelCode);
-
 }

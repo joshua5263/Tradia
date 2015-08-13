@@ -86,37 +86,24 @@ public class MyInfoController{
 		return "/WEB-INF/view/mypage/mypage.jsp";
 	}
 
-	@RequestMapping(value= "mypage", method=RequestMethod.POST)
+	@RequestMapping(value= "scrapinfo", method=RequestMethod.GET)
 	public String scrapinfo(Member m, Model model, Principal principal, HttpServletRequest request){
 
-		/*if(request.getMethod().equals("POST"))
-		{
-			String myProfileReg = request.getParameter("myProfileReg");
-			String scrapDel = request.getParameter("scrapDel");
-			
-			Notice notice = new Notice();
-			notice.setTitle(title);
-			notice.setWriter("newlec");
-			notice.setContent(content);
-			
-			NoticeDao noticeDao = new MybatisNoticeDao();
-			noticeDao.addNotice(notice);
-			
-			response.sendRedirect("notice.jsp");
-		}
+		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/customer/noticeEdit.jsp");
-		dispatcher.forward(request, response);	*/
+		List<Scrap> scrap = scrapDao.getScraps(principal.getName());
+	    model.addAttribute("sc", scrap);
 		
 	    return "/WEB-INF/view/mypage/scrapinfo.jsp";
 	}
 	@RequestMapping(value="scrap_del", method=RequestMethod.POST)
-	public String scrapinfo(Model model, String travelCode, Principal principal, Scrap scrap){
+	public String scrapinfo(Model model, Scrap scrap,String sCode, Principal principal){
 		
-		String memberID = principal.getName();
-
-		scrapDao.removeScrap(memberID, travelCode);
-		model.addAttribute("scrap", scrap);
+		scrap.setTravelCode(sCode);
+		scrap.setMemberID(principal.getName());
+		
+		scrapDao.removeScrap(scrap);
 			
 		return "redirect:scrapinfo";
 	}

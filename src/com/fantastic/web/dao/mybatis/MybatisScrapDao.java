@@ -74,16 +74,6 @@ public class MybatisScrapDao implements ScrapDao{
 		return result;
 	}
 
-	@Override
-	public int removeScrap(String memberID, String travelCode) {
-		
-		int result = 0;
-
-		ScrapDao scrapdao = session.getMapper(ScrapDao.class);
-		result = scrapdao.removeScrap(memberID, travelCode);
-
-		return result;
-	}
 	
 	@Override
 	public List<Scrap> getScraps(String scrapID) {
@@ -98,4 +88,6 @@ public class MybatisScrapDao implements ScrapDao{
 			 
 		return list;				
 	}
+
+
 }
