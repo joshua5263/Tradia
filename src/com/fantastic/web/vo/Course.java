@@ -1,7 +1,10 @@
 package com.fantastic.web.vo;
 
+import java.util.List;
+
 
 public class Course {
+
 
 	private String code;
 	private int cost;
@@ -19,14 +22,8 @@ public class Course {
 	private String areasAdd;
 	private String areasName;
 
-
-
-	public String getCsDate() {
-		return csDate;
-	}
-	public void setCsDate(String csDate) {
-		this.csDate = csDate;
-	}
+	private List<TravelDiary> travelDiaries;
+	private List<Course> oneCourse;
 	public String getCode() {
 		return code;
 	}
@@ -87,6 +84,12 @@ public class Course {
 	public void setTraffic(String traffic) {
 		this.traffic = traffic;
 	}
+	public String getCsDate() {
+		return csDate;
+	}
+	public void setCsDate(String csDate) {
+		this.csDate = csDate;
+	}
 	public String getTravelCode() {
 		return travelCode;
 	}
@@ -111,6 +114,24 @@ public class Course {
 	public void setAreasName(String areasName) {
 		this.areasName = areasName;
 	}
+	public List<TravelDiary> getTravelDiaries() {
+		return travelDiaries;
+	}
+	public void setTravelDiaries(List<TravelDiary> travelDiaries) {
+		this.travelDiaries = travelDiaries;
+	}
+	public List<Course> getOneCourse() {
+		return oneCourse;
+	}
+	public void setOneCourse(List<Course> oneCourse) {
+		this.oneCourse = oneCourse;
+	}
 
 
 }
+
+
+
+
+
+

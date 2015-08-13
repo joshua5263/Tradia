@@ -58,9 +58,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE TravelDiary WHERE Code = #{code}
 	</delete>
 	
+
+	<select id="getTravelDiariesOfSearch" parameterType="String" resultType="com.fantastic.web.vo.TravelDiary">
+		SELECT * FROM TravelView where Code = #{code}
+	</select>
+	
+	<select id="getTravelDiariesByPreferLoca" parameterType="String"
+		resultType="com.fantastic.web.vo.TravelDiary">
+		SELECT * FROM TravelView where  order by regDate DESC
+	</select>
+	
+
 	<select id="getLastCode" parameterType="String" resultType="string">
 		select isnull(max(cast(code as int)), 0) code from TravelDiary where MemberID = #{memberID}
 	</select>
+
 
 
 </mapper>

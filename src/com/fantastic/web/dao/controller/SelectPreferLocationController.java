@@ -34,7 +34,18 @@ public class SelectPreferLocationController{
 	}
 
 	@RequestMapping(value= "selectpreferlocation", method=RequestMethod.GET)
-	public String selectPreferLocation(){
+	public String selectPreferLocation(Principal principal){
+		
+		Member m = memberDao.getMember(principal.getName());
+		
+		
+		
+		if(m.getPreferLocation() == null){
+			return "/WEB-INF/view/selectpreferlocation/selectpreferlocation.jsp";
+		}
+		else{
+			return "redirect:/main/travelMain";
+		}
 		
 		/*HttpSession session = request.getSession();
 		MemberDao memberDao = new MybatisMemberDao();
@@ -42,7 +53,7 @@ public class SelectPreferLocationController{
 		Member m = memberDao.getMember(memberId);
 		request.setAttribute("m", m);*/
 		
-		return "/WEB-INF/view/selectpreferlocation/selectpreferlocation.jsp";
+		/*return "/WEB-INF/view/selectpreferlocation/selectpreferlocation.jsp";*/
 	}
 	
 	@RequestMapping(value= "selectpreferlocation", method=RequestMethod.POST)
