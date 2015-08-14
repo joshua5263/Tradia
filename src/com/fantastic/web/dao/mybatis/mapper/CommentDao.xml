@@ -13,6 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM CommentView Where TravelCode = #{travelCode} ORDER BY REGDATE ASC
 	</select>
 	
+	<select id="getOneComment" resultType="com.fantastic.web.vo.Comment">
+		SELECT * FROM CommentView WHERE MemberID = #{param1} and Code = #{param2}
+	</select>
+	
+	
 	<insert id="addComment" parameterType="com.fantastic.web.vo.Comment">
 		<selectKey keyProperty="code" order="BEFORE" resultType="String">
 		 select isnull(max(cast(code as int)), 0)+1 code from comment

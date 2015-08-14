@@ -99,6 +99,15 @@ public class MainController {
 		return "/WEB-INF/view/main/travelDetail.jsp";
 	}
 
+	@RequestMapping(value="travel_Del")
+	public String travelDeletel(Model model, String tcode){
+
+		travelDiaryDao.removeTravelDiary(tcode);
+
+		return "redirect:travelMain";
+
+	}
+	
 	@RequestMapping(value="com_reg", method=RequestMethod.POST)
 	public String travelDetail(Model model, Comment c, String tcode, Principal principal){
 
@@ -113,8 +122,11 @@ public class MainController {
 	}
 
 	@RequestMapping(value="com_del", method=RequestMethod.POST)
-	public String travelDetail(Model model, String tcode, String cmcode){
+	public String travelDetail(Model model, String tcode, String cmcode, Principal principal){
 
+		Comment com = commentDao.getOneComment(principal.getName(), cmcode);
+		
+		if (com != null)
 		commentDao.removeComment(cmcode);
 
 		model.addAttribute("tcode",tcode);
@@ -123,7 +135,7 @@ public class MainController {
 
 	}
 
-	@RequestMapping(value="add_like")
+	@RequestMapping(value="add_like_del")
 	public String addLike(Model model, Likes like,String tcode, Principal principal){
 
 
@@ -166,7 +178,6 @@ public class MainController {
 
 
 		return "redirect:travelDetail";
-
 
 
 	}
