@@ -19,85 +19,12 @@
 </head>
 <body id = "bg">
 
-<!-- 헤더영역 -->
-
+	<!-- 헤더영역 -->
 	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
 	
-	<%-- <header id="header" class="wrap-content">
-		<h1>
-			<a href="" alt="Tradia"><img src="../resource/images/logo.png"></a>
-		</h1>
-
-		<section>
-			<h1 class="hidden">메인 메뉴</h1>
-
-			<section>
-				<h1 class="hidden">여행기 검색 폼</h1>
-				<form id="travel-search-form">
-					<fieldset>
-						<legend class="hidden">통합검색</legend>
-						<label class="hidden">검색</label> <input type="text" value="가고싶은 여행지를 검색하세요" /> <input
-							type="submit" value="검색" />
-					</fieldset>
-				</form>
-			</section>
-			<nav>
-				<h1 class="hidden">프로필</h1>
-				<ul>
-					<li>ProfilePicture</li>
-					<li><security:authentication property="name"/> </li>
-					<li><a href=""> ButtonImage</a>
-						<ul class="sub">
-							<li><a href="">MyPage</a></li>
-							<li><a href="">내정보</a></li>
-							<li><a href="">스크랩목록</a></li>
-							<li><a href="">도움말</a></li>
-							<li><form method="post">
-								<!-- <a href="../intro/intro"> -->
-								<input type="submit" name="logout" value="로그아웃"></a>
-							</form></li>
-							<li><a href="">+작성하기</a></li>
-						</ul>
-				</ul>
-			</nav>
-		</section>
-	</header> --%>
-	
-	
 	<div id="body" class="wrap-content clearfix">
-	
 		<!-- 어사이드영역 -->
 		<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
-	
-		<!-- <aside id = "aside">
-			<h1 class="hidden">SelectPreferLocation</h1>
-	
-			<section>
-				<h1 class="hidden">PreferLocationButton</h1>
-				<form>
-					<fieldset>
-					<legend class="hidden">지역선택</legend>
-					<label class="지역선택" for="location">지역선택</label> 
-					<input type="radio" name="location">전국 
-					<input type="radio" name="location">서울
-					<input type="radio" name="location">경기 
-					<input type="radio"	name="location">인천 
-					<input type="radio" name="location">강원
-					<input type="radio" name="location">충청 
-					<input type="radio"	name="location">대전 
-					<input type="radio" name="location">전라
-					<input type="radio" name="location">광주 
-					<input type="radio"	name="location">경상 
-					<input type="radio" name="location">대구
-					<input type="radio" name="location">울산 
-					<input type="radio"	name="location">부산 
-					<input type="radio" name="location">제주
-					<input type="submit" value="선택하기">
-					</fieldset>
-				</form>
-			</section>
-		</aside> -->
-		
 		
 		<main id="main">
 			<div>			

@@ -72,9 +72,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select isnull(max(cast(code as int)), 0) code from TravelDiary where MemberID = #{memberID}
 	</select>
 
-<!--                                    새로 작성중인 부분입니다.                             -->
-	<update id="addAfterword" parameterType="String">
+<!--                                    작성중인 부분입니다. 정상 작동 합니다.                          -->
+	<!-- <update id="addAfterword" parameterType="String">
 		  update TravelDiary set TotalCost = #{totalCost}, Memo = #{memo} where Code = #{travelCode}
+	</update> -->
+	
+	<update id="addAfterword" parameterType="String">
+		  update TravelDiary set TotalCost = #{param3}, Memo = #{param2} where Code = #{param1}
 	</update>
 	
 	<!-- 토탈코스트 사용 안함 -->

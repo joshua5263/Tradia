@@ -136,12 +136,14 @@ public class PostWriteController{
 	}
 
 	
-	/*----------------작성중인 부분입니다. 현재 오류 발생----------------*/
+	/*----------------작성중인 부분입니다.----------------*/
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.POST)
-	public String postAfterwordWrite(String a, Principal principal, HttpServletRequest req) {
+	public String postAfterwordWrite(String memo, Principal principal, HttpServletRequest req) {
 		String travelCode = dao.getLastCode(principal.getName());
+		
+		/*총 경비 계산 로직은 작성 중*/
 		String totalCost = "1";
-		dao.addAfterword(travelCode, a, totalCost);
+		dao.addAfterword(travelCode, memo, totalCost);
 		return "redirect:/main/travelMain";
 	}
 	
