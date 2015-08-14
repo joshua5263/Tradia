@@ -26,7 +26,10 @@ public interface MemberDao {
    
    public int removeMember(String id); 
    
-   public int modMember(Member member);
-
    public int preferLocaMember(Member member);
+   
+   public int updateMemberProfile(String profile, String id);
+
+   public int modMember(String password, String id);
+
 }

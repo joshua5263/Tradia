@@ -10,6 +10,31 @@
 <link href="../resource//css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
+
+<script type="text/javascript">
+	var win = null;
+
+	window.addEventListener("load", function(){
+		
+		var btnAreaSearch = document.getElementById("btn-area-search");
+		btnAreaSearch.onclick = function(){
+			win = open("../addarea/addarea", "_blank", "width=800px, height=800px");
+			
+		};
+		
+	});
+
+</script>
+
+
+
+<style type="text/css">
+ #pop{
+  width:300px; height:400px; background:#3d3d3d; color:#fff; 
+  position:absolute; top:10px; left:100px; text-align:center; 
+  border:2px solid #000;
+   }
+</style>
 </head>
 <body>
 	<!-- 헤더 영역 -->
@@ -25,12 +50,12 @@
 		         <section>
 		            <h1>코스 정보</h1>
 		      
-		         <form action="postCourseWrite" method="post">
+		         <form method="post">
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
-		             <input type="text" />
-		             <input type="submit"   value="검색" />
+		             <input id ="course-area" type="text" />
+		             <input id="btn-area-search" type="button" value="검색" />
 		             
 		             <legend>날짜</legend>
 		             <input type="date" name="csDate" value="date">
@@ -90,14 +115,18 @@
 		               <textarea name="memo" rows="10" cols="50"></textarea>
 		               <br>해당 코스의 후기를 남겨주세요!</br>
 		            </p>
+		                   
 		      
 		            <h1>버튼 목록</h1>
 		            <p>
+
 		               <input type="submit" value="코스 추가">
-		               <a href=""><input type="submit" value="임시 저장"></a>
-		               <a href=""><input type="submit" value="후기 작성"></a>
+		               <input type="submit" value="임시 저장">
+		               <input type="submit" value="후기 작성">
+		               
+
 		            </p>
-		            </form>         
+		            </form>  
 		         </section>
 		      </section>
 		   </main>
@@ -138,5 +167,6 @@
 			</section>
 		</section>
 	</footer>
+
 </body>
 </html>

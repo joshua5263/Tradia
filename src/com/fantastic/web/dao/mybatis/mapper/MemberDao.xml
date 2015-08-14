@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
 <mapper namespace = "com.fantastic.web.dao.MemberDao"> 
-   <select id="getMember" parameterType="string" resultType = "com.fantastic.web.vo.Member">
+   <select id="getMember" parameterType="string" resultType="com.fantastic.web.vo.Member">
       SELECT * FROM MEMBERS WHERE ID = #{id}
       
    </select>
@@ -19,8 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          VALUES(#{id}, #{password}, getDate())
    </insert>
    
-    <update id="modMember" parameterType="com.fantastic.web.vo.Member">
-         UPDATE MEMBERS SET Password = #{password} WHERE ID = #{id}
+    <update id="modMember" parameterType="String">
+         UPDATE MEMBERS SET Password = #{param1} WHERE ID = #{param2}
    </update>
    
    <delete id="removeMember" parameterType="string">
@@ -30,5 +30,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <update id="preferLocaMember" parameterType="com.fantastic.web.vo.Member">
          UPDATE MEMBERS SET PreferLocation = #{preferLocation} WHERE ID = #{id}
+   </update>
+   
+   <update id="updateMemberProfile" parameterType="String">
+   		 UPDATE MEMBERS SET Profile = #{param1} WHERE ID = #{param2}
    </update>
 </mapper>
