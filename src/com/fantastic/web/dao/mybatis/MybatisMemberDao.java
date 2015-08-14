@@ -72,12 +72,12 @@ public class MybatisMemberDao implements MemberDao {
       return result;
    }
 
-   public int modMember(Member member) {
+   public int modMember(String password, String id) {
      // SqlSession session = factory.openSession();
-      MemberDao dao = session.getMapper(MemberDao.class);
       int result = 0;
       
-      result = session.update("com.fantastic.web.dao.MemberDao.modMember", member);
+      MemberDao dao = session.getMapper(MemberDao.class);
+      result = dao.modMember(password, id);
       
       return result;
    }
@@ -100,4 +100,17 @@ public class MybatisMemberDao implements MemberDao {
 			
 		 return result;
 	}
+
+	@Override
+	public int updateMemberProfile(String profile, String id) {
+		 
+		int result = 0;			
+			
+		     MemberDao dao = session.getMapper(MemberDao.class);
+				
+			 result = dao.updateMemberProfile(profile, id);		
+				
+			 return result;
+	}
+
 }

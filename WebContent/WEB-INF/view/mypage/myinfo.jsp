@@ -202,11 +202,12 @@
 			<section id="information">
 				<section id="my-info">
 					<div>
+						<form action="update_member_profile2" method="post">
 						<dd class="hidden">내 소개</dd>
-						<textarea id="txtContent" rows="15" cols="16" 
-						class="txtContent" name="content">${m.profile }</textarea>
-						<label class="hidden">수정</label> <input id="reg" type="submit"
-							value="수정" />
+						<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
+						<label class="hidden">수정</label> 
+						<input id="myProfile" type="submit" value="수정"/>
+						</form>
 					</div>
 					<div>
 						<dd>
@@ -223,7 +224,7 @@
 
 				<section id="normal-info">
 					<h1 class="hidden">기본정보</h1>
-					<form method="post">
+					<form action="myinfo_reg" method="post">
 						<h1 id="normal-info-title">프로필정보</h1>
 						<dl>
 						<nav>
@@ -274,8 +275,8 @@
 						</c:if>
 						</dl>
 						</nav>
-						<label class="hidden">수정</label> <input id="button" type="submit"
-							value="수정" />
+						<label class="hidden">수정</label> 
+						<input id="button" type="submit" value="수정" />
 					</form>
 				</section>
 			</section>

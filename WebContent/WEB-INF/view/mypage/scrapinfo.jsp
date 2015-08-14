@@ -135,12 +135,11 @@
 	<main id="main" class="clearfix:after">
 		<section id="my-info">
 			<div>
+				<form action="update_member_profile3" method="post">
 				<dd class="hidden">내 소개</dd>
-				<textarea id="txtContent" rows="15" cols="16" 
-				class="txtContent" name="content">${m.profile }</textarea>
-				<form method="post">
+				<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
 					<label class="hidden">수정</label> 
-					<input id="myProfileReg" type="submit" value="수정" name="myProfileReg"/>
+					<input id="myProfile" type="submit" value="수정"/>
 				</form>
 			</div>
 			<div>

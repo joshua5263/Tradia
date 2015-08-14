@@ -55,21 +55,26 @@ public class MyInfoController{
 		return "/WEB-INF/view/mypage/myinfo.jsp";
 	}
 	
-	@RequestMapping(value= "myinfo", method=RequestMethod.POST)
-	public String myinfo(Model model,String password, String password2, Member m, Principal principal, HttpServletRequest request){
-		
-		/*String password = request.getParameter("password");
-		String password2 = request.getParameter("password2");*/
+	@RequestMapping(value= "myinfo_reg", method=RequestMethod.POST)
+	public String myinfo(Model model, String password, String password2, Member member, Principal principal){
 		
 		/*if (password != "" && password2 != "" && password.equals(password2))
-		{
-			m = memberDao.getMember(principal.getName());
-			m.setPassword(password);
-			memberDao.modMember(m);
-			//member.setGender(gender);
-		}
-		*/
-		return "/WEB-INF/view/mypage/myinfo.jsp";
+		{*/
+			member.setPassword(password);
+			memberDao.modMember(password, principal.getName());
+		/*}*/
+		
+		return "redirect:myinfo";
+	}
+	
+	@RequestMapping(value="update_member_profile2", method=RequestMethod.POST)
+	public String myinfo(Model model, Member member, Principal principal, String myProfile){
+		
+		member = memberDao.getMember(principal.getName());
+		member.setProfile(myProfile);
+		memberDao.updateMemberProfile(myProfile, principal.getName());
+		
+		return "redirect:myinfo";
 	}
 	
 	@RequestMapping(value= "mypage", method=RequestMethod.GET)
@@ -85,7 +90,17 @@ public class MyInfoController{
 	      
 		return "/WEB-INF/view/mypage/mypage.jsp";
 	}
+	
+	@RequestMapping(value="update_member_profile1", method=RequestMethod.POST)
+	public String mypage(Model model, Member member, Principal principal, String myProfile){
 
+/*		member = memberDao.getMember(principal.getName());*/
+		member.setProfile(myProfile);
+		memberDao.updateMemberProfile(myProfile, principal.getName());
+		
+		return "redirect:mypage";
+	}
+	
 	@RequestMapping(value= "scrapinfo", method=RequestMethod.GET)
 	public String scrapinfo(Member m, Model model, Principal principal, HttpServletRequest request){
 
@@ -97,8 +112,19 @@ public class MyInfoController{
 		
 	    return "/WEB-INF/view/mypage/scrapinfo.jsp";
 	}
+	
+	@RequestMapping(value="update_member_profile3", method=RequestMethod.POST)
+	public String scrapinfo(Model model, Member member, Principal principal, String myProfile){
+
+		member = memberDao.getMember(principal.getName());
+		member.setProfile(myProfile);
+		memberDao.updateMemberProfile(myProfile, principal.getName());
+		
+		return "redirect:scrapinfo";
+	}
+
 	@RequestMapping(value="scrap_del", method=RequestMethod.POST)
-	public String scrapinfo(Model model, Scrap scrap,String sCode, Principal principal){
+	public String scrapinfo(Model model, Scrap scrap, String sCode, Principal principal){
 		
 		scrap.setTravelCode(sCode);
 		scrap.setMemberID(principal.getName());
