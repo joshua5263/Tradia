@@ -111,17 +111,17 @@
 			<img src ="../resource/images/logo_intro.png" alt="TRADIA"/>
 		
 		
-			<form method="post">
+			<form action="../join/join" method="post">
 			<fieldset>
 				
 				<legend class="hidden">E-mail 입력</legend>
-				<label class="hidden">ID입력</label> <input type="text" name="join-id" />
+				<label class="hidden">ID입력</label> <input type="text" placeholder="ID입력" name="join-id" />
 			<br/>			
 				<legend class="hidden">비밀번호입력</legend>
-				<label class="hidden">비밀번호</label> <input type="password" name = "pw"/>
+				<label class="hidden">비밀번호</label> <input type="password" placeholder="비밀번호입력" name = "pw"/>
 			<br/>			
 				<legend class="hidden">비밀번호확인입력</legend>
-				<label class="hidden">비밀번호</label> <input type="password" name = "pw-check"/>
+				<label class="hidden">비밀번호</label> <input type="password" placeholder="비밀번호입력확인" name = "pw-check"/>
 					
 				<nav>
 					<h1 class="hidden">버튼 목록</h1>

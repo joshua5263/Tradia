@@ -39,49 +39,23 @@ public class SelectPreferLocationController{
 		Member m = memberDao.getMember(principal.getName());
 		
 		
-		
 		if(m.getPreferLocation() == null){
 			return "/WEB-INF/view/selectpreferlocation/selectpreferlocation.jsp";
 		}
 		else{
 			return "redirect:/main/travelMain";
 		}
-		
-		/*HttpSession session = request.getSession();
-		MemberDao memberDao = new MybatisMemberDao();
-		String memberId = (String)session.getAttribute("mid");
-		Member m = memberDao.getMember(memberId);
-		request.setAttribute("m", m);*/
-		
-		/*return "/WEB-INF/view/selectpreferlocation/selectpreferlocation.jsp";*/
 	}
 	
 	@RequestMapping(value= "selectpreferlocation", method=RequestMethod.POST)
 	public String selectPreferLocation(Member m, Principal principal, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
-		
-			/*HttpSession session = request.getSession();
-			MemberDao memberDao = new MybatisMemberDao();
-			String memberId = (String)session.getAttribute("mid");
-			Member m = memberDao.getMember(memberId);
-			request.setAttribute("m", m);*/
-			
-	
 			String preferLocation = request.getParameter("preferLocation");
-			/*response.getWriter().println(preferLocation);*/
 			
-			/*Member member = new Member();*/
 			m = memberDao.getMember(principal.getName());
 			m.setPreferLocation(preferLocation);
 			
 			memberDao.preferLocaMember(m);		
 		
-			/*String preferLocation = request.getParameter("select-prefer-location");
-			response.getWriter().println(preferLocation);
-			
-			MemberDao memberDao = new MybatisMemberDao();
-			Member member = memberDao.getMember(id);	*/	
 			return "redirect:/main/travelMain";
-			
-				
 	}
 }

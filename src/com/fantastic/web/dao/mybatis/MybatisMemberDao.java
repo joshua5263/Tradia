@@ -54,9 +54,9 @@ public class MybatisMemberDao implements MemberDao {
    @Override
    public int addMember(Member member) {
       //SqlSession session = factory.openSession();
+	   int result = 0;
       MemberDao dao = session.getMapper(MemberDao.class);
-      int result = 0;
-      result = session.insert("com.fantastic.web.dao.MemberDao.addMember", member);
+      result = dao.addMember(member);
       
       return result;
    }

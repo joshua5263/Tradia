@@ -21,5 +21,7 @@ public interface CommentDao {
 	public int removeComment(String code);
 	
 	public List<Comment> getComment(String travelCode);
+	
+	public Comment getOneComment(String memberID, String code);
 }
 

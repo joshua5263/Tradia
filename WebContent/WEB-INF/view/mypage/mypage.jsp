@@ -215,7 +215,7 @@
 										<li><a href="">${m.id}</a></li>
 										<li><fmt:formatDate value="${n.regDate}"
 												pattern="yyyy년MM월dd일" /></li>
-										<li><a href="travelDetail?tcode=${n.code}">${n.title}</a></li>
+										<li><a href="../main/travelDetail?tcode=${n.code}">${n.title}</a></li>
 										<li><img src="../resource/images/btn-like.png">
 											${n.likeCnt}</li>
 

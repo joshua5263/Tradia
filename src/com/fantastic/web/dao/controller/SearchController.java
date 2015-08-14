@@ -43,9 +43,7 @@ public class SearchController {
    }
    
    @RequestMapping("tradiasearch")
-   public String travelMain(Model model, String headerQuery){
-	   
-	   
+   public String travelMain(Model model, String headerQuery){	   
 	   
 	   List<Course> list = courseDao.searchCourse(headerQuery);
 	      model.addAttribute("List", list);
