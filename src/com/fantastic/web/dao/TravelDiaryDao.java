@@ -35,11 +35,15 @@ public interface TravelDiaryDao {
 	public int removeTravelDiary(String code);
 
 	public int addBeforeTravelDiary(TravelDiary diary); 
-
 	
 	public List<TravelDiary> getTravelDiariesOfSearch(String code);
-	
-
 
 	public String getLastCode(String memberID);
+	
+	/*post에 후기 부분을 업데이트*/
+	/*public void addAfterword(String travelCode, String memo, int totalCost);*/
+	public void addAfterword(String travelCode, String memo, String totalCost);
+	
+	/*travelCode가 일치하는 course의 cost를 모두 합하여 반환*/
+	public int totalCost(String travelCode);
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,30 +19,28 @@
 	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
 	
 	<main id="main">
-		      <section>
-		         <h1>포스트 쓰기</h1>
-		         <section>
-		            <h1>코스 정보</h1>
+		<section>
+			<h1>포스트 쓰기</h1>
+			<section>
+			<h1>코스 정보</h1>
 		      
-		         <form action="postCourseWrite" method="post">
-					<legend>총경비 입력</legend>
+				<form method="post">
+					<legend>총경비</legend>
 					<label>경비</label> 원
 					
 					<p>
 						<label>후기</label>
-						*후기는 필수가 아닙니다.
-						<textarea name="memo" rows="10" cols="50"></textarea>
-						<br>여행의 후기를 남겨주세요!</br>
+						*후기는 필수가 아닙니다.<br>
+						<textarea name="a" rows="10" cols="50"></textarea>
 					</p>
-					
 					<h1>버튼 목록</h1>
 					<p>
 						<input type="submit" value="작성 완료">
 					</p>
-					</form>         
-				</section>
+				</form>         
 			</section>
-		</main>
+		</section>
+	</main>
 	</div>
 	
 	<footer id="footer">
