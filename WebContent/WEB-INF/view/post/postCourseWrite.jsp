@@ -119,15 +119,12 @@
 		      
 		            <h1>버튼 목록</h1>
 		            <p>
-		            	<form action = "addPost" method="post">
-		               		<input type="submit" value="코스 추가">
-		               </form>
-		               <form action = "addPost" method="post">
-		               		<a href=""><input type="submit" value="임시 저장"></a>
-		               </form>
-		               <form action = "writeAfterword" method="post">
-		               		<a href=""><input type="submit" value="후기 작성"></a>
-		               </form>
+
+		               <input type="submit" value="코스 추가">
+		               <input type="submit" value="임시 저장">
+		               <input type="submit" value="후기 작성">
+		               
+
 		            </p>
 		            </form>  
 		         </section>

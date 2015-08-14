@@ -41,10 +41,10 @@ public class JoinController extends HttpServlet{
 	}
 	
 	@RequestMapping(value= "join", method=RequestMethod.POST)
-	public String join(Member m, HttpServletRequest request, String joinId){
+	public String join(Member m, HttpServletRequest request){
 		
 		
-		//String joinId = request.getParameter("join-id");
+		String joinId = request.getParameter("join-id");
 		String pw = request.getParameter("pw");
 		String pwCheck = request.getParameter("pw-check");
 		
@@ -56,7 +56,6 @@ public class JoinController extends HttpServlet{
 				member.setId(joinId);
 				member.setPassword(pw);
 				
-				MemberDao memberDao = new MybatisMemberDao();
 				memberDao.addMember(member);
 				
 				return "redirect:../intro/intro";

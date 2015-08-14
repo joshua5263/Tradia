@@ -68,12 +68,13 @@ public class MybatisScrapDao implements ScrapDao{
 
 		int result = 0;
 
-			ScrapDao dao = session.getMapper(ScrapDao.class);
-			result = dao.removeScrap(scrap);
+			ScrapDao scrapdao = session.getMapper(ScrapDao.class);
+			result = scrapdao.removeScrap(scrap);
 
 		return result;
 	}
 
+	
 	@Override
 	public List<Scrap> getScraps(String scrapID) {
 				
@@ -85,8 +86,8 @@ public class MybatisScrapDao implements ScrapDao{
 		  for(Scrap sc:list)
 			    sc.setOneCourse(courseDao.getCourse(sc.getCode()));
 			 
-		return list;		
-		
-		
+		return list;				
 	}
+
+
 }

@@ -77,6 +77,7 @@ public class PostWriteController{
 		return "redirect:postCourseWrite";
 	}
 	
+
 	@RequestMapping(value = "addPost", method = RequestMethod.POST)
 	public String addPost(Course course, Principal principal){
 		/*로그인한 멤버의 id를 얻어옴*/
@@ -106,7 +107,12 @@ public class PostWriteController{
 		
 		return "redirect:/main/travelMain";
 	}
-	
+
+	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.GET)
+	public String postAfterwordWrite() {
+		return "/WEB-INF/view/post/postAfterwordWrite.jsp";
+	}
+
 	
 	
 }
