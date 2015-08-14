@@ -38,7 +38,6 @@
 		};
 	});
 </script>
-=======
 
 <script type="text/javascript">
 	var win = null;
