@@ -99,10 +99,42 @@ public class PostWriteController{
 	}
 	
 	
+
+	@RequestMapping(value = "addPost", method = RequestMethod.POST)
+	public String addPost(Course course, Principal principal){
+		/*로그인한 멤버의 id를 얻어옴*/
+		String memberID = principal.getName();
+		
+		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		String lastCode = dao.getLastCode(memberID);
+		/*얻어온 DiaryCode를 추가*/
+		course.setTravelCode(lastCode);
+		
+		courseDao.addCourse(course);
+		
+		return "redirect:postCourseWrite";
+	}
+	
+	@RequestMapping(value = "writeAfterword", method = RequestMethod.POST)
+	public String writeAfterword(Course course, Principal principal){
+		/*로그인한 멤버의 id를 얻어옴*/
+		String memberID = principal.getName();
+		
+		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		String lastCode = dao.getLastCode(memberID);
+		/*얻어온 DiaryCode를 추가*/
+		course.setTravelCode(lastCode);
+		
+		courseDao.addCourse(course);
+		
+		return "redirect:/main/travelMain";
+	}
+
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.GET)
 	public String postAfterwordWrite() {
 		return "/WEB-INF/view/post/postAfterwordWrite.jsp";
 	}
+
 	
 	/*----------------작성중인 부분입니다. 현재 오류 발생----------------*/
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.POST)

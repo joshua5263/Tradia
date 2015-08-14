@@ -12,8 +12,6 @@ public class Scrap {
 
 	private Date scrapDate;
 
-
-
 	private String code;
 	private String title;
 	private String fellowTraveler;

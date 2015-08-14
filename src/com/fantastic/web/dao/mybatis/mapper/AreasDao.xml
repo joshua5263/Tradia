@@ -13,15 +13,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <selectKey keyProperty="code" order="BEFORE" resultType="String">
        select isnull(max(cast(code as int)), 0)+1 code from areas
       </selectKey>      
-      INSERT INTO Areas(Code, FirstAdd, LastAdd, Name, Propertice, MemberID) 
-      VALUES(#{code}, #{firstAdd}, #{lastAdd}, #{name}, #{propertice}, #{memberId} )
+      INSERT INTO Areas(Code, FirstAdd, Name, MemberID) 
+      VALUES(#{code}, #{firstAdd}, #{name}, 'ediya')
    </insert>
    
    <delete id="removeAreas" parameterType="string">
       DELETE AREAS WHERE code = #{code}
    </delete>
    
-   
+   <select id="searchAreas" parameterType="String"
+		resultType="com.fantastic.web.vo.Areas">
+		SELECT * FROM Areas where Name LIKE '%${areaQuery}%' or FirstAdd Like '%${areaQuery}%' or LastAdd Like '%${areaQuery}%' order by Code ASC
+	</select>
    
    
 </mapper>

@@ -65,5 +65,14 @@ public class MybatisCommentDao implements CommentDao {
 		return result;
 	}
 
+	@Override
+	public Comment getOneComment(String memberID, String code) {
+		// TODO Auto-generated method stub
+		
+		CommentDao dao = session.getMapper(CommentDao.class);
+
+		return dao.getOneComment(memberID, code);
+	}
+
 
 }

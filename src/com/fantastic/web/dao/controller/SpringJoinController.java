@@ -16,7 +16,7 @@ import com.fantastic.web.dao.mybatis.MybatisMemberDao;
 import com.fantastic.web.vo.Member;
 
 /*@WebServlet("/join/join")*/
-public class SpringJoinController extends HttpServlet{
+/*public class SpringJoinController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -52,4 +52,4 @@ public class SpringJoinController extends HttpServlet{
 		
 	}
 
-}
+}*/

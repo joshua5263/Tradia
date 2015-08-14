@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,15 @@ import com.fantastic.web.vo.Member;
 @RequestMapping("/join/*")
 public class JoinController extends HttpServlet{
 	
+	MemberDao memberDao;
+	
+	
+	
+	@Autowired
+	public void setMemberDao(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
+
 	@RequestMapping(value= "join", method=RequestMethod.GET)
 	public String join(){
 		
@@ -38,20 +48,14 @@ public class JoinController extends HttpServlet{
 		String pw = request.getParameter("pw");
 		String pwCheck = request.getParameter("pw-check");
 		
-		MemberDao mDao = new MybatisMemberDao();
-		
 	
-		/*if(m.getId().equals(joinId)){
-			return "redirect:../join/join";
-		}*/
-		if(mDao.getMember(joinId) == null){
+		if(memberDao.getMember(joinId) == null){
 			if(pw.equals(pwCheck)){
 				Member member = new Member();				
 				
 				member.setId(joinId);
 				member.setPassword(pw);
 				
-				MemberDao memberDao = new MybatisMemberDao();
 				memberDao.addMember(member);
 				
 				return "redirect:../intro/intro";

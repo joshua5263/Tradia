@@ -72,34 +72,32 @@
 								<li><img src="../resource/images/btn-like.png"> ${t.likeCnt}</li>
 							</ul>
 							</nav>
-								<section>
-									<h1>여행기 ${tc.count}코스</h1>
+							<section>
+								<h1>여행기 ${tc.count}코스</h1>
+								<ul>
+									<li>Start</li>
+										<c:forEach var="c" items="${n.oneCourse}" >
+									<li><a href="">${c.areasName}</a></li>
+									    </c:forEach>
+									<li>End</li>
+								</ul>		
+							</section>
+				
+							<section>
+								<h1>코스별 이미지</h1>
+								<section>						
+									<c:forEach var="c" items ="${n.oneCourse}" varStatus="cc">
+									
+									<h1>${tc.count} - ${cc.count}코스 이미지</h1>
 									<ul>
-										<li>Start</li>
-											<c:forEach var="c" items="${n.oneCourse}" >
-										<li><a href="">${c.areasName}</a></li>
-										    </c:forEach>
-										<li>End</li>
-									</ul>		
+							 			<li>${c.pic1}</li>
+										<li>${c.pic2}</li>
+										<li>${c.pic3}</li>
+										<li>${c.pic4}</li> 
+									</ul>
+									</c:forEach>
 								</section>
-					
-								<section>
-									<h1>코스별 이미지</h1>
-									<section>						
-										<c:forEach var="c" items ="${n.oneCourse}" varStatus="cc">
-										
-										<h1>${tc.count} - ${cc.count}코스 이미지</h1>
-										<ul>
-								 			<li>${c.pic1}</li>
-											<li>${c.pic2}</li>
-											<li>${c.pic3}</li>
-											<li>${c.pic4}</li> 
-										</ul>
-										</c:forEach>
-									</section>
-								</section>							
-							
-							
+							</section>						
 								
 							</c:forEach>
 							
