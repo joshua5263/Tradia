@@ -87,5 +87,14 @@ public List<Areas> searchAreas(String areaQuery) {
 	return list;
 }
 
+/*--------------작성 중인 코드입니다. by 한--------------*/
+@Override
+public String getAreaCode(String areaName) {
+	AreasDao dao = session.getMapper(AreasDao.class);
+	String code = dao.getAreaCode(areaName);
+	
+	return code;
+}
+
 
 }

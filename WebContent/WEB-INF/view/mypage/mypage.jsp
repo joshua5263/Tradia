@@ -12,7 +12,199 @@
 
 #aaa {
 	border: 1px red solid;
+	width: 460px;
+	float: left;
 }
+
+#information {
+	/* border: 3px red solid; */
+}
+
+#mypage-list {
+	/* border: 1px maroon solid; */
+	display: inline-block;
+	width: 800px;
+}
+
+#mypage-list ul {
+	/* border: 1px black solid; */
+	height: 25px;
+}
+
+#mypage-recommend {
+	height: 25px;
+	width: 80px;
+	float: left;
+	margin-left: 500px;
+}
+
+#myPage-updated {
+	height: 25px;
+	width: 80px;
+	float: left;
+	margin-left: 5px;
+}
+#travel-diary {
+	/* border: 2px black solid; */
+	display: inline-block;
+	width: 680px;
+	height: inherit;
+	margin: auto;
+}
+
+#diary-top {
+	border: 1px blue solid;
+}
+
+#travel-diary-fieldset {
+	border: 1px blue solid;
+	float: left;
+	width: 640px;
+	margin-left: 20px;
+	margin-top: 5px;
+	background: grey;
+	display: inline-block;
+}
+
+#travel-diary-fieldset-in {
+	margin: 5px;
+	background: white;
+	display: inline-block;
+}
+
+#diary-top {
+	display: inline-block;
+}
+
+#diary-top ul {
+	border: 1px red solid;
+	width: 140px;
+	height: 120px;
+	float: left;
+}
+
+#diary-top ul+ul {
+	border: 1px red solid;
+	width: 380px;
+	height: 50px;
+	float: left;
+	margin-top: 20px;
+	display: inline-block;
+}
+
+#diary-top ul+ul+ul {
+	border: 1px red solid;
+	width: 100px;
+	height: 90px;
+	float: left;
+	margin: 0px;
+	text-align: center;
+}
+
+#diary-top ul li {
+	border: 1px blue solid;
+}
+
+#travel-diary-profile-pic {
+	width: 100px;
+	height: 100px;
+	margin-left: 13px; 
+	text-align: center;
+}
+
+#travel-diary-profile-id {
+	height: 20px;
+	text-align: center;
+}
+
+#travel-diary-profile-day {
+	width: 150px;
+	height: 20px;
+}
+
+#travel-diary-profile-title {
+	width: 370px;
+	height: 30px;
+	text-align: left;
+	line-height: 30px;
+	font-size: 30px; 
+}
+
+#travel-diary-profile-like {
+	width: 50px;
+	height: 50px;
+	margin-left: 23px;
+	margin-top: 10px;
+	text-align: center;
+}
+
+#diary-middle{
+	border: 1px blue solid;
+	height: 80px;
+	line-height: 40px;
+}
+
+#diary-middle li{
+	border: 1px black solid;
+	display: inline-block;
+}
+
+#my-info {
+   height: inherit;
+   width: 140px;
+   float: left;
+   min-height: 300px;
+   margin: 10px;
+  /*  border: 1px maroon solid; */
+}
+
+#normal-info {
+	border: 1px maroon solid;
+}
+
+#course-image li{
+	border: 1px maroon solid;
+	width: 276px;
+	height: 228px;
+	float: left;
+	margin-left: 24px;
+	margin-top: 10px;
+}
+
+.clearfix:after {	
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+
+/* ------------------------------------------------------------ */
+
+/* #travel-diary-fieldset-in {
+	position: absolute;
+} */
+
+/* #travel-diary-fieldset-in ul {
+	left: 0px;
+	top: 0px;
+	width: 50px;
+	height: 50px;
+}
+
+#travel-diary-fieldset-in ul+ul {
+	left: 80px;
+	top: 0px;
+}
+
+#travel-diary-fieldset-in ul+ul+ul {
+	right: 0px;
+	top: 0px;
+}
+ */
+
 </style>
 
 <title>Insert title here</title>
@@ -106,22 +298,22 @@
 						</dd>
 					</div>
 				</section>
-				<section id="normal-info">
+				<!-- <section id="normal-info">
 					<div id="map" style="width: 500px; height: 400px;"></div>
 					<script type="text/javascript"
 						src="//apis.daum.net/maps/maps3.js?apikey=발급받은 API KEY를 넣으시면 됩니다."></script>
-				</section>
-				<section id="aaa">
+				</section> -->
+				<section>
 
 					<h1 class="hidden">지역 페이지</h1>
 
-					<section>
+					<section id="mypage-list">
 						<h1 class="hidden">선택 지역</h1>
 
-						<p>서울여행기</p>
+						<p>(서울)여행기</p>
 						<ul>
-							<li>추천순</li>
-							<li>최신순</li>
+							<li><input id="mypage-recommend" type="submit" value="추천순"/></li>
+							<li><input id="myPage-updated" type="submit" value="최신순"/></li>
 						</ul>
 					</section>
 
@@ -130,25 +322,27 @@
 						<c:forEach var="n" items="${td}" varStatus="td">
 
 							<div id="travel-diary-fieldset">
+							<div id="travel-diary-fieldset-in">
+								<section id="diary-top">
 								<h1 class="hidden">여행기${td.count}</h1>
-
-								<nav>
 									<h1 class="hidden">여행기 ${td.count}등록정보</h1>
 									<ul>
-										<li><a href=""><img
-												src="../resource/images/header-profile-pic.png">${n.mpic}</a></li>
-										<li><a href="">${m.id}</a></li>
-										<li><fmt:formatDate value="${n.regDate}"
-												pattern="yyyy년MM월dd일" /></li>
-										<li><a href="travelDetail?tcode=${n.code}">${n.title}</a></li>
-										<li><img src="../resource/images/btn-like.png">
-											${n.likeCnt}</li>
-
+										<li id="travel-diary-profile-pic"><a href=""><img
+												src="../resource/images/header-profile-pic.png"><p class="hidden">${n.mpic}</p></a></li>
+										<li id="travel-diary-profile-id"><a href="">${m.id}</a></li>
 									</ul>
-								</nav>
-
-								<section>
-									<h1>여행기 ${td.count}코스</h1>
+									<ul>	
+										<li id="travel-diary-profile-day"><fmt:formatDate value="${n.regDate}"
+												pattern="yyyy년MM월dd일" /></li>
+										<li id="travel-diary-profile-title"><a href="../main/travelDetail?tcode=${n.code}">${n.title}</a></li>
+									</ul>	
+									<ul>
+										<li id="travel-diary-profile-like"><img src="../resource/images/btn-like.png"></li>
+										<li>${n.likeCnt}</li>
+									</ul>
+								</section>
+								<section id="diary-middle">
+									<h1><p class="hidden">여행기 ${td.count}코스</p></h1>
 									<ul>
 										<li>Start</li>
 										<c:forEach var="c" items="${n.oneCourse}">
@@ -159,26 +353,28 @@
 								</section>
 
 								<section>
-									<h1>코스별 이미지</h1>
-									<section>
+									<h1><p class="hidden">코스별 이미지</p></h1>
+									<section id="course-image">
 										<c:forEach var="c" items="${n.oneCourse}" varStatus="cc">
 
-											<h1>${td.count}-${cc.count}코스 이미지</h1>
+											<h1><p class="hidden">${td.count}-${cc.count}코스 이미지</p></h1>
 											<ul>
-												<li>${c.pic1}</li>
-												<li>${c.pic2}</li>
-												<li>${c.pic3}</li>
-												<li>${c.pic4}</li>
+												<li>a${c.pic1}</li>
+												<li>b${c.pic2}</li>
+												<li>c${c.pic3}</li>
+												<li>d${c.pic4}</li>
 											</ul>
 										</c:forEach>
 									</section>
 								</section>
+							</div>
 							</div>
 						</c:forEach>
 
 					</section>
 
 				</section>
+			</section>
 		</main>
 	</div>
 

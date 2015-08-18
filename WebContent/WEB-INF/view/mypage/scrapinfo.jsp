@@ -177,7 +177,7 @@
 									<li><a href="">${sds.memberID}</a></li>
 									<li><fmt:formatDate value="${sds.regDate}"
 											pattern="yyyy년MM월dd일" /></li>
-									<li><a href="travelDetail?tcode=${sds.code}">${sds.title}</a></li>
+									<li><a href="../main/travelDetail?tcode=${sds.travelCode}">${sds.title}</a></li>
 									<li><img src="../resource/images/btn-like.png">
 										${sds.likeCnt}</li>
 								</ul>

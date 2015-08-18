@@ -19,11 +19,26 @@ public class Course {
 	private String csDate;
 	private String travelCode;
 	private String areasCode;
-	private String areasAdd;
 	private String areasName;
+	private String likeCnt;
+	private String travelDate;
 
 	private List<TravelDiary> travelDiaries;
 	private List<Course> oneCourse;
+	
+	
+	public String getLikeCnt() {
+		return likeCnt;
+	}
+	public void setLikeCnt(String likeCnt) {
+		this.likeCnt = likeCnt;
+	}
+	public String getTravelDate() {
+		return travelDate;
+	}
+	public void setTravelDate(String travelDate) {
+		this.travelDate = travelDate;
+	}
 	public String getCode() {
 		return code;
 	}
@@ -102,18 +117,6 @@ public class Course {
 	public void setAreasCode(String areasCode) {
 		this.areasCode = areasCode;
 	}
-	public String getAreasAdd() {
-		return areasAdd;
-	}
-	public void setAreasAdd(String areasAdd) {
-		this.areasAdd = areasAdd;
-	}
-	public String getAreasName() {
-		return areasName;
-	}
-	public void setAreasName(String areasName) {
-		this.areasName = areasName;
-	}
 	public List<TravelDiary> getTravelDiaries() {
 		return travelDiaries;
 	}
@@ -125,6 +128,12 @@ public class Course {
 	}
 	public void setOneCourse(List<Course> oneCourse) {
 		this.oneCourse = oneCourse;
+	}
+	public String getAreasName() {
+		return areasName;
+	}
+	public void setAreasName(String areasName) {
+		this.areasName = areasName;
 	}
 
 

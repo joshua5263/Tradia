@@ -156,11 +156,33 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		  return list;
 	}
 
-
+	@Override
 	public String getLastCode(String memberID) {
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 		String lastCode = dao.getLastCode(memberID);
 		
 		return lastCode;
+	}
+
+	/*-----------------------작성중인 부분입니다.-----------------------*/
+	/*post에 후기 부분을 업데이트*/
+	/*@Override
+	public void addAfterword(String travelCode, String memo, int totalCost) {
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		dao.addAfterword(travelCode, memo, totalCost);
+	}*/
+	
+	@Override
+	public void addAfterword(String travelCode, String memo, String totalCost) {
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		totalCost = "123";
+		memo = "MybatisTravelDiaryDao.java";
+		dao.addAfterword(travelCode, memo, totalCost);
+	}
+	
+	/*travelCode가 일치하는 course의 cost를 모두 합하여 반환*/
+	@Override
+	public int totalCost(String travelCode) {
+		return 0;
 	}
 }

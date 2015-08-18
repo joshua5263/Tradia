@@ -37,17 +37,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 2015-08-10 jongha 헤더 검색 파트 -->
 	<select id="searchCourse" parameterType="String"
 		resultType="com.fantastic.web.vo.Course">
-		SELECT * FROM CourseView where AreasName LIKE '%${headerQuery}%' or AreasAdd Like '%${headerQuery}%'
+		SELECT * FROM CourseView where AreasName LIKE '%${headerQuery}%' or AreasAdd Like '%${headerQuery}%'  order by travelDate DESC
 	</select>
 	
 	<select id="preferLocaCourse" parameterType="String"
 		resultType="com.fantastic.web.vo.Course">
-		SELECT * FROM CourseView where AreasAdd = #{preLoca}
+		SELECT * FROM CourseView where AreasAdd = #{preLoca} order by travelDate DESC
 	</select>
 	
 	<select id="preferLocaCourses" parameterType="String"
 		resultType="com.fantastic.web.vo.Course">
-		SELECT * FROM CourseView
+		SELECT * FROM CourseView order by travelDate DESC
 	</select>
 
 </mapper>

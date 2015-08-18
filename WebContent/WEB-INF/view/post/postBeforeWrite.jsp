@@ -11,6 +11,25 @@
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
+<script type="text/javascript">
+	window.addEventListener("load", function() {
+		var submitAddCourse = document.getElementById("submit-add-course");
+		var submitTempSave = document.getElementById("submit-temp-save");
+		var option = document.getElementById("option");
+
+		/* 코스 추가 버튼을 누를경우 option의 value를 course로 변경 */
+		submitAddCourse.onclick = function() {
+			option.value = "course";
+		};
+		/* 임시 저장 버튼을 누를경우 option의 value를 save로 변경 */
+		submitTempSave.onclick = function() {
+			alert("임시 저장합니다!");
+			option.value = "save";
+		};
+
+	});
+</script>
+
 
 
 </head>
@@ -33,18 +52,18 @@
 				<legend>제목입력</legend>
 				<label>제목</label>
 				<input type="text" id="title" name="title" />
-				<p>
+				<%-- <p>
 					<security:authentication property="name"/>
-				</p>
+				</p> --%>
 				
 
 				<legend>동행인입력</legend>
 				<label>동행인</label>
 				<select id="fellowTraveler" name="fellowTraveler">
-					<option value="family">가족</option>
-					<option value="solo">나홀로</option>
 					<option value="friend" selected>친구</option>
+					<option value="family">가족</option>
 					<option value="couple">연인</option>
+					<option value="solo">나홀로</option>
 				</select>
 
 				<legend>기간입력</legend>
@@ -55,9 +74,9 @@
 
 				<h1>버튼 목록</h1>
 				<p>
-					<input type="submit" value="코스추가"> 
-					<input type="submit" value="임시 저장">
-					<input type="submit" value="후기 작성">
+					<input type="hidden" id="option" name="option" value="course">
+					<input id="submit-add-course" type="submit" value="코스추가" > 
+					<input id="submit-temp-save" type="submit" value="임시 저장">
 				</p>
 			</fieldset>
 		</form>

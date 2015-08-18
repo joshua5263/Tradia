@@ -19,4 +19,5 @@ public interface AreasDao {
    
    public List<Areas> searchAreas(String areaQuery);
 
+   public String getAreaCode(String areaName);
 }

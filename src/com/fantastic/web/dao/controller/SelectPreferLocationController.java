@@ -29,7 +29,8 @@ public class SelectPreferLocationController{
 	@RequestMapping(value= "selectpreferlocation", method=RequestMethod.GET)
 	public String selectPreferLocation(Principal principal){
 		
-		Member m = memberDao.getMember(principal.getName());		
+
+		Member m = memberDao.getMember(principal.getName());
 		
 		if(m.getPreferLocation() == null){
 			return "/WEB-INF/view/selectpreferlocation/selectpreferlocation.jsp";
@@ -37,18 +38,18 @@ public class SelectPreferLocationController{
 		else{
 			return "redirect:/main/travelMain";
 		}
-
 	}
 	
 	@RequestMapping(value= "selectpreferlocation", method=RequestMethod.POST)
 	public String selectPreferLocation(Member m, Principal principal, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
-			
+
 		String preferLocation = request.getParameter("preferLocation");
 		
 		m = memberDao.getMember(principal.getName());
 		m.setPreferLocation(preferLocation);
 		
-		memberDao.preferLocaMember(m);			
+		memberDao.preferLocaMember(m);		
+		
 		
 		return "redirect:/main/travelMain";		
 				
