@@ -27,8 +27,8 @@
 
        window.addEventListener("load",function(){
     	   
-    	   var comEdit = document.getElementById("com-del");
-    	   		 comEdit.onclick = function(){
+    	   var comDel = document.getElementById("com-del");
+    	   		 comDel.onclick = function(){
     	   			 
     	   			var a = confirm("댓글을 삭제하시겠습니까?");
     	   			if(a== false)
@@ -38,14 +38,20 @@
     	   		};
     	   		
     	   		
-    	   var diaryEdit = document.getElementById("diary-del");
-  	   			 diaryEdit.onclick = function(){
+    	   var diaryDel = document.getElementById("diary-del");
+  	   			 diaryDel.onclick = function(){
   	   				
   	   			  	var b = confirm("게시글을 삭제하시겠습니까?");
   	   					if(b== false)	
   	   					     return false;
   	   					
   	   		};
+  	   		
+  	   		var comEdit = document.getElementById("com-edit");
+  	   		        comEdit.onclick = function(){
+  	   		        	
+  	   		        }
+  	   		        
        });
 
 </script>
