@@ -10,22 +10,42 @@
 <link href="../resource//css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
-
 <script type="text/javascript">
-	var win = null;
-
-	window.addEventListener("load", function(){
+	window.addEventListener("load", function() {
+		var win = null;
+		var submitAddCourse = document.getElementById("submit-add-course");
+		var submitTempSave = document.getElementById("submit-temp-save");
+		var submitAftetword = document.getElementById("submit-aftetword");
+		var option = document.getElementById("option");
 		
+		/* areaName을 잘 받나 테스트를 위함 */
+		var courseArea = document.getElementById("course-area");
+		
+		alert("현재 option의 값 : "+option.value);
+		
+		/* 코스 추가 버튼 클릭시 option을 course로 */
+		submitAddCourse.onclick = function() {
+			alert("course");
+			option.value = "course";
+		};
+		/* 후기 작성 버튼 클릭 시 option을 afterword로 */
+		submitAftetword.onclick = function() {
+			alert("afterword");
+			alert(courseArea.value);
+			option.value = "afterword";
+		};
+		/* 임시 저장 버튼 클릭 시 option을 save로 */
+		submitTempSave.onclick = function() {
+			alert("save");
+			option.value = "save";
+		};
 		var btnAreaSearch = document.getElementById("btn-area-search");
 		btnAreaSearch.onclick = function(){
 			win = open("../addarea/addarea", "_blank", "width=800px, height=800px");
-			
 		};
-		
+
 	});
-
 </script>
-
 
 
 <style type="text/css">
@@ -54,7 +74,7 @@
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
-		             <input id ="course-area" type="text" />
+		             <input id ="course-area" type="text" name="areaName"/>
 		             <input id="btn-area-search" type="button" value="검색" />
 		             
 		             <legend>날짜</legend>
@@ -113,18 +133,16 @@
 		            <p>
 		               <label>메모</label>
 		               <textarea name="memo" rows="10" cols="50"></textarea>
-		               <br>해당 코스의 후기를 남겨주세요!</br>
+		               <br>해당 코스의 후기를 남겨주세요!
 		            </p>
 		                   
 		      
 		            <h1>버튼 목록</h1>
 		            <p>
-
-		               <input type="submit" value="코스 추가">
-		               <input type="submit" value="임시 저장">
-		               <input type="submit" value="후기 작성">
-		               
-
+		            	<input type="hidden" id="option" name = "option" value="course">
+						<input type="submit" id="submit-add-course" value="코스 추가">
+						<input type="submit" id="submit-temp-save" value="임시 저장">
+						<input type="submit" id="submit-aftetword" value="후기 작성">
 		            </p>
 		            </form>  
 		         </section>
