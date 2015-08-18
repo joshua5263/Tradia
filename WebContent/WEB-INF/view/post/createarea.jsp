@@ -61,7 +61,7 @@ window.addEventListener("load", function(){
 	createArea.onclick = function(){
 		
 		var address = document.querySelector("#address");
-		document.querySelector("#address-txt").value = address.innerText;
+		document.querySelector("#address-txt").value = address.innerText.slice(5);
 		
 		opener.document.getElementById("course-area").value = document.querySelector("#areaname").value;
 		
