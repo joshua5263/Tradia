@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fantastic.web.dao.AreasDao;
 import com.fantastic.web.dao.CourseDao;
 import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.dao.mybatis.MybatisCourseDao;
@@ -25,6 +26,7 @@ import com.fantastic.web.vo.TravelDiary;
 public class PostWriteController{
 	private TravelDiaryDao dao;
 	private CourseDao courseDao;
+	private AreasDao areasDao;
 
 	@Autowired
 	public void setDao(TravelDiaryDao dao) {
@@ -36,7 +38,10 @@ public class PostWriteController{
 		this.courseDao = courseDao;
 	}
 
-
+	@Autowired
+	public void setAreasDao(AreasDao areasDao) {
+		this.areasDao = areasDao;
+	}
 
 	//	GET 요청을 받을 경우
 	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.GET)
@@ -76,9 +81,13 @@ public class PostWriteController{
 	}
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
-	public String postCourseWrite(Course course, Principal principal,String option){
+	public String postCourseWrite(Course course, Principal principal, String option, String areaName){
 		/*로그인한 멤버의 id를 얻어옴*/
 		String memberID = principal.getName();
+		
+		/*전달된 areaName을 토대로 areCode를 구한다*/
+		String areaCode = areasDao.getAreaCode(areaName);
+		course.setAreasCode(areaCode);
 		
 		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
 		String lastCode = dao.getLastCode(memberID);
@@ -94,11 +103,7 @@ public class PostWriteController{
 		} else {
 			return "redirect:/main/travelMain";
 		}
-		
-		
 	}
-	
-	
 
 	@RequestMapping(value = "addPost", method = RequestMethod.POST)
 	public String addPost(Course course, Principal principal){

@@ -10,14 +10,16 @@
 <link href="../resource//css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript">
-	
 	window.addEventListener("load", function() {
+		var win = null;
 		var submitAddCourse = document.getElementById("submit-add-course");
 		var submitTempSave = document.getElementById("submit-temp-save");
 		var submitAftetword = document.getElementById("submit-aftetword");
 		var option = document.getElementById("option");
+		
+		/* areaName을 잘 받나 테스트를 위함 */
+		var courseArea = document.getElementById("course-area");
 		
 		alert("현재 option의 값 : "+option.value);
 		
@@ -29,6 +31,7 @@
 		/* 후기 작성 버튼 클릭 시 option을 afterword로 */
 		submitAftetword.onclick = function() {
 			alert("afterword");
+			alert(courseArea.value);
 			option.value = "afterword";
 		};
 		/* 임시 저장 버튼 클릭 시 option을 save로 */
@@ -36,24 +39,13 @@
 			alert("save");
 			option.value = "save";
 		};
-	});
-</script>
-
-<script type="text/javascript">
-	var win = null;
-
-	window.addEventListener("load", function(){
-		
 		var btnAreaSearch = document.getElementById("btn-area-search");
 		btnAreaSearch.onclick = function(){
 			win = open("../addarea/addarea", "_blank", "width=800px, height=800px");
-			
 		};
-		
+
 	});
-
 </script>
-
 
 
 <style type="text/css">
@@ -63,7 +55,6 @@
   border:2px solid #000;
    }
 </style>
->>>>>>> refs/remotes/origin/master
 </head>
 <body>
 	<!-- 헤더 영역 -->
@@ -83,7 +74,7 @@
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
-		             <input id ="course-area" type="text" />
+		             <input id ="course-area" type="text" name="areaName"/>
 		             <input id="btn-area-search" type="button" value="검색" />
 		             
 		             <legend>날짜</legend>
