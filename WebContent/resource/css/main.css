@@ -7,6 +7,8 @@
 
 	#travel-diary{
 		float: left;
+		width: 1020px;
+		border:1px solid red;
 	}
 
 	#travel-diary div{
@@ -14,6 +16,12 @@
 		width:480px;
 		height:543px;
 		background-color: rgba( 255, 255, 255, 0.7 );
+	}
+	
+	#travel-diary-fieldset{
+		margin-left: 19px;
+		margin-top: 5px;
+		float: left;
 	}
 	
 	#travel-diary-fieldset:HOVER{
@@ -105,4 +113,31 @@
 		border:1px solid red;
 		height: 100px;
 		color: red;
+	}
+	
+	#travel-course {
+		border:1px solid red;
+		min-height: 30px;
+		line-height: 30px;		
+		/* display: inline-block;
+		height: inherit; */
+	}
+	
+	#travel-course li {
+		border:1px solid blue;
+		display: inline-block;
+		margin-left: 10px;
+	}
+	
+	#travel-course li:FIRST-CHILD {
+		margin-left: 0px;
+	}
+	
+	#travel-course-pic li {
+		border:1px solid red;
+		width: 230px;
+		height: 190px;
+		float: left;
+		margin-top: 11px;
+		margin-left: 5px;
 	}

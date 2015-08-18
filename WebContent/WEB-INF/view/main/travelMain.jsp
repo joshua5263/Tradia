@@ -124,8 +124,8 @@
 					<nav>
 						<h1 class="hidden">여행기 ${tc.count}등록정보</h1>
 						<ul>
-							<li><a href=""><img src="../resource/images/header-profile-pic.png">${t.mpic}</a></li>
-							<li><a href="">${t.memberID}</a></li>
+							<li><a><img src="../resource/images/header-profile-pic.png"><%-- ${t.mpic} --%></a></li>
+							<li><a>${t.memberID}</a></li>
 							<li><fmt:formatDate value="${t.regDate}" pattern="yyyy년MM월dd일" /></li>
 							<li><a href="travelDetail?tcode=${t.code}">${t.title}</a></li> 
 							<li><img src="../resource/images/btn-like.png"> ${t.likeCnt}</li>
@@ -133,8 +133,8 @@
 						</ul>						
 					</nav>
 					
-					<section>
-						<h1>여행기 ${tc.count}코스</h1>
+					<section id="travel-course">
+						<h1 class="hidden">여행기 ${tc.count}코스</h1>
 						<ul>
 							<li>Start</li>
 								<c:forEach var="c" items="${n.oneCourse}" >
@@ -144,19 +144,19 @@
 						</ul>		
 					</section>
 		
-					<section>
-						<h1>코스별 이미지</h1>
+					<section id="travel-course-pic">
+						<h1 class="hidden">코스별 이미지</h1>
 						<section>						
-							<c:forEach var="c" items ="${n.oneCourse}" varStatus="cc">
+							<%-- <c:forEach var="c" items ="${n.oneCourse}" varStatus="cc">
 							
-							<h1>${tc.count} - ${cc.count}코스 이미지</h1>
+							<h1 class="hidden">${tc.count} - ${cc.count}코스 이미지</h1> --%>
 							<ul>
-					 			<li>${c.pic1}</li>
-								<li>${c.pic2}</li>
-								<li>${c.pic3}</li>
-								<li>${c.pic4}</li> 
+					 			<li>사진1<%-- ${c.pic1} --%></li>
+								<li>사진2<%-- ${c.pic2} --%></li>
+								<li>사진3<%-- ${c.pic3} --%></li>
+								<li>사진4<%-- ${c.pic4} --%></li> 
 							</ul>
-							</c:forEach>
+							<%-- </c:forEach> --%>
 						</section>
 					</section>
 					</c:forEach>
