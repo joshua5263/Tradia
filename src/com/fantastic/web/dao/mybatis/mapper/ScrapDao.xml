@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select> -->
 	
 	<select id="getScrap" resultType="com.fantastic.web.vo.Scrap" parameterType="string">
-		SELECT * FROM SCRAP WHERE MemberId = #{memberID}
+		SELECT * FROM SCRAP WHERE MemberId = #{param1} and TravelCode = #{param2}
 	</select>
 	
 	<insert id="addScrap" parameterType="com.fantastic.web.vo.Scrap">

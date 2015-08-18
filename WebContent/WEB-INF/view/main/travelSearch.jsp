@@ -45,10 +45,14 @@
 			
 			<p>${list.getAreasName} 여행기</p>
 			
-			<ul>
-				<li>추천순</li>
-				<li>최신순</li>
-			</ul>
+			<div>
+			 	<form method="get" action="tradiasearch?headerQuery=${headerQuery}">
+	                <input type="submit"   value="최신순" />
+			    </form>
+			 	<form method="get" action="tradiasearch?headerQuery=${headerQuery}">
+	                <input type="submit"   value="인기순" />
+	            </form>
+			</div>
 		</section>
 
 		<section id="travel-diary">

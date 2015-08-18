@@ -23,6 +23,32 @@
 	
 </style>
 
+<script type="text/javascript">
+
+       window.addEventListener("load",function(){
+    	   
+    	   var comEdit = document.getElementById("com-del");
+    	   		 comEdit.onclick = function(){
+    	   			 
+    	   			var a = confirm("댓글을 삭제하시겠습니까?");
+    	   			if(a== false)
+   	   		  	   			return false;
+    	   			
+    	   			
+    	   		};
+    	   		
+    	   		
+    	   var diaryEdit = document.getElementById("diary-del");
+  	   			 diaryEdit.onclick = function(){
+  	   				
+  	   			  	var b = confirm("게시글을 삭제하시겠습니까?");
+  	   					if(b== false)	
+  	   					     return false;
+  	   					
+  	   		};
+       });
+
+</script>
 </head>
 <body>
 
@@ -48,10 +74,12 @@
 		            <li><fmt:formatDate value="${td.regDate }" pattern="yyyy년MM월dd일" /></li>
 		            <li>${td.title }</li>
 		            <li>- ${td.fellowTraveler}와 함께</li>
+		            <c:if test="${loginID == td.memberID }">
 		            <li><a>수정</a></li>
-		             <li><a href="travel_Del?tcode=${td.code}">삭제</a></li>
+		            <li><a id="diary-del" href="travel_Del?tcode=${td.code}">삭제</a></li>
+		            </c:if>
 		            <li><a href="add_like_del?tcode=${td.code}">
-		                <img src="../resource/images/btn-like.png">(${td.likeCnt }) </a></li>
+		                 <img src="../resource/images/btn-like.png">(${td.likeCnt }) </a></li>
 		            <li><a href="add_scrap?tcode=${td.code}">
 		                 <img src="../resource/images/btn-scrap.png"> </a></li>
 		         </ul>
@@ -118,22 +146,26 @@
 	      
 	       <section>
 	         <h1> 댓글내용 </h1>
-	           <c:forEach var="cm" items="${td.travelCommnet}">
+	           <c:forEach var="cm" items="${td.travelCommnet}" >
 	            <ul>
 	               <li>${cm.mpic}</li>
 	               <li>${cm.memberID}</li>
-	               <form method="post" name="updbtn">
+	               <c:if test="${loginID == cm.memberID }">
+	               <form id="com-edit" method="post" name="com_edit">
 	               <input type="submit"   value="수정" />
 	               </form>
-	               <form method="post" action="com_del?cmcode=${cm.code}">
+	               <form id="com-del" method="post" action="com_del?cmcode=${cm.code}">
 	               <input type="hidden" name="tcode" value = "${td.code}"/>
 	               <input type="submit"   value="삭제" />
 	               </form>
+	               </c:if>
 	               <li><fmt:formatDate value="${cm.regDate}" pattern="yyyy.MM.dd hh:mm" /></li>
 	               <li>${cm.contents }</li>
 	            </ul>
-	            </c:forEach>
+	            <br />
+	           </c:forEach>
      		 </section>
+     		
 	      </div>
 	      
 	   </section>
