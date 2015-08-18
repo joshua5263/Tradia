@@ -8,8 +8,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../js/modernizr.js"></script>
+
 <%-- <%String memberId = (String)session.getAttribute("mid");%> --%>
 <%-- <%
 	MemberDao memberDao = new MybatisMemberDao();
@@ -240,7 +239,7 @@
 						</nav>
 						<nav>
 							<dt>생년월일</dt>
-							<dd class="first-info"><fmt:formatDate value="${m.birthday}" pattern="yyyy-MM-dd" /></dd>
+							<dd class="first-info">${m.birthday}</dd>
 
 							<label class="hidden">생년월일 입력</label>
 							<input type="date" name="birthday">
