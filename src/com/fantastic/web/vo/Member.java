@@ -14,7 +14,7 @@ public class Member {
    private String profile;
    private Date regDate;
    private int gender;
-   private Date birthday;
+   private String birthday;
 
 	public String getPreferLocation() {
 		return preferLocation;
@@ -24,15 +24,17 @@ public class Member {
 		this.preferLocation = preferLocation;
 	}
 
-	public Date getBirthday() {
+   public String getBirthday() {
 		return birthday;
 	}
-   public void setBirthday(Date birthday) {
-      this.birthday = birthday;
-   }
-   public int getGender() {
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public int getGender() {
       return gender;
-   }
+	}
    public void setGender(int gender) {
       this.gender = gender;
    }

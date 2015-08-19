@@ -104,18 +104,21 @@
 		margin-right:auto;
 		width:980px;
 		height:335px;
-		background: url("../images/profile-background.png") no-repeat center;
+		background: url("../images/dubai.jpg") no-repeat center;
 	}
 	
 	#profile-pic{
-		padding-left:50px;
+		/* border: blue 1px solid; */
+		margin-left:25px;
 		width:150px;
-		height:150px;
-		background: url("../images/profile-pic.png") no-repeat center;
+		height:43px;
+		background: url("../images/profile-pic.png") no-repeat bottom;
 	}
 	
 	#profile li{
-		
+		/* border: blue 1px solid; */
+		padding-top: 292px;
+		padding-left: 5px;
 		float: left;
 		font-size: 40px;
 		color:white;
