@@ -107,11 +107,11 @@
 		background: url("../images/profile-background.png") no-repeat center;
 	}
 	
-	#profile-pic{
+	#profile-pic img{
 		padding-left:50px;
 		width:150px;
 		height:150px;
-		background: url("../images/profile-pic.png") no-repeat center;
+		background:no-repeat center;
 	}
 	
 	#profile li{

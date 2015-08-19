@@ -19,11 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          VALUES(#{id}, #{password}, getDate())
    </insert>
    
-    <update id="modMember" parameterType="String">
-         UPDATE MEMBERS SET Password = #{param1} WHERE ID = #{param2}
-   </update>
-   
-   <delete id="removeMember" parameterType="string">
+   <delete id="removeMember" parameterType="String">
       DELETE Members WHERE ID = #{id}
             
    </delete>
@@ -34,5 +30,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <update id="updateMemberProfile" parameterType="String">
    		 UPDATE MEMBERS SET Profile = #{param1} WHERE ID = #{param2}
+   </update>
+   
+   <update id="addProfilePicture" parameterType="String">
+   		 UPDATE MEMBERS SET Picture = #{param1} WHERE ID = #{param2}
+   </update>
+   
+   
+   <!-- 회원정보 변경(비밀번호) -->
+   <update id="modMemberInfo" parameterType="String">
+   		 UPDATE MEMBERS SET Password = #{param1} WHERE ID = #{param2}
+   </update>
+   
+   <!-- 회원정보 변경(생일) -->
+   <update id="modMemberBirth" parameterType="String">
+   		 UPDATE MEMBERS SET Birthday = #{param1} WHERE ID = #{param2}
+   </update>
+   
+   <!-- 회원정보 변경(성별) -->
+   <update id="modMemberGender" parameterType="String">
+   		 UPDATE MEMBERS SET Gender = ${param1} WHERE ID = #{param2}
+   </update>
+   
+   <!-- 회원정보 변경(비밀번호, 성별) -->
+   <update id="modMemberInfoGender" parameterType="String">
+   		 UPDATE MEMBERS SET Password = #{param1}, Gender = ${param2} WHERE ID = #{param3}
+   </update>
+   
+   <!-- 회원정보 변경(비밀번호, 생일) -->
+   <update id="modMemberInfoBirth" parameterType="String">
+   		 UPDATE MEMBERS SET Password = #{param1}, Birthday = #{param2} WHERE ID = #{param3}
+   </update>
+   
+   <!-- 회원정보 변경(생일, 성별) -->
+   <update id="modMemberBirthGender" parameterType="String">
+   		 UPDATE MEMBERS SET Birthday = #{param1}, Gender = ${param2} WHERE ID = #{param3}
+   </update>
+   
+   <!-- 회원정보 변경(비밀번호, 생일, 성별) -->
+   <update id="modMemberInfoBirthGender" parameterType="String">
+   		 UPDATE MEMBERS SET Password = #{param1}, Birthday = #{param2}, Gender = ${param3} WHERE ID = #{param4}
    </update>
 </mapper>
