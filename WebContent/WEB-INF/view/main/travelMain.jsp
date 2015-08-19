@@ -109,10 +109,10 @@
 			
 			<p>서울여행기</p>
 			<div>
-			 	<form method="get" action="travelMain">
+			 	<form method="get" action="travelMain?cmcode=${cm.code}">
 	                <input type="submit"   value="최신순" />
 			    </form>
-			 	<form method="get" action="travelMain?cmcode=${cm.code}">
+			 	<form method="get" action="travelMainPop?cmcode=${cm.code}">
 	                <input type="submit"   value="인기순" />
 	            </form>
 			</div>
