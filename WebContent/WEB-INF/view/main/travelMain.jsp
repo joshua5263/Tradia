@@ -127,13 +127,17 @@
 		    		<c:forEach var="t" items="${n.travelDiaries}">
 					<nav>
 						<h1 class="hidden">여행기 ${tc.count}등록정보</h1>
-						<ul>
+						<ul id="travel-diary-member">
 							<li><a><img src="../resource/images/header-profile-pic.png"><%-- ${t.mpic} --%></a></li>
 							<li><a>${t.memberID}</a></li>
+						</ul>
+						<ul id="travel-diary-title">
 							<li><fmt:formatDate value="${t.regDate}" pattern="yyyy년MM월dd일" /></li>
 							<li><a href="travelDetail?tcode=${t.code}">${t.title}</a></li> 
-							<li><img src="../resource/images/btn-like.png"> ${t.likeCnt}</li>
-							
+						</ul>
+						<ul id="travel-diary-like">
+							<li><img src="../resource/images/btn-like.png"></li>
+							<li>${t.likeCnt}</li>
 						</ul>						
 					</nav>
 					

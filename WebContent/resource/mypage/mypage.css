@@ -123,19 +123,20 @@
 	text-align: center;
 }
 
-#diary-top ul li {
-	/* border: 1px blue solid; */
+#diary-top ul {
+	border: 1px blue solid;
 }
 
 #travel-diary-profile-pic {
 	border: 1px red solid; 
 	width: 100px;
 	height: 100px;
-	margin-left: 13px; 
+	margin-left: 18px; 
 	text-align: center;
 }
 
 #travel-diary-profile-id {
+	border: 1px red solid;
 	height: 20px;
 	text-align: center;
 }
