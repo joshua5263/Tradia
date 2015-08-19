@@ -3,6 +3,8 @@ package com.fantastic.web.dao.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,9 +73,10 @@ public class MainController {
 	
 	//메인화면(최신순정렬)
 	@RequestMapping(value="travelMain", method=RequestMethod.GET)
-	public String travelMain(Model model, Member m, Principal principal, String preferLocation){
+	public String travelMain(Model model, Member m, Principal principal, String preferLocation, HttpServletRequest request){
 
 		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
 		String preLoca = m.getPreferLocation();
 
 		if(m.getPreferLocation().equals("전국")){

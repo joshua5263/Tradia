@@ -32,8 +32,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    		 UPDATE MEMBERS SET Profile = #{param1} WHERE ID = #{param2}
    </update>
    
+   <!-- 프로필 사진 변경 -->
    <update id="addProfilePicture" parameterType="String">
    		 UPDATE MEMBERS SET Picture = #{param1} WHERE ID = #{param2}
+   </update>
+   
+   
+   <!-- 프로필 배경 변경 -->
+   <update id="addProfileBackground" parameterType="String">
+   		 UPDATE MEMBERS SET Background = #{param1} WHERE ID = #{param2}
    </update>
    
    

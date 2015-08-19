@@ -3,172 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../resource/js/header.js"></script>
 <style type="text/css">
-
-#aaa {
-	border: 1px red solid;
-	width: 460px;
-	float: left;
-}
 
 #information {
 	/* border: 3px red solid; */
-}
-
-#mypage-list {
-	/* border: 1px maroon solid; */
-	display: inline-block;
-	width: 800px;
-}
-
-#mypage-list ul {
-	/* border: 1px black solid; */
-	height: 25px;
-}
-
-#mypage-recommend {
-	height: 25px;
-	width: 80px;
-	float: left;
-	margin-left: 500px;
-}
-
-#myPage-updated {
-	height: 25px;
-	width: 80px;
-	float: left;
-	margin-left: 5px;
-}
-#travel-diary {
-	/* border: 2px black solid; */
-	display: inline-block;
-	width: 680px;
-	height: inherit;
-	margin: auto;
-}
-
-#diary-top {
-	border: 1px blue solid;
-}
-
-#travel-diary-fieldset {
-	border: 1px blue solid;
-	float: left;
-	width: 640px;
-	margin-left: 20px;
-	margin-top: 5px;
-	background: grey;
-	display: inline-block;
-}
-
-#travel-diary-fieldset-in {
-	margin: 5px;
-	background: white;
-	display: inline-block;
-}
-
-#diary-top {
-	display: inline-block;
-}
-
-#diary-top ul {
-	border: 1px red solid;
-	width: 140px;
-	height: 120px;
-	float: left;
-}
-
-#diary-top ul+ul {
-	border: 1px red solid;
-	width: 380px;
-	height: 50px;
-	float: left;
-	margin-top: 20px;
-	display: inline-block;
-}
-
-#diary-top ul+ul+ul {
-	border: 1px red solid;
-	width: 100px;
-	height: 90px;
-	float: left;
-	margin: 0px;
-	text-align: center;
-}
-
-#diary-top ul li {
-	border: 1px blue solid;
-}
-
-#travel-diary-profile-pic {
-	width: 100px;
-	height: 100px;
-	margin-left: 13px; 
-	text-align: center;
-}
-
-#travel-diary-profile-id {
-	height: 20px;
-	text-align: center;
-}
-
-#travel-diary-profile-day {
-	width: 150px;
-	height: 20px;
-}
-
-#travel-diary-profile-title {
-	width: 370px;
-	height: 30px;
-	text-align: left;
-	line-height: 30px;
-	font-size: 30px; 
-}
-
-#travel-diary-profile-like {
-	width: 50px;
-	height: 50px;
-	margin-left: 23px;
-	margin-top: 10px;
-	text-align: center;
-}
-
-#diary-middle{
-	border: 1px blue solid;
-	height: 80px;
-	line-height: 40px;
-}
-
-#diary-middle li{
-	border: 1px black solid;
-	display: inline-block;
-}
-
-#my-info {
-   height: inherit;
-   width: 140px;
-   float: left;
-   min-height: 300px;
-   margin: 10px;
-  /*  border: 1px maroon solid; */
-}
-
-#normal-info {
-	border: 1px maroon solid;
-}
-
-#course-image li{
-	border: 1px maroon solid;
-	width: 276px;
-	height: 228px;
-	float: left;
-	margin-left: 24px;
-	margin-top: 10px;
 }
 
 .clearfix:after {	
@@ -245,17 +90,22 @@
          </form>
       </section>
    </aside> -->
-		<main id="main">
+		<main id="main" class="clearfix:after">
 
-		<section>
-			<h1 class="hidden">프로필정보</h1>
-
-			<section id="profile-bg">
+		<section id="profile-bg">
 				<h1 class="hidden">프로필배경</h1>
 				<section>
 					<h1 class="hidden">프로필사진</h1>
 					<ul id="profile">
-						<li id="profile-pic"></li>
+						<li id="profile-pic">							
+							<img src="../resource/upload/profilePicture/${m.picture}" />
+						</li>
+						<li>
+							<form action="fileUpload" method="post" enctype="multipart/form-data">
+								<input type="file" id="file-upload" name="file" />
+								<input type="submit" value="수정하기" />
+							</form>
+						</li>
 						<li><security:authentication property="name" /></li>
 					</ul>
 				</section>
@@ -304,9 +154,7 @@
 						src="//apis.daum.net/maps/maps3.js?apikey=발급받은 API KEY를 넣으시면 됩니다."></script>
 				</section> -->
 				<section>
-
 					<h1 class="hidden">지역 페이지</h1>
-
 					<section id="mypage-list">
 						<h1 class="hidden">선택 지역</h1>
 
@@ -316,11 +164,8 @@
 							<li><input id="myPage-updated" type="submit" value="최신순"/></li>
 						</ul>
 					</section>
-
 					<section id="travel-diary">
-
 						<c:forEach var="n" items="${td}" varStatus="td">
-
 							<div id="travel-diary-fieldset">
 							<div id="travel-diary-fieldset-in">
 								<section id="diary-top">

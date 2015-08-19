@@ -18,6 +18,7 @@
 
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <link href="../resource/css/mainDetail.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../resource/js/header.js"></script>
 
 <style>
 	
