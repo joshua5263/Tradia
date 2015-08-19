@@ -113,6 +113,18 @@ public class MybatisMemberDao implements MemberDao {
 		
 		return result;
 	}
+	
+	//프로필 배경 변경
+	@Override
+	public int addProfileBackground(String background, String id) {
+		int result = 0;
+		
+		MemberDao dao = session.getMapper(MemberDao.class);
+		
+		result = dao.addProfileBackground(background, id);
+		
+		return result;
+	}
 
 	//회원 정보 변경하기(비밀번호 변경)
 	@Override
@@ -198,5 +210,7 @@ public class MybatisMemberDao implements MemberDao {
 		
 		return result;
 	}
+
+	
 
 }

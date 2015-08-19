@@ -6,25 +6,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 
 <script type="text/javascript">
 
 window.addEventListener("load", function(){
 	
-	btnArea = [];
-	
-	for(var i = 0, j=0; i<document.getElementById("area").getElementsByTagName("ul").length; i++){
-
-		btnArea[j++] = document.getElementById("area").getElementsByTagName("ul")[i];
+	var area = document.querySelector("#area");
+	area.onclick = function(event){
 		
-	}
-	
-	btnArea[0].onclick = function(){
+		if(event.target.nodeName == "LI"){
+			//alert("target : " + event.target.innerText + ", currentTarget : " + event.currentTarget.nodeName);			
+			
+			var areaName = event.target.parentNode.querySelectorAll("li")[1].innerText;
+			opener.document.getElementById("course-area").value = areaName;
+			
+			self.close();
+		}
 		
-		var li = btnArea[0].getElementsByTagName("li")[1].innerHTML;
-		alert(li);
-		opener.document.getElementById("course-area").value = li;
-	};	
+		else if(event.target.nodeName == "UL"){
+			var areaNameUl = event.target.querySelectorAll("li")[1].innerText;
+			opener.document.getElementById("course-area").value = areaNameUl;
+		}
+	};
+	
 	
 });
 	
@@ -32,50 +37,55 @@ window.addEventListener("load", function(){
 </script>
 
 <style>
-	#area-name:HOVER {
-	background: red;
-	}
+	
 	body{
 		background: url("../resource/images/add-area-bg.png") no-repeat center;
+	}
+	.area-specific{
+		border: 1px solid white;
+	}
+	
+	.area-specific:HOVER{
+		
+		background-color: rgba( 255, 255, 255, 0.7 );
 	}
 
 </style>
 
 </head>
 <body>
-	<section>
-		<h1 class="hidden">여행기 검색 폼</h1>
-		<form id="" action="../addarea/searcharea" method="post">
-			<fieldset>
-				<legend class="hidden">통합검색</legend>
-				<label class="hidden">검색</label> 
-
-					<input type="text" placeholder="가고싶은 여행지를 검색하세요" style="font-family: 서울남산체 EB; font-size: 16px;" name="areaQuery"  /> 
-
-					<input class="button" type="submit" value="검색" />
-			</fieldset>
-		</form>
-	</section>
+	<div>
+		<section>
+			<h1 class="hidden">여행기 검색 폼</h1>
+			<form id="" action="../addarea/searcharea" method="post">
+				<fieldset>
+					<legend class="hidden">통합검색</legend>
+					<label class="hidden">검색</label> 
 	
-	<section id="area">		
-		
-				<c:forEach var="n" items="${List}" >
-					<ul id="area-specific">
-						<fieldset>
-							<li>장소명</li>
-							<li id="area-name" >${n.name}</li>
-							<li>주소</li>
-							<li>${n.firstAdd} ${n.lastAdd}</li>
-							<li></li>
-						</fieldset>
-					</ul>			
-				</c:forEach>
-		
-		
-		<a href="../addarea/createarea"><input id="give-area" type="button" value="장소추가하러가기" /></a>
-		
+						<input type="text" placeholder="가고싶은 여행지를 검색하세요" style="font-family: 서울남산체 EB; font-size: 16px;" name="areaQuery"  /> 
 	
-	</section>
-	
+						<input class="button" type="submit" value="검색" />
+				</fieldset>
+			</form>
+		</section>
+		
+		<section id="area">		
+			<h1 class="hidden">검색 결과</h1>
+					<c:forEach var="n" items="${List}" >
+						<ul class="area-specific">
+								<li>장소명</li>
+								<li id="area-name" >${n.name}</li>
+								<li>주소</li>
+								<li>${n.firstAdd} ${n.lastAdd}</li>
+						</ul>
+						<br>			
+					</c:forEach>
+			
+			
+			<a href="../addarea/createarea"><input id="give-area" type="button" value="장소추가하러가기" /></a>
+			
+		
+		</section>
+	</div>
 </body>
 </html>

@@ -32,8 +32,8 @@
 			</section>
 			<nav id="profile-menu">
 				<h1 class="hidden">프로필</h1>
-				<ul>
-					<li><img src="../resource/images/header-profile-pic.png"></li>
+				<ul class="clearfix">
+					<li><img src="../resource/upload/profilePicture/${m.picture}" /></li>
 					<li><security:authentication property="name"/> </li>
 					<li id="button-image"><img src="../resource/images/btn-menu-select.png"></li>
 						<ul class="sub">

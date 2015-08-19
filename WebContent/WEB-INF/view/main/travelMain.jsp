@@ -13,8 +13,9 @@
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 
-<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <link href="../resource/css/main.css" type="text/css" rel="stylesheet" />
+<link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../resource/js/header.js"></script>
 
 <style>
 
