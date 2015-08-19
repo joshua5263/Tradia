@@ -108,10 +108,14 @@
 			<h1 class="hidden">선택 지역</h1>
 			
 			<p>서울여행기</p>
-			<ul>
-				<li>추천순</li>
-				<li>최신순</li>
-			</ul>
+			<div>
+			 	<form method="get" action="travelMain">
+	                <input type="submit"   value="최신순" />
+			    </form>
+			 	<form method="get" action="travelMain?cmcode=${cm.code}">
+	                <input type="submit"   value="인기순" />
+	            </form>
+			</div>
 		</section>
 
 		<section id="travel-diary">

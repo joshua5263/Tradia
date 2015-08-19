@@ -79,6 +79,7 @@ public class MainController {
 			/*List<TravelDiary> list = travelDiaryDao.getTravelDiarys();
 	      model.addAttribute("List", list);*/
 			List<Course> list = courseDao.preferLocaCourses();
+			// list.remove() 리스트중 한개의 컬렉션을지울때
 			model.addAttribute("List", list);
 		}
 
@@ -92,9 +93,10 @@ public class MainController {
 	}
 
 	@RequestMapping(value="travelDetail", method=RequestMethod.GET)
-	public String travelDetail(Model model, String tcode){
+	public String travelDetail(Model model, String tcode, Principal principal){
 		TravelDiary travelDiary = travelDiaryDao.getTravelDiary(tcode);
 		model.addAttribute("td", travelDiary);
+		model.addAttribute("loginID", principal.getName());
 
 		return "/WEB-INF/view/main/travelDetail.jsp";
 	}
@@ -102,6 +104,7 @@ public class MainController {
 	@RequestMapping(value="travel_Del")
 	public String travelDeletel(Model model, String tcode){
 
+		
 		travelDiaryDao.removeTravelDiary(tcode);
 
 		return "redirect:travelMain";
@@ -168,18 +171,28 @@ public class MainController {
 	@RequestMapping(value="add_scrap")
 	public String addScrap(Model model, Scrap scrap,String tcode, Principal principal){
 
-		scrap.setMemberID(principal.getName());
-		scrap.setTravelCode(tcode);
+		Scrap scrapCheak = scrapDao.getScrap(principal.getName(),tcode);
+		String idCheak = travelDiaryDao.getTravelDiary(tcode).getMemberID();
+				
+		if (scrapCheak == null) 
+		{
+			if(!idCheak.equals(principal.getName()))
+			{
+				scrap.setMemberID(principal.getName());
+				scrap.setTravelCode(tcode);
 
-		scrapDao.addScrap(scrap);
+				scrapDao.addScrap(scrap);
+			}
+			
+		}
 
+				
 		model.addAttribute("tcode",tcode);
-
-
-
+		
 		return "redirect:travelDetail";
 
-
 	}
+	
+	
 
 }

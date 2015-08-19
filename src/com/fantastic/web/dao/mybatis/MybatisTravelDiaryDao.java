@@ -171,6 +171,7 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 		dao.addAfterword(travelCode, memo, totalCost);
 	}*/
+	
 	@Override
 	public void addAfterword(String travelCode, String memo, String totalCost) {
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);

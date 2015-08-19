@@ -144,6 +144,7 @@ auto
 			<form action="update_member_profile3" method="post">
 				<dd class="hidden">내 소개</dd>
 				<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
+
 				<label class="hidden">수정</label> <input id="myProfile" type="submit"
 					value="수정" />
 			</form>
@@ -160,6 +161,12 @@ auto
 			</dd>
 		</div>
 	</section> 
+
+	  	<section id="normal-info">
+			<section id="aaa">
+				<h1 class="hidden">지역 페이지</h1>
+			
+
 		<section>
 			<h1 class="hidden">지역 페이지</h1>
 			<section id="mypage-list">

@@ -16,7 +16,7 @@ public interface ScrapDao {
 
 	public List<Scrap> getScraps();
 	
-	public Scrap getScrap(String memberID);
+	public Scrap getScrap(String memberID, String travelCode);
 
 	public int addScrap(Scrap scrap);
 

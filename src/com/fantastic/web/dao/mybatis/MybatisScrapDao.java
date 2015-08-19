@@ -42,12 +42,12 @@ public class MybatisScrapDao implements ScrapDao{
 	}
 
 	@Override
-	public Scrap getScrap(String memberID) {
+	public Scrap getScrap(String memberID, String travelCode) {
 		// TODO Auto-generated method stub
 
 		ScrapDao dao = session.getMapper(ScrapDao.class);
 		
-		return dao.getScrap(memberID);
+		return dao.getScrap(memberID,travelCode);
 	}
 
 	@Override
