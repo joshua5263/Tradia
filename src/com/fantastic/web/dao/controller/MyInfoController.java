@@ -230,4 +230,38 @@ public class MyInfoController{
 		
 		return "redirect:myinfo";
 	}
+	
+	//프로필 배경 업로드
+	@RequestMapping(value="profileBgFileUpload", method=RequestMethod.POST)
+	public String profileBgFileUpload(MultipartFile file, HttpServletRequest request, HttpServletResponse response, Member m, Principal principal) throws IOException, ServletException{
+		
+		if(!file.isEmpty()){
+			ServletContext application = request.getServletContext();
+			
+			String url = "/resource/upload/profileBackground";
+			String path = application.getRealPath(url);
+			String temp = file.getOriginalFilename();//part.getSubmittedFileName();
+			String fname = temp.substring(temp.lastIndexOf('\\') + 1);
+			String fpath = path + "\\" + fname;
+		
+			InputStream ins = file.getInputStream();//part.getInputStream();
+			OutputStream outs = new FileOutputStream(fpath);
+			
+			byte[] aa = new byte[1024];
+			int len = 0;
+			
+			while((len = ins.read(aa, 0, 1024)) >= 0)
+			outs.write(aa, 0, len);
+			
+			outs.flush();
+			outs.close();
+			ins.close();
+			
+			//m.setPicture(fpath);
+			memberDao.addProfileBackground(fname, principal.getName());
+			
+		}
+		
+		return "redirect:myinfo";
+	}
 }

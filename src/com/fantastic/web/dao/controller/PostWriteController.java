@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fantastic.web.dao.AreasDao;
 import com.fantastic.web.dao.CourseDao;
+import com.fantastic.web.dao.MemberDao;
 import com.fantastic.web.dao.TravelDiaryDao;
 import com.fantastic.web.dao.mybatis.MybatisCourseDao;
 import com.fantastic.web.dao.mybatis.MybatisTravelDiaryDao;
 import com.fantastic.web.vo.Course;
+import com.fantastic.web.vo.Member;
 import com.fantastic.web.vo.TravelDiary;
 
 @Controller
@@ -27,6 +29,13 @@ public class PostWriteController{
 	private TravelDiaryDao dao;
 	private CourseDao courseDao;
 	private AreasDao areasDao;
+	private MemberDao memberDao;
+	
+	
+	@Autowired
+	public void setMemberDao(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
 
 	@Autowired
 	public void setDao(TravelDiaryDao dao) {
@@ -45,7 +54,11 @@ public class PostWriteController{
 
 	//	GET 요청을 받을 경우
 	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.GET)
-	public String postBeforeWrite() {
+	public String postBeforeWrite(Member m, Principal principal, HttpServletRequest request) {
+		
+		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
+		
 		return "/WEB-INF/view/post/postBeforeWrite.jsp";
 	}
 	
@@ -75,7 +88,10 @@ public class PostWriteController{
 	}
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.GET)
-	public String postCourseWrite(){
+	public String postCourseWrite(Member m, Principal principal, HttpServletRequest request){
+		
+		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
 		
 		return "/WEB-INF/view/post/postCourseWrite.jsp";
 	}
@@ -136,7 +152,11 @@ public class PostWriteController{
 	}
 
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.GET)
-	public String postAfterwordWrite() {
+	public String postAfterwordWrite(Member m, Principal principal, HttpServletRequest request) {
+		
+		m = memberDao.getMember(principal.getName());
+		request.setAttribute("m", m);
+		
 		return "/WEB-INF/view/post/postAfterwordWrite.jsp";
 	}
 

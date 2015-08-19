@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,8 +11,9 @@
 <title>Insert title here</title>
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/modernizr.js"></script>
-
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../resource/js/header.js"></script>
 
 <style>
 /* .clearfix:after {
@@ -103,19 +104,7 @@
 	<!-- 어사이드영역 -->
 	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
       
-      <section>
-			<h1 class="hidden">프로필정보</h1>
-			
-			<section id="profile-bg">
-				<h1 class="hidden">프로필배경</h1>
-				<section>
-					<h1 class="hidden">프로필사진</h1>
-					<ul id="profile">
-						<li id="profile-pic"></li>
-						<li><security:authentication property="name"/></li>
-					</ul>
-				</section>
-			</section>
+     
    
    <!-- <nav id="profile">
    <h1>프로필</h1>
@@ -133,6 +122,26 @@
    </nav> -->
       
 	<main id="main" class="clearfix:after">
+	
+		<section id="profile-bg">
+				<h1 class="hidden">프로필배경</h1>
+				<section>
+					<h1 class="hidden">프로필사진</h1>
+					<ul id="profile">
+						<li id="profile-pic">							
+							<img src="../resource/upload/profilePicture/${m.picture}" />
+						</li>
+						<li>
+							<form action="fileUpload" method="post" enctype="multipart/form-data">
+								<input type="file" id="file-upload" name="file" />
+								<input type="submit" value="수정하기" />
+							</form>
+						</li>
+						<li><security:authentication property="name" /></li>
+					</ul>
+				</section>
+			</section>
+	
 		<section id="my-info">
 			<div>
 				<form action="update_member_profile3" method="post">

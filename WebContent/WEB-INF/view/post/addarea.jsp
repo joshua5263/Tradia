@@ -7,9 +7,43 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+<script type="text/javascript">
+	window.addEventListener("load", function(){
+		
+		var area = document.querySelector("#area");
+		area.onclick = function(event){
+			
+			if(event.target.nodeName == "LI"){
+				//alert("target : " + event.target.innerText + ", currentTarget : " + event.currentTarget.nodeName);			
+				
+				var areaName = event.target.parentNode.querySelectorAll("li")[1].innerText;
+				opener.document.getElementById("course-area").value = areaName;
+				
+				self.close();
+			}
+			
+			else if(event.target.nodeName == "UL"){
+				var areaNameUl = event.target.querySelectorAll("li")[1].innerText;
+				opener.document.getElementById("course-area").value = areaNameUl;
+			}
+		};
+		
+		
+	});
+
+</script>
+
 <style>
 	body{
-		background: url("../resource/images/add-area-bg.png") no-repeat center;
+		background: url("../resource/images/add-area-bg.png");
+	}
+	.area-specific{
+		border: 1px solid white;
+	}
+	
+	.area-specific:HOVER{
+		
+		background-color: rgba( 255, 255, 255, 0.7 );
 	}
 
 </style>
@@ -29,11 +63,13 @@
 		</form>
 	</section>
 	
-	<section>
+	<section id="area">
 		<c:forEach var="n" items="${List}">
-			<ul>
-				<li>장소명 ${n.name}</li>
-				<li>주소 ${n.firstAdd} ${n.lastAdd}</li>
+			<ul class="area-specific">
+				<li>장소명</li>
+				<li id="area-name" >${n.name}</li>
+				<li>주소</li>
+				<li>${n.firstAdd} ${n.lastAdd}</li>
 			</ul>
 		
 		</c:forEach>

@@ -37,6 +37,9 @@ public interface MemberDao {
    //프로필 사진 등록하기
    public int addProfilePicture(String picture, String id);
    
+   //프로필 배경 등록하기
+   public int addProfileBackground(String background, String id);
+   
    //회원정보 변경하기(비밀번호 변경)
    public int modMemberInfo(String password, String id);
 
