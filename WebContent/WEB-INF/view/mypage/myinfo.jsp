@@ -19,7 +19,7 @@
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
-
+<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/header.js"></script>
 
@@ -133,35 +133,33 @@
 
 		<main id="main">
 
-
 			<section>
 				<h1 class="hidden">프로필정보</h1>
 	
-				<section id="profile-bg">
+				<section>
 					<h1 class="hidden">프로필배경</h1>
-					<div>
-						<img src="../resource/upload/profileBackground/${m.background}" />
-						<form action="profileBgFileUpload" method="post" enctype="multipart/form-data">
+					<div id="profile-bg">
+						<img src="../resource/upload/profileBackground/${m.background}"/>
+						<form id="profile-bg-back" action="profileBgFileUpload" method="post" enctype="multipart/form-data">
 							<input type="file" id="profile-bg-file-upload" name="file" />
 							<input type="submit" value="배경수정" />
 						</form>
 					</div>
-					<section>
+					<div id="profile-image">
 						<h1 class="hidden">프로필사진</h1>
-						<ul id="profile">						
-							<li id="profile-pic">							
-								<img src="../resource/upload/profilePicture/${m.picture}" />
-							</li>
-							<li>
-								<form action="fileUpload" method="post" enctype="multipart/form-data">
+											
+							<p id="profile-pic">							
+								<img src="../resource/upload/profilePicture/${m.picture}" /></p>
+							
+							
+								<form id="profile-pic-back" action="fileUpload" method="post" enctype="multipart/form-data">
 									<input type="file" id="file-upload" name="file" />
 									<input type="submit" value="프로필수정" />
 								</form>
-							</li>
-							<li><security:authentication property="name" /></li>
-						</ul>
-					</section>
+							<p id="profile-name"><security:authentication property="name" /></p>
+					</div>
 				</section>
+			</section>
 	
 				<!--  <nav id="profile">
 	         <h1 class="hidden">프로필</h1>

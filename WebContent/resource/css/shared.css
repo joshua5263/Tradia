@@ -99,43 +99,6 @@
 		cursor: pointer;
 	}
 	
-	#profile-bg{
-		margin-left:auto;
-		margin-right:auto;
-		width:980px;
-		height:335px;
-	}
-	
-	#profile-bg img{
-		width:980px;
-		height:335px;
-	}
-	
-	#profile-pic{
-		/* border: blue 1px solid; */
-		margin-left:25px;
-	}
-	
-	#profile-pic img{
-		padding-left:50px;
-		width:150px;
-
-		height:43px;
-		background: url("../images/profile-pic.png") no-repeat bottom;
-
-		height:150px;
-		background:no-repeat center;
-	}
-	
-	#profile li{
-		/* border: blue 1px solid; */
-		padding-top: 292px;
-		padding-left: 5px;
-		float: left;
-		font-size: 40px;
-		color:white;
-	}
-	
 	#travel-search-form{
 		width: 30%; /* 534px - 51px; */
 		height:51px;

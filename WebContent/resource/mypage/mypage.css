@@ -39,10 +39,65 @@
 	margin-left: 30px;
 }
 
-/* #aaa {
-	border: 1px red solid;	
-} */
-
+	#profile-bg{
+		margin-left:auto;
+		margin-right:auto;
+		width:980px;
+		height:335px;
+	}
+	
+/* 	#profile-bg div {
+		border: blue 1px solid;
+	}
+	 */
+	 
+	#profile-bg img{
+		width:980px;
+		height:335px;
+	}
+	/* 배경사진 올리기버튼 */
+	#profile-bg-back{
+		display: inline-block;
+		/* border: blue 1px solid; */
+		margin-top: -30px;
+		margin-left: 880px;
+	}
+	/* 내사진 큰 박스 */
+	#profile-image {
+		width: 600px;
+		height: 185px;
+		/* display: inline-block; */
+		/* border: blue 1px solid; */
+		margin-top: -185px;
+	}
+	/* 내사진 올리기버튼 */
+	#profile-pic-back {
+		/* border: red 1px solid; */
+		/* display: inline-block; */
+		margin-top: -180px;
+		margin-left: 180px;
+	}
+	/* 내사진 액자 */
+	#profile-pic {
+		/* border: red 1px solid; */
+		display: inline-block;
+		/* float: left; */
+	}
+	/* 내사진 */
+	#profile-pic img{
+		padding-left:50px;
+		width:180px;
+		height:180px;
+	}
+	#profile-name {
+		/* border: red 1px solid; */
+		display: inline-block;
+		margin-top: 110px;
+		margin-left: 240px;
+		text-align: 40px;
+		font-size: 40px;
+	}
+	
 #mypage-list {
 	/* border: 1px maroon solid; */
 	display: inline-block;

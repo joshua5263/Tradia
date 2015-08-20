@@ -12,10 +12,6 @@
 <script type="text/javascript" src="../resource/js/header.js"></script>
 <style type="text/css">
 
-#information {
-	/* border: 3px red solid; */
-}
-
 .clearfix:after {	
 	content: ".";
 	display: block;
@@ -92,22 +88,31 @@
    </aside> -->
 		<main id="main" class="clearfix:after">
 
-		<section id="profile-bg">
-				<h1 class="hidden">프로필배경</h1>
+			<section>
+				<h1 class="hidden">프로필정보</h1>
+	
 				<section>
-					<h1 class="hidden">프로필사진</h1>
-					<ul id="profile">
-						<li id="profile-pic">							
-							<img src="../resource/upload/profilePicture/${m.picture}" />
-						</li>
-						<li>
-							<form action="fileUpload" method="post" enctype="multipart/form-data">
-								<input type="file" id="file-upload" name="file" />
-								<input type="submit" value="수정하기" />
-							</form>
-						</li>
-						<li><security:authentication property="name" /></li>
-					</ul>
+					<h1 class="hidden">프로필배경</h1>
+					<div id="profile-bg">
+						<img src="../resource/upload/profileBackground/${m.background}"/>
+						<form id="profile-bg-back" action="profileBgFileUpload" method="post" enctype="multipart/form-data">
+							<input type="file" id="profile-bg-file-upload" name="file" />
+							<input type="submit" value="배경수정" />
+						</form>
+					</div>
+					<div id="profile-image">
+						<h1 class="hidden">프로필사진</h1>
+											
+							<p id="profile-pic">							
+								<img src="../resource/upload/profilePicture/${m.picture}" /></p>
+							
+							
+								<form id="profile-pic-back" action="fileUpload" method="post" enctype="multipart/form-data">
+									<input type="file" id="file-upload" name="file" />
+									<input type="submit" value="프로필수정" />
+								</form>
+							<p id="profile-name"><security:authentication property="name" /></p>
+					</div>
 				</section>
 			</section>
 
