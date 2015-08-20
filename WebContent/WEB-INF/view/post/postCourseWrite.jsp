@@ -106,10 +106,10 @@
 		            <fieldset>
 			            <legend>사진입력</legend>
 			            <label>사진 1</label> <input type="file" name="file"/><br>
-			            <label>사진 2</label> <input type="file" /><br>
-			            <label>사진 3</label> <input type="file" /><br>
-			            <label>사진 4</label> <input type="file" /><br>
-			            <label>사진 5</label> <input type="file" /><br>
+			            <label>사진 2</label> <input type="file" name="files"/><br>
+			            <label>사진 3</label> <input type="file" name="files"/><br>
+			            <label>사진 4</label> <input type="file" name="files"/><br>
+			            <label>사진 5</label> <input type="file" name="files"/><br>
 		            </fieldset>
 		            <fieldset>
 		               <legend>느낌입력</legend>
