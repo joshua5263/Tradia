@@ -49,10 +49,6 @@ window.addEventListener("load", function(){
 
 <style type="text/css">
 
-#information {
-	/* border: 3px red solid; */
-}
-
 .clearfix:after {	
 	content: ".";
 	display: block;
@@ -143,34 +139,34 @@ window.addEventListener("load", function(){
 		<main id="main" class="clearfix:after">
 
 			<section>
-				<h1 class="hidden">프로필정보</h1>	
-				<section id="profile-bg">
+				<h1 class="hidden">프로필정보</h1>
+	
+				<section>
 					<h1 class="hidden">프로필배경</h1>
-					<div>
-						<img src="../resource/upload/profileBackground/${m.background}" />
-						<form action="profileBgFileUpload" method="post" enctype="multipart/form-data">
+					<div id="profile-bg">
+						<img src="../resource/upload/profileBackground/${m.background}"/>
+						<form id="profile-bg-back" action="profileBgFileUpload" method="post" enctype="multipart/form-data">
 							<input type="file" id="profile-bg-file-upload" name="file" />
 							<span>배경파일선택</span>
 							<input type="submit" value="배경적용" />
 						</form>
 					</div>
-					<section>
+					<div id="profile-image">
 						<h1 class="hidden">프로필사진</h1>
-						<ul id="profile">						
-							<li id="profile-pic">							
-								<img src="../resource/upload/profilePicture/${m.picture}" />
-							</li>
-							<li>
-								<form action="fileUpload" method="post" enctype="multipart/form-data">
+											
+							<p id="profile-pic">							
+								<img src="../resource/upload/profilePicture/${m.picture}" /></p>
+							
+							
+								<form id="profile-pic-back" action="fileUpload" method="post" enctype="multipart/form-data">
 									<input type="file" id="file-upload" name="file" />
 									<span>프로필파일선택</span>
 									<input type="submit" value="프로필적용" />
 								</form>
-							</li>
-							<li><security:authentication property="name" /></li>
-						</ul>
-					</section>
+							<p id="profile-name"><security:authentication property="name" /></p>
+					</div>
 				</section>
+			</section>
 				<section id="information">
 					<section id="my-info">
 						<div>
