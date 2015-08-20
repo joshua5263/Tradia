@@ -1,10 +1,15 @@
 package com.fantastic.web.dao.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.Principal;
 import java.util.List;
 
 import javafx.scene.control.Alert;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fantastic.web.dao.AreasDao;
 import com.fantastic.web.dao.CourseDao;
@@ -97,7 +103,8 @@ public class PostWriteController{
 	}
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
-	public String postCourseWrite(Course course, Principal principal, String option, String areaName){
+	public String postCourseWrite(Course course, Principal principal, String option, String areaName,
+			MultipartFile file, HttpServletRequest req) throws IOException{
 		/*로그인한 멤버의 id를 얻어옴*/
 		String memberID = principal.getName();
 		
@@ -110,6 +117,34 @@ public class PostWriteController{
 		/*얻어온 DiaryCode를 추가*/
 		course.setTravelCode(lastCode);
 		courseDao.addCourse(course);
+		
+		
+		/*--------------------사진 추가 부분--------------------*/
+		ServletContext application = req.getServletContext();
+		/*멤버의 마지막 courseCode 구하기*/
+		String courseCode = courseDao.getLastCode(lastCode);
+		
+		String url = "/resource/customer/upload/coursePic";
+		String path = application.getRealPath(url);
+		String temp = file.getOriginalFilename();
+		String fname = temp.substring(temp.lastIndexOf("//") + 1);
+		String fpath = path + "//" + fname;
+		InputStream ins = file.getInputStream();
+		OutputStream outs = new FileOutputStream(fpath);
+		
+		byte[] bowl = new byte[1024];
+		int len = 0;
+		
+		while((len = ins.read(bowl, 0, 1024)) >= 0)
+			outs.write(bowl, 0, len);
+		
+		outs.flush();
+		outs.close();
+		ins.close();
+		
+		/*첫번째 사진 추가*/
+		courseDao.addPic(courseCode, fpath);
+		
 		
 		if(option.equals("course")){
 			return "redirect:postCourseWrite";
@@ -161,7 +196,6 @@ public class PostWriteController{
 	}
 
 	
-	/*----------------작성중인 부분입니다.----------------*/
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.POST)
 	public String postAfterwordWrite(String memo, Principal principal, HttpServletRequest req) {
 		String travelCode = dao.getLastCode(principal.getName());
@@ -171,5 +205,6 @@ public class PostWriteController{
 		dao.addAfterword(travelCode, memo, totalCost);
 		return "redirect:/main/travelMain";
 	}
+	/*----------------작성중인 부분입니다.----------------*/
 	
 }

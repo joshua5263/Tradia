@@ -149,6 +149,23 @@ public List<Course> preferLocaCoursesPop() {
 	
 	return list;
 }
+
+/*----------------작성중인 부분입니다.----------------*/
+/*코스 첫번째 사진 업로드 by 한*/
+@Override
+public void addPic(String courseCode, String path) {
+	CourseDao dao = session.getMapper(CourseDao.class);
+	dao.addPic(courseCode, path);
+}
+
+/*한 유저의 마지막 courseCode 구하기 by한*/
+@Override
+public String getLastCode(String travelCode) {
+	CourseDao dao = session.getMapper(CourseDao.class);
+	String lastCode = dao.getLastCode(travelCode);
+	
+	return lastCode;
+}
    
    
 }

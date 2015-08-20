@@ -70,7 +70,7 @@
 		         <section>
 		            <h1>코스 정보</h1>
 		      
-		         <form method="post">
+		         <form method="post" enctype="multipart/form-data">
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
@@ -105,7 +105,7 @@
 		            
 		            <fieldset>
 			            <legend>사진입력</legend>
-			            <label>사진 1</label> <input type="file" /><br>
+			            <label>사진 1</label> <input type="file" name="file"/><br>
 			            <label>사진 2</label> <input type="file" /><br>
 			            <label>사진 3</label> <input type="file" /><br>
 			            <label>사진 4</label> <input type="file" /><br>
