@@ -33,7 +33,7 @@
     	   			 
     	   			var a = confirm("댓글을 삭제하시겠습니까?");
     	   			if(a== false)
-   	   		  	   			return false;
+    	   			 	  return false;
     	   			
     	   			
     	   		};

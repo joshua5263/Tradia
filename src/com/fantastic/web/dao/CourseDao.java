@@ -28,4 +28,9 @@ public interface CourseDao {
    public List<Course> preferLocaCourse(String preferLocation);
    
    public List<Course> preferLocaCourses();
+   
+   public List<Course> preferLocaCoursePop(String preferLocation);
+   
+   public List<Course> preferLocaCoursesPop();
+   
 }

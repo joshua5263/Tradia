@@ -49,5 +49,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.fantastic.web.vo.Course">
 		SELECT * FROM CourseView order by travelDate DESC
 	</select>
+	
+	<!-- 인기순정렬 -->
+	<select id="preferLocaCoursePop" parameterType="String"
+		resultType="com.fantastic.web.vo.Course">
+		SELECT * FROM CourseView where AreasAdd = #{preLoca} order by likeCnt DESC
+	</select>
+	
+	<!-- 인기순정렬(전국) -->
+	<select id="preferLocaCoursesPop" parameterType="String"
+		resultType="com.fantastic.web.vo.Course">
+		SELECT * FROM CourseView order by likeCnt DESC
+	</select>
 
 </mapper>
