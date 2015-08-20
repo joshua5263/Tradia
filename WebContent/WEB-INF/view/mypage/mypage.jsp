@@ -10,6 +10,43 @@
 <meta charset="UTF-8">
 <link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../resource/js/header.js"></script>
+
+<script type="text/javascript">
+window.addEventListener("load", function(){
+	var btnProBgFile = document.querySelector("#profile-bg > div > form > span");
+	btnProBgFile.onclick = function(){
+		//alert("안녕");
+		
+		//클릭 이벤트 객체 만들기
+		var event = new MouseEvent("click", {
+			'view' : window,
+			'bubbles' : true,
+			'cancelable' : true				
+		});
+		
+		//파일 업로드 기능 가져오기
+		var inputFile = document.querySelector("#profile-bg-file-upload");
+		inputFile.dispatchEvent(event);
+	};
+	
+	var btnProFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > span");
+	btnProFile.onclick = function(){
+		//alert("안녕");
+		
+		//클릭 이벤트 객체 만들기
+		var event = new MouseEvent("click", {
+			'view' : window,
+			'bubbles' : true,
+			'cancelable' : true				
+		});
+		
+		//파일 업로드 기능 가져오기
+		var inputFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD");
+		inputFile.dispatchEvent(event);
+	};
+});
+</script>
+
 <style type="text/css">
 
 #information {
@@ -23,6 +60,19 @@
 	visibility: hidden;
 	line-height: 0;
 	height: 0;
+}
+
+#profile-bg-file-upload,
+#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD{
+	display: none;
+}
+
+#profile-bg > div > form > span,
+#profile > li:FIRST-CHILD+li > form > span{
+	background: pink;
+	cursor: pointer;
+	font-size: 15px;
+	color:black;
 }
 
 
@@ -92,72 +142,62 @@
    </aside> -->
 		<main id="main" class="clearfix:after">
 
-		<section id="profile-bg">
-				<h1 class="hidden">프로필배경</h1>
-				<section>
-					<h1 class="hidden">프로필사진</h1>
-					<ul id="profile">
-						<li id="profile-pic">							
-							<img src="../resource/upload/profilePicture/${m.picture}" />
-						</li>
-						<li>
-							<form action="fileUpload" method="post" enctype="multipart/form-data">
-								<input type="file" id="file-upload" name="file" />
-								<input type="submit" value="수정하기" />
-							</form>
-						</li>
-						<li><security:authentication property="name" /></li>
-					</ul>
-				</section>
-			</section>
-
-			<!--  <nav id="profile">
-      <h1>프로필</h1>
-      <form method="post">
-         <ul>
-            <li>프로필 사진</li>
-            <dl class="article-detail-row">
-               <dt class="article-detail-title">사진수정</dt>
-               <dd class="article-detail-data">
-                  &nbsp;<input type="file" id="txtFile" name="file" />
-               </dd>
-               <input type="submit" value="수정" />
-            </dl>
-         </ul>
-      </form>
-   </nav> -->
-			<section id="information">
-				<section id="my-info">
+			<section>
+				<h1 class="hidden">프로필정보</h1>	
+				<section id="profile-bg">
+					<h1 class="hidden">프로필배경</h1>
 					<div>
-						<form action="update_member_profile1" method="post">
-						<dd class="hidden">내 소개</dd>
-						<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
-						<label class="hidden">수정</label> 
-						<input id="myProfile" type="submit" value="수정"/>
+						<img src="../resource/upload/profileBackground/${m.background}" />
+						<form action="profileBgFileUpload" method="post" enctype="multipart/form-data">
+							<input type="file" id="profile-bg-file-upload" name="file" />
+							<span>배경파일선택</span>
+							<input type="submit" value="배경적용" />
 						</form>
 					</div>
-					<div>
-						<dd>
-							<a href="mypage">My Page</a>
-						</dd>
-						<dd>
-							<a href="myinfo">내 정보</a>
-						</dd>
-						<dd>
-							<a href="scrapinfo">스크랩 목록</a>
-						</dd>
-					</div>
+					<section>
+						<h1 class="hidden">프로필사진</h1>
+						<ul id="profile">						
+							<li id="profile-pic">							
+								<img src="../resource/upload/profilePicture/${m.picture}" />
+							</li>
+							<li>
+								<form action="fileUpload" method="post" enctype="multipart/form-data">
+									<input type="file" id="file-upload" name="file" />
+									<span>프로필파일선택</span>
+									<input type="submit" value="프로필적용" />
+								</form>
+							</li>
+							<li><security:authentication property="name" /></li>
+						</ul>
+					</section>
 				</section>
-				<!-- <section id="normal-info">
-					<div id="map" style="width: 500px; height: 400px;"></div>
-					<script type="text/javascript"
-						src="//apis.daum.net/maps/maps3.js?apikey=발급받은 API KEY를 넣으시면 됩니다."></script>
-				</section> -->
+				<section id="information">
+					<section id="my-info">
+						<div>
+							<form action="update_member_profile1" method="post">
+							<div class="hidden">내 소개</div>
+							<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
+							<label class="hidden">수정</label> 
+							<input id="myProfile" type="submit" value="수정"/>
+							</form>
+						</div>
+						<div>
+							<dd>
+								<a href="mypage">My Page</a>
+							</dd>
+							<dd>
+								<a href="myinfo">내 정보</a>
+							</dd>
+							<dd>
+								<a href="scrapinfo">스크랩 목록</a>
+							</dd>
+						</div>
+					</section>
+				</section>
 				<section>
 					<h1 class="hidden">지역 페이지</h1>
 					<section id="mypage-list">
 						<h1 class="hidden">선택 지역</h1>
-
 						<p>(서울)여행기</p>
 						<ul>
 							<li><input id="mypage-recommend" type="submit" value="추천순"/></li>
@@ -215,11 +255,9 @@
 							</div>
 							</div>
 						</c:forEach>
-
 					</section>
-
 				</section>
-			</section>
+			</section>			
 		</main>
 	</div>
 

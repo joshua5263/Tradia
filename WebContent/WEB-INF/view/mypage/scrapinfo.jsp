@@ -15,6 +15,42 @@
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/header.js"></script>
 
+<script type="text/javascript">
+window.addEventListener("load", function(){
+	var btnProBgFile = document.querySelector("#profile-bg > div > form > span");
+	btnProBgFile.onclick = function(){
+		//alert("안녕");
+		
+		//클릭 이벤트 객체 만들기
+		var event = new MouseEvent("click", {
+			'view' : window,
+			'bubbles' : true,
+			'cancelable' : true				
+		});
+		
+		//파일 업로드 기능 가져오기
+		var inputFile = document.querySelector("#profile-bg-file-upload");
+		inputFile.dispatchEvent(event);
+	};
+	
+	var btnProFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > span");
+	btnProFile.onclick = function(){
+		//alert("안녕");
+		
+		//클릭 이벤트 객체 만들기
+		var event = new MouseEvent("click", {
+			'view' : window,
+			'bubbles' : true,
+			'cancelable' : true				
+		});
+		
+		//파일 업로드 기능 가져오기
+		var inputFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD");
+		inputFile.dispatchEvent(event);
+	};
+});
+</script>
+
 <style>
 /* .clearfix:after {
    content: ".";
@@ -101,141 +137,167 @@ auto
 	height: 40px;
 }
 
+#profile-bg-file-upload,
+#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD{
+	display: none;
+}
+
+#profile-bg > div > form > span,
+#profile > li:FIRST-CHILD+li > form > span{
+	background: pink;
+	cursor: pointer;
+	font-size: 15px;
+	color:black;
+}
+
 </style>
 </head>
 <body class="content-wrapper clearfix:after">
-	<header> <jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
+	<header> 
+	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
 	</header>
 
 	<!-- 바디영역 -->
 
 	<div id="body" class="wrap-content clearfix">
 	
-	<!-- 어사이드영역 -->
-	<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include> 
+		<!-- 어사이드영역 -->
+		<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include> 
 
       
-	<main id="main" class="clearfix:after">
-	
-		<section id="profile-bg">
-				<h1 class="hidden">프로필배경</h1>
-				<section>
-					<h1 class="hidden">프로필사진</h1>
-					<ul id="profile">
-						<li id="profile-pic">							
-							<img src="../resource/upload/profilePicture/${m.picture}" />
-						</li>
-						<li>
-							<form action="fileUpload" method="post" enctype="multipart/form-data">
-								<input type="file" id="file-upload" name="file" />
-								<input type="submit" value="수정하기" />
-							</form>
-						</li>
-						<li><security:authentication property="name" /></li>
-					</ul>
+		<main id="main" class="clearfix:after">
+		
+			<section id="profile-bg">
+					<h1 class="hidden">프로필정보</h1>	
+				<section id="profile-bg">
+					<h1 class="hidden">프로필배경</h1>
+					<div>
+						<img src="../resource/upload/profileBackground/${m.background}" />
+						<form action="profileBgFileUpload" method="post" enctype="multipart/form-data">
+							<input type="file" id="profile-bg-file-upload" name="file" />
+							<span>배경파일선택</span>
+							<input type="submit" value="배경적용" />
+						</form>
+					</div>
+					<section>
+						<h1 class="hidden">프로필사진</h1>
+						<ul id="profile">						
+							<li id="profile-pic">							
+								<img src="../resource/upload/profilePicture/${m.picture}" />
+							</li>
+							<li>
+								<form action="fileUpload" method="post" enctype="multipart/form-data">
+									<input type="file" id="file-upload" name="file" />
+									<span>프로필파일선택</span>
+									<input type="submit" value="프로필적용" />
+								</form>
+							</li>
+							<li><security:authentication property="name" /></li>
+						</ul>
+					</section>
 				</section>
+		
+				<section id="my-info">
+					<div>
+						<form action="update_member_profile3" method="post">
+						<dd class="hidden">내 소개</dd>
+						<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
+		
+						<label class="hidden">수정</label> <input id="myProfile" type="submit"
+							value="수정" />
+						</form>
+					</div>
+					<div>
+						<dd>
+							<a href="mypage">My Page</a>
+						</dd>
+						<dd>
+							<a href="myinfo">내 정보</a>
+						</dd>
+						<dd>
+							<a href="scrapinfo">스크랩 목록</a>
+						</dd>
+					</div>
+				</section> 
 			</section>
 	
-		<section id="my-info">
-			<div>
-				<form action="update_member_profile3" method="post">
-				<dd class="hidden">내 소개</dd>
-				<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
-
-				<label class="hidden">수정</label> <input id="myProfile" type="submit"
-					value="수정" />
-				</form>
-			</div>
-			<div>
-				<dd>
-					<a href="mypage">My Page</a>
-				</dd>
-				<dd>
-					<a href="myinfo">내 정보</a>
-				</dd>
-				<dd>
-					<a href="scrapinfo">스크랩 목록</a>
-				</dd>
-			</div>
-		</section> 
-
-	  	<section id="normal-info">
-			<section id="aaa">
+		  	<section id="normal-info">
+				<section id="aaa">
+					<h1 class="hidden">지역 페이지</h1>
+				
+	
+			<section>
 				<h1 class="hidden">지역 페이지</h1>
-			
-
-		<section>
-			<h1 class="hidden">지역 페이지</h1>
-			<section id="mypage-list">
-			<h1 class="hidden">선택 지역</h1>
-			<p>(서울)여행기</p>
-			<ul>
-				<li><input id="mypage-recommend" type="submit" value="추천순" /></li>
-				<li><input id="myPage-updated" type="submit" value="최신순" /></li>
-			</ul>
-		</section> 
-		<section id="travel-diary"> 
-			<c:forEach var="sds" items="${sc}" varStatus="scc">
-			
-				<div id="travel-diary-fieldset">
-					<div id="travel-diary-fieldset-in">
-						<section id="diary-top">
-							<h1 class="hidden">여행기${scc.count}</h1>
-							<h1 class="hidden">여행기 ${scc.count}등록정보</h1>
-							<ul>
-								<li id="travel-diary-profile-pic"><a href=""><img
-										src="../resource/images/header-profile-pic.png"><%-- ${sds.mpic} --%></a></li>
-								<li id="travel-diary-profile-id"><a href="">${sds.memberID}</a></li>
-							</ul>
-							<ul>
-								<li id="travel-diary-profile-day"><fmt:formatDate
-										value="${sds.regDate}" pattern="yyyy년MM월dd일" /></li>
-								<li id="travel-diary-profile-title"><a
-									href="travelDetail?tcode=${sds.code}">${sds.title}</a></li>
-							</ul>
-							<ul>
-								<li id="travel-diary-profile-like"><img
-									src="../resource/images/btn-like.png"></li>
-								<li>${sds.likeCnt}</li>
-							</ul>
-						</section>
-						<section id="diary-middle">
-							<h1>
-								<p class="hidden">여행기 ${scc.count}코스</p>
-							</h1>
-							<ul>
-								<li>Start</li>
-								<c:forEach var="c" items="${sds.oneCourse}">
-									<li><a href="">${c.areasName}</a></li>
-								</c:forEach>
-								<li>End</li>
-							</ul>
-						</section>
-						<section>
-							<h1 class="hidden">코스별 이미지</h1>
-							<section id="course-image"> 
-								<%-- <c:forEach var="c" items="${sds.oneCourse}"
-									varStatus="cc"> --%>
-								<h1 class="hidden">${scc.count}-${cc.count}코스이미지</h1>
+				<section id="mypage-list">
+				<h1 class="hidden">선택 지역</h1>
+				<p>(서울)여행기</p>
+				<ul>
+					<li><input id="mypage-recommend" type="submit" value="추천순" /></li>
+					<li><input id="myPage-updated" type="submit" value="최신순" /></li>
+				</ul>
+			</section> 
+			<section id="travel-diary"> 
+				<c:forEach var="sds" items="${sc}" varStatus="scc">
+				
+					<div id="travel-diary-fieldset">
+						<div id="travel-diary-fieldset-in">
+							<section id="diary-top">
+								<h1 class="hidden">여행기${scc.count}</h1>
+								<h1 class="hidden">여행기 ${scc.count}등록정보</h1>
 								<ul>
-									<li>a${c.pic1}</li>
-									<li>b${c.pic2}</li>
-									<li>c${c.pic3}</li>
-									<li>d${c.pic4}</li>
+									<li id="travel-diary-profile-pic"><a href=""><img
+											src="../resource/images/header-profile-pic.png"><%-- ${sds.mpic} --%></a></li>
+									<li id="travel-diary-profile-id"><a href="">${sds.memberID}</a></li>
 								</ul>
-							<%-- </c:forEach> --%> 
-							</section> 
-						</section>
-					<form action="scrap_del?sCode=${sds.travelCode}" method="post" \>
-					<label class="hidden">스크랩삭제</label> <input id="scrapDel"
-						type="submit" value="삭제 ${scc.count }" />
-					</form>
+								<ul>
+									<li id="travel-diary-profile-day"><fmt:formatDate
+											value="${sds.regDate}" pattern="yyyy년MM월dd일" /></li>
+									<li id="travel-diary-profile-title"><a
+										href="travelDetail?tcode=${sds.code}">${sds.title}</a></li>
+								</ul>
+								<ul>
+									<li id="travel-diary-profile-like"><img
+										src="../resource/images/btn-like.png"></li>
+									<li>${sds.likeCnt}</li>
+								</ul>
+							</section>
+							<section id="diary-middle">
+								<h1>
+									<p class="hidden">여행기 ${scc.count}코스</p>
+								</h1>
+								<ul>
+									<li>Start</li>
+									<c:forEach var="c" items="${sds.oneCourse}">
+										<li><a href="">${c.areasName}</a></li>
+									</c:forEach>
+									<li>End</li>
+								</ul>
+							</section>
+							<section>
+								<h1 class="hidden">코스별 이미지</h1>
+								<section id="course-image"> 
+									<%-- <c:forEach var="c" items="${sds.oneCourse}"
+										varStatus="cc"> --%>
+									<h1 class="hidden">${scc.count}-${cc.count}코스이미지</h1>
+									<ul>
+										<li>a${c.pic1}</li>
+										<li>b${c.pic2}</li>
+										<li>c${c.pic3}</li>
+										<li>d${c.pic4}</li>
+									</ul>
+								<%-- </c:forEach> --%> 
+								</section> 
+							</section>
+						<form action="scrap_del?sCode=${sds.travelCode}" method="post" \>
+						<label class="hidden">스크랩삭제</label> <input id="scrapDel"
+							type="submit" value="삭제 ${scc.count }" />
+						</form>
+					</div>
 				</div>
-			</div>
-			
-			</c:forEach>
-		</section>
-	</main>
+				
+				</c:forEach>
+			</section>
+		</main>
 	</div>
 
 	<footer id="footer"> <section>

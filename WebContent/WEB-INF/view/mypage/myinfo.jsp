@@ -23,6 +23,42 @@
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/header.js"></script>
 
+<script type="text/javascript">
+window.addEventListener("load", function(){
+	var btnProBgFile = document.querySelector("#profile-bg > div > form > span");
+	btnProBgFile.onclick = function(){
+		//alert("안녕");
+		
+		//클릭 이벤트 객체 만들기
+		var event = new MouseEvent("click", {
+			'view' : window,
+			'bubbles' : true,
+			'cancelable' : true				
+		});
+		
+		//파일 업로드 기능 가져오기
+		var inputFile = document.querySelector("#profile-bg-file-upload");
+		inputFile.dispatchEvent(event);
+	};
+	
+	var btnProFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > span");
+	btnProFile.onclick = function(){
+		//alert("안녕");
+		
+		//클릭 이벤트 객체 만들기
+		var event = new MouseEvent("click", {
+			'view' : window,
+			'bubbles' : true,
+			'cancelable' : true				
+		});
+		
+		//파일 업로드 기능 가져오기
+		var inputFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD");
+		inputFile.dispatchEvent(event);
+	};
+});
+</script>
+
 <style>
 
 .quick-menu {
@@ -116,6 +152,19 @@
 .left {
 	float: left;
 }
+
+#profile-bg-file-upload,
+#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD{
+	display: none;
+}
+
+#profile-bg > div > form > span,
+#profile > li:FIRST-CHILD+li > form > span{
+	background: pink;
+	cursor: pointer;
+	font-size: 15px;
+	color:black;
+}
 </style>
 </head>
 
@@ -143,7 +192,8 @@
 						<img src="../resource/upload/profileBackground/${m.background}" />
 						<form action="profileBgFileUpload" method="post" enctype="multipart/form-data">
 							<input type="file" id="profile-bg-file-upload" name="file" />
-							<input type="submit" value="배경수정" />
+							<span>배경파일선택</span>
+							<input type="submit" value="배경적용" />
 						</form>
 					</div>
 					<section>
@@ -155,7 +205,8 @@
 							<li>
 								<form action="fileUpload" method="post" enctype="multipart/form-data">
 									<input type="file" id="file-upload" name="file" />
-									<input type="submit" value="프로필수정" />
+									<span>프로필파일선택</span>
+									<input type="submit" value="프로필적용" />
 								</form>
 							</li>
 							<li><security:authentication property="name" /></li>
