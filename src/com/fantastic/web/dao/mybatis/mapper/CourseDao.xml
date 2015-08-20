@@ -61,5 +61,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.fantastic.web.vo.Course">
 		SELECT * FROM CourseView order by likeCnt DESC
 	</select>
+	
+	<!-- 작성중인 부분입니다. -->
+	<!-- 코스 사진 업로드(travelCode는 사용하지 않음) by한 -->
+	<update id="addPic" parameterType="String">
+		UPDATE Course set Pic1 = #{param2} where Code = #{param1}
+	</update>
+	
+	<!-- 한 유저의 마지막 courseCode 구하기 by한-->
+	<select id="getLastCode" parameterType="String" resultType="string">
+		select isnull(max(cast(code as int)), 0) code from Course where TravelCode = #{param1}
+	</select>
 
 </mapper>
