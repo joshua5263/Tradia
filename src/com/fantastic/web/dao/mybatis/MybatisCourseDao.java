@@ -101,12 +101,46 @@ public List<Course> preferLocaCourse(String preferLocation) {
 	return list;
 }
 
+
 @Override
 public List<Course> preferLocaCourses() {
 	CourseDao courseDao = session.getMapper(CourseDao.class);
 	TravelDiaryDao travelDiaryDao = session.getMapper(TravelDiaryDao.class);
 	
 	List<Course> list = courseDao.preferLocaCourses();
+	
+	for(Course c:list){
+		c.setTravelDiaries(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
+		c.setOneCourse(courseDao.getCourse(c.getTravelCode()));
+	}
+	
+	return list;
+}
+
+//메인화면 인기순(지역별)
+@Override
+public List<Course> preferLocaCoursePop(String preferLocation) {
+	
+	CourseDao courseDao = session.getMapper(CourseDao.class);
+	TravelDiaryDao travelDiaryDao = session.getMapper(TravelDiaryDao.class);	
+	
+	List<Course> list = courseDao.preferLocaCoursePop(preferLocation);	
+	
+	for(Course c:list){
+		c.setTravelDiaries(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));
+		c.setOneCourse(courseDao.getCourse(c.getTravelCode()));
+	}
+	
+	return list;
+}
+
+//메인화면 인기순(전국)
+@Override
+public List<Course> preferLocaCoursesPop() {
+	CourseDao courseDao = session.getMapper(CourseDao.class);
+	TravelDiaryDao travelDiaryDao = session.getMapper(TravelDiaryDao.class);
+	
+	List<Course> list = courseDao.preferLocaCoursesPop();
 	
 	for(Course c:list){
 		c.setTravelDiaries(travelDiaryDao.getTravelDiariesOfSearch(c.getTravelCode()));

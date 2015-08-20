@@ -70,7 +70,8 @@ public class MainController {
 	public void setCommentDao(CommentDao commentDao) {
 		this.commentDao = commentDao;
 	}
-
+	
+	//메인화면(최신순정렬)
 	@RequestMapping(value="travelMain", method=RequestMethod.GET)
 	public String travelMain(Model model, Member m, Principal principal, String preferLocation, HttpServletRequest request){
 
@@ -94,7 +95,32 @@ public class MainController {
 
 		return "/WEB-INF/view/main/travelMain.jsp";
 	}
+	
+	//메인화면(인기순)
+	@RequestMapping(value="travelMainPop", method=RequestMethod.GET)
+	public String travelMainPop(Model model, Member m, Principal principal, String preferLocation){
 
+		m = memberDao.getMember(principal.getName());
+		String preLoca = m.getPreferLocation();
+
+		if(m.getPreferLocation().equals("전국")){
+			/*List<TravelDiary> list = travelDiaryDao.getTravelDiarys();
+	      model.addAttribute("List", list);*/
+			List<Course> list = courseDao.preferLocaCoursesPop();
+			// list.remove() 리스트중 한개의 컬렉션을지울때
+			model.addAttribute("List", list);
+		}
+
+		else{
+			List<Course> list = courseDao.preferLocaCoursePop(preLoca);
+			model.addAttribute("List", list);
+
+		}
+
+		return "/WEB-INF/view/main/travelMain.jsp";
+	}
+	
+	//여행기 디테일화면
 	@RequestMapping(value="travelDetail", method=RequestMethod.GET)
 	public String travelDetail(Model model, String tcode, Principal principal){
 		TravelDiary travelDiary = travelDiaryDao.getTravelDiary(tcode);
@@ -103,7 +129,8 @@ public class MainController {
 
 		return "/WEB-INF/view/main/travelDetail.jsp";
 	}
-
+	
+	//여행기 삭제
 	@RequestMapping(value="travel_Del")
 	public String travelDeletel(Model model, String tcode){
 
@@ -114,6 +141,7 @@ public class MainController {
 
 	}
 	
+	//댓글 등록
 	@RequestMapping(value="com_reg", method=RequestMethod.POST)
 	public String travelDetail(Model model, Comment c, String tcode, Principal principal){
 
@@ -127,6 +155,7 @@ public class MainController {
 
 	}
 
+	//댓글 삭제
 	@RequestMapping(value="com_del", method=RequestMethod.POST)
 	public String travelDetail(Model model, String tcode, String cmcode, Principal principal){
 
@@ -141,6 +170,7 @@ public class MainController {
 
 	}
 
+	//좋아요 추가&삭제
 	@RequestMapping(value="add_like_del")
 	public String addLike(Model model, Likes like,String tcode, Principal principal){
 
@@ -170,7 +200,7 @@ public class MainController {
 		return "redirect:travelDetail";
 	}
 
-
+	//스크랩 등록
 	@RequestMapping(value="add_scrap")
 	public String addScrap(Model model, Scrap scrap,String tcode, Principal principal){
 
