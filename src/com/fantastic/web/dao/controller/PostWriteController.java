@@ -163,31 +163,32 @@ public class PostWriteController{
 	/*@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
 	public String postCourseWrite(Course course, Principal principal, String option, String areaName,
 			MultipartFile[] files, HttpServletRequest req) throws IOException{
-		로그인한 멤버의 id를 얻어옴
+		
+		//로그인한 멤버의 id를 얻어옴
 		String memberID = principal.getName();
 		
-		전달된 areaName을 토대로 areCode를 구한다
+		//전달된 areaName을 토대로 areCode를 구한다
 		String areaCode = areasDao.getAreaCode(areaName);
 		course.setAreasCode(areaCode);
 		
-		해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴
+		//해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴
 		String lastCode = dao.getLastCode(memberID);
-		얻어온 DiaryCode를 추가
+		//얻어온 DiaryCode를 추가
 		course.setTravelCode(lastCode);
 		courseDao.addCourse(course);
 		
 		
-		--------------------사진 추가 부분--------------------
+		//--------------------사진 추가 부분--------------------
 		ServletContext application = req.getServletContext();
-		멤버의 마지막 courseCode 구하기
+		//멤버의 마지막 courseCode 구하기
 		String courseCode = courseDao.getLastCode(lastCode);
 		
 		String url = "/resource/customer/upload/coursePic";
 		String path = application.getRealPath(url);
 		
 		for (int i = 0; i < files.length; i++) {
-			files가 비어있지 않을 때 업로드 실행
-			if(!files[i].isEmpty()) {
+			//files가 비어있지 않을 때 업로드 실행
+			//if(!files[i].isEmpty()) {
 				MultipartFile file = files[i];
 
 				String temp = file.getOriginalFilename();
@@ -207,7 +208,7 @@ public class PostWriteController{
 				ins.close();
 
 				courseDao.addPic(courseCode, fpath);
-			}
+			//}
 		}
 		
 		
