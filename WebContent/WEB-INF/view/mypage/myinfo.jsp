@@ -180,7 +180,7 @@ window.addEventListener("load", function(){
 		<!-- 어사이드영역 -->
 		<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
 
-		<main id="main" class="clearfix:after">
+		<main id="main" class="clearfix">
 
 			<section>
 				<h1 class="hidden">프로필정보</h1>
@@ -231,26 +231,25 @@ window.addEventListener("load", function(){
 					<section id="my-info">
 						<div>
 							<form action="update_member_profile2" method="post">
-							<p class="hidden">내 소개</p>
+							<div class="hidden">내 소개</div>
 							<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
 							<label class="hidden">수정</label> 
 							<input id="myProfile" type="submit" value="수정"/>
 							</form>
 						</div>
 						<div>
-							<ul>
-								<li>
-									<a href="mypage">My Page</a>
-								</li>
-								<li>
-									<a href="myinfo">내 정보</a>
-								</li>
-								<li>
-									<a href="scrapinfo">스크랩 목록</a>
-								</li>
-							</ul>
+							<dd>
+								<a href="mypage">My Page</a>
+							</dd>
+							<dd>
+								<a href="myinfo">내 정보</a>
+							</dd>
+							<dd>
+								<a href="scrapinfo">스크랩 목록</a>
+							</dd>
 						</div>
 					</section>
+				</section>
 	
 					<section id="normal-info">
 						<h1 class="hidden">기본정보</h1>

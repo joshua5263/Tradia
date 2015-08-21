@@ -101,7 +101,15 @@
 #mypage-list {
 	/* border: 1px maroon solid; */
 	display: inline-block;
-	width: 800px;
+	width: 680px;
+}
+
+#mypage-list p {
+	border-bottom: 4px skyblue solid;
+	margin-top: 10px;
+	font-size: 30px;
+	text-indent: 25px;
+	line-height: 40px;
 }
 
 #mypage-list ul {
@@ -235,10 +243,6 @@
    min-height: 300px;
    margin: 10px;
   /*  border: 1px maroon solid; */
-}
-
-#normal-info {
-	border: 1px maroon solid;
 }
 
 #course-image li{

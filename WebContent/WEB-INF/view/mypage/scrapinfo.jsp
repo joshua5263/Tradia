@@ -131,7 +131,7 @@ auto
 #normal-info {
 	height: inherit;
 	width: 740px;
-	background: grey;
+	/* background: grey; */
 	float: left;
 	min-height: 300px;
 }
@@ -156,7 +156,7 @@ auto
 }
 </style>
 </head>
-<body class="content-wrapper clearfix:after">
+<body class="content-wrapper clearfix">
 	<header> <jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
 	</header>
 
@@ -167,7 +167,7 @@ auto
 		<!-- 어사이드영역 -->
 		<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
 
-		<main id="main" class="clearfix:after"> 
+		<main id="main" class="clearfix"> 
 			
 				<h1 class="hidden">프로필정보</h1>
 	
@@ -218,17 +218,14 @@ auto
 				</section> 
 
 				<section id="normal-info"> 
-					<section id="aaa">
+					
 					<h1 class="hidden">지역 페이지</h1>
 						<section>
 						<h1 class="hidden">지역 페이지</h1>
 							<section id="mypage-list">
 								<h1 class="hidden">선택 지역</h1>
 								<p>(서울)여행기</p>
-								<ul>
-									<li><input id="mypage-recommend" type="submit" value="추천순" /></li>
-									<li><input id="myPage-updated" type="submit" value="최신순" /></li>
-								</ul>
+								
 							</section> 
 							<section id="travel-diary"> 
 							<c:forEach var="sds"
@@ -291,7 +288,7 @@ auto
 							</c:forEach> 
 						</section>
 					</section>
-				</section>
+			
 			</section>
 		</main>
 	</div>
