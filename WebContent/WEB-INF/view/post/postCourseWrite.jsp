@@ -9,6 +9,7 @@
 
 <link href="../resource//css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<link href="../resource/postWrite/postCourseWrite.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 <script type="text/javascript">
 	window.addEventListener("load", function() {
@@ -69,7 +70,8 @@
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
-		             <input id ="course-area" placeholder="검색 버튼을 누르세요." disabled="disabled" type="text" name="areaName"/>
+		            <!--  <input id ="course-area" placeholder="검색 버튼을 누르세요." disabled="disabled" type="text" name="areaName"/> -->
+		             <input id ="course-area" placeholder="검색 버튼을 누르세요." type="text" name="areaName"/>
 		             <input id="btn-area-search" type="button" value="검색" />
 		             
 		             <legend>날짜</legend>

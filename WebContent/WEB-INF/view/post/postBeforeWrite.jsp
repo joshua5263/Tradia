@@ -10,6 +10,7 @@
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<link href="../resource/postWrite/postBeforeWrite.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 <script type="text/javascript">
 	window.addEventListener("load", function() {

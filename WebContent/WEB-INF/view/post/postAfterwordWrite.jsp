@@ -8,6 +8,7 @@
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<link href="../resource/postWrite/postAfterwordWrite.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 </head>
 <body>
