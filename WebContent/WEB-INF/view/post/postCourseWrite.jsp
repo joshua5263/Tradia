@@ -21,22 +21,17 @@
 		/* areaName을 잘 받나 테스트를 위함 */
 		var courseArea = document.getElementById("course-area");
 		
-		alert("현재 option의 값 : "+option.value);
-		
 		/* 코스 추가 버튼 클릭시 option을 course로 */
 		submitAddCourse.onclick = function() {
-			alert("course");
 			option.value = "course";
 		};
 		/* 후기 작성 버튼 클릭 시 option을 afterword로 */
 		submitAftetword.onclick = function() {
-			alert("afterword");
 			alert(courseArea.value);
 			option.value = "afterword";
 		};
 		/* 임시 저장 버튼 클릭 시 option을 save로 */
 		submitTempSave.onclick = function() {
-			alert("save");
 			option.value = "save";
 		};
 		var btnAreaSearch = document.getElementById("btn-area-search");
@@ -74,7 +69,7 @@
 		            
 		            <legend>장소검색</legend>
 		            <label>장소</label>
-		             <input id ="course-area" type="text" name="areaName"/>
+		             <input id ="course-area" placeholder="검색 버튼을 누르세요." disabled="disabled" type="text" name="areaName"/>
 		             <input id="btn-area-search" type="button" value="검색" />
 		             
 		             <legend>날짜</legend>
@@ -132,8 +127,7 @@
 		      
 		            <p>
 		               <label>메모</label>
-		               <textarea name="memo" rows="10" cols="50"></textarea>
-		               <br>해당 코스의 후기를 남겨주세요!
+		               <textarea name="memo" rows="10" cols="50" placeholder="간단한 느낌을 남겨주세요!"></textarea>
 		            </p>
 		                   
 		      

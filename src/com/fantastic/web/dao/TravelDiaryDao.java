@@ -40,10 +40,7 @@ public interface TravelDiaryDao {
 
 	public String getLastCode(String memberID);
 	
-	/*post에 후기 부분을 업데이트*/
-	/*public void addAfterword(String travelCode, String memo, int totalCost);*/
-	public void addAfterword(String travelCode, String memo, String totalCost);
+	/*post에 후기 부분을 업데이트 by한*/
+	public void addAfterword(String travelCode, String memo);
 	
-	/*travelCode가 일치하는 course의 cost를 모두 합하여 반환*/
-	public int totalCost(String travelCode);
 }

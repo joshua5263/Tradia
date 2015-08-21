@@ -41,28 +41,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO TravelDiary(Code, Title, FellowTraveler, StartDate, LastDate, MemberID)
 		VALUES(#{code}, #{title}, #{fellowTraveler}, #{startDate}, #{lastDate}, #{memberID})
 	</insert>
-	
-	<!-- 원본 -->
-	<!-- <update id="addTravelDiary" parameterType="com.fantastic.web.vo.TravelDiary">
-		<selectKey keyProperty="code" order="BEFORE" resultType="string">
-			select isnull (max(cast(Code as int)),0)+1 code from TravelDiary
-		</selectKey>
-
-		INSERT INTO TravelDiary(Code, Title, FellowTraveler, TotalCost, StartDate, LastDate,
-		                                   Memo, Share, RegDate, MemberID)
-		VALUES(#{code}, #{Title}, #{fellowTraveler}, #{totalCost}, #{startDate}, #{startDate},
-					 #{memo}, ${share}, ${regDate}, ${memberID})
-	</update> -->
 
 	<delete id="removeTravelDiary" parameterType="String">
 		DELETE TravelDiary WHERE Code = #{code}
 	</delete>
-	
 
 	<select id="getTravelDiariesOfSearch" parameterType="String" resultType="com.fantastic.web.vo.TravelDiary">
 		SELECT * FROM TravelView where Code = #{code} ORDER BY REGDATE DESC
 	</select>
-
 	
 	<select id="getTravelDiariesByPreferLoca" parameterType="String"
 		resultType="com.fantastic.web.vo.TravelDiary">
@@ -73,20 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select isnull(max(cast(code as int)), 0) code from TravelDiary where MemberID = #{memberID}
 	</select>
 
-<!--                                    작성중인 부분입니다. 정상 작동 합니다.                          -->
-	<!-- <update id="addAfterword" parameterType="String">
-		  update TravelDiary set TotalCost = #{totalCost}, Memo = #{memo} where Code = #{travelCode}
-	</update> -->
-	
 	<update id="addAfterword" parameterType="String">
-		  update TravelDiary set TotalCost = #{param3}, Memo = #{param2} where Code = #{param1}
+		 update TravelDiary set TotalCost = (select sum(Cost) from Course where TravelCode = #{param1}), Memo = #{param2} where Code = #{param1}
 	</update>
-	
-	<!-- 토탈코스트 사용 안함 -->
-	<!-- <update id="addAfterword" parameterType="String">
-		  update TravelDiary set Memo = #{memo} where Code = #{travelCode}
-	</update> -->
-
-
 
 </mapper>

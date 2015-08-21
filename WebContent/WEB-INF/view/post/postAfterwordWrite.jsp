@@ -31,7 +31,7 @@
 					<p>
 						<label>후기</label>
 						*후기는 필수가 아닙니다.<br>
-						<textarea name="a" rows="10" cols="50"></textarea>
+						<textarea name="memo" rows="10" cols="50"></textarea>
 					</p>
 					<h1>버튼 목록</h1>
 					<p>
