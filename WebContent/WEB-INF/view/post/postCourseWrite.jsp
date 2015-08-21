@@ -71,7 +71,7 @@
 		            <legend>장소검색</legend>
 		            <label>장소</label>
 		            <!--  <input id ="course-area" placeholder="검색 버튼을 누르세요." disabled="disabled" type="text" name="areaName"/> -->
-		             <input id ="course-area" placeholder="검색 버튼을 누르세요." type="text" name="areaName"/>
+		             <input id ="course-area" placeholder="검색 버튼을 누르세요."  type="text" readonly name="areaName"/>
 		             <input id="btn-area-search" type="button" value="검색" />
 		             
 		             <legend>날짜</legend>
