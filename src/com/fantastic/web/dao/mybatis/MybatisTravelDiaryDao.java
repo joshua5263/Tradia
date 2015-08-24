@@ -40,7 +40,6 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	 
 	 @Override
 	 public List<TravelDiary> getTravelDiarys() {
-	  // TODO Auto-generated method stub
 	  
 	  return getTravelDiarys(1,"TITLE", "");
 	 }
@@ -61,7 +60,6 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	 
 	 @Override
 	 public List<TravelDiary> getTravelDiarysOne(String memberID) {
-	  
 		  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 		  CourseDao courseDao = session.getMapper(CourseDao.class);
 		  
@@ -84,7 +82,6 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	 }
 	    @Override
 	  public int removeTravelDiary(String code) {
-	  
 	  int result = 0;
 	  
 	  TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
@@ -95,8 +92,6 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 	}
 	 @Override
 	 public TravelDiary getTravelDiary(String code) {
-	  // TODO Auto-generated method stub
-	    
 	    TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
 	    CourseDao couseDao = session.getMapper(CourseDao.class);
 	    CommentDao commentDao = session.getMapper(CommentDao.class);
@@ -135,11 +130,6 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		
 		List<TravelDiary> travelList = dao.getTravelDiariesOfSearch(code);
 		
-		/*for(TravelDiary t:travelList){
-		    t.setOneCourse(courseDao.getCourse(t.getCode()));
-		}*/
-		
-		
 		return travelList;
 	}
 
@@ -156,6 +146,7 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		  return list;
 	}
 
+	/*travelDiary의 마지막 코드 반환*/
 	@Override
 	public String getLastCode(String memberID) {
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
@@ -164,25 +155,11 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		return lastCode;
 	}
 
-	/*-----------------------작성중인 부분입니다.-----------------------*/
-	/*post에 후기 부분을 업데이트*/
-	/*@Override
-	public void addAfterword(String travelCode, String memo, int totalCost) {
-		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-		dao.addAfterword(travelCode, memo, totalCost);
-	}*/
-	
+	/*후기 추가*/
 	@Override
-	public void addAfterword(String travelCode, String memo, String totalCost) {
+	public void addAfterword(String travelCode, String memo) {
 		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
-		totalCost = "123";
-		memo = "MybatisTravelDiaryDao.java";
-		dao.addAfterword(travelCode, memo, totalCost);
-	}
-	
-	/*travelCode가 일치하는 course의 cost를 모두 합하여 반환*/
-	@Override
-	public int totalCost(String travelCode) {
-		return 0;
+		
+		dao.addAfterword(travelCode, memo);
 	}
 }

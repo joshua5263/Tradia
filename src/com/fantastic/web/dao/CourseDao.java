@@ -33,4 +33,10 @@ public interface CourseDao {
    
    public List<Course> preferLocaCoursesPop();
    
+   /*----------------작성중인 부분입니다.----------------*/
+   /*코스 사진 추가 by한*/
+   public void addPic(String courseCode, String path);
+   
+   /*한 유저의 마지막 courseCode 구하기 by한*/
+   public String getLastCode(String memberID);
 }

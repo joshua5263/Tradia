@@ -8,6 +8,7 @@
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
+<link href="../resource/postWrite/postAfterwordWrite.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
 </head>
 <body>
@@ -31,7 +32,7 @@
 					<p>
 						<label>후기</label>
 						*후기는 필수가 아닙니다.<br>
-						<textarea name="a" rows="10" cols="50"></textarea>
+						<textarea name="memo" rows="10" cols="50"></textarea>
 					</p>
 					<h1>버튼 목록</h1>
 					<p>

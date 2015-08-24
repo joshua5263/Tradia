@@ -1,10 +1,15 @@
 package com.fantastic.web.dao.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.Principal;
 import java.util.List;
 
 import javafx.scene.control.Alert;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fantastic.web.dao.AreasDao;
 import com.fantastic.web.dao.CourseDao;
@@ -30,7 +36,6 @@ public class PostWriteController{
 	private CourseDao courseDao;
 	private AreasDao areasDao;
 	private MemberDao memberDao;
-	
 	
 	@Autowired
 	public void setMemberDao(MemberDao memberDao) {
@@ -52,7 +57,7 @@ public class PostWriteController{
 		this.areasDao = areasDao;
 	}
 
-	//	GET 요청을 받을 경우
+	
 	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.GET)
 	public String postBeforeWrite(Member m, Principal principal, HttpServletRequest request) {
 		
@@ -62,7 +67,6 @@ public class PostWriteController{
 		return "/WEB-INF/view/post/postBeforeWrite.jsp";
 	}
 	
-	//POST 요청을 받을 경우
 	@RequestMapping(value = "postBeforeWrite", method = RequestMethod.POST)
 	public String postBeforeWrite(TravelDiary d, Principal principal, String option){
 		String mid=principal.getName();
@@ -89,27 +93,128 @@ public class PostWriteController{
 	
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.GET)
 	public String postCourseWrite(Member m, Principal principal, HttpServletRequest request){
-		
 		m = memberDao.getMember(principal.getName());
+		String code = dao.getLastCode(principal.getName());
 		request.setAttribute("m", m);
+		request.setAttribute("code", code);
 		
 		return "/WEB-INF/view/post/postCourseWrite.jsp";
 	}
 	
+	/*단일 파일 업로드*/
 	@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
-	public String postCourseWrite(Course course, Principal principal, String option, String areaName){
-		/*로그인한 멤버의 id를 얻어옴*/
+	public String postCourseWrite(Course course, Principal principal, String option, String areaName,
+			MultipartFile file, HttpServletRequest req) throws IOException{
+		//로그인한 멤버의 id를 얻어옴
 		String memberID = principal.getName();
 		
-		/*전달된 areaName을 토대로 areCode를 구한다*/
+		//전달된 areaName을 토대로 areCode를 구한다
 		String areaCode = areasDao.getAreaCode(areaName);
 		course.setAreasCode(areaCode);
 		
-		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		//해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴
 		String lastCode = dao.getLastCode(memberID);
-		/*얻어온 DiaryCode를 추가*/
+		req.setAttribute("lastCode", lastCode);
+		
+		//얻어온 DiaryCode를 추가
 		course.setTravelCode(lastCode);
 		courseDao.addCourse(course);
+		
+		
+		//--------------------사진 추가 부분--------------------
+		if(!file.isEmpty()) {
+			ServletContext application = req.getServletContext();
+			//멤버의 마지막 courseCode 구하기
+			String courseCode = courseDao.getLastCode(lastCode);
+
+			String url = "/resource/customer/upload/coursePic";
+			String path = application.getRealPath(url);
+			String temp = file.getOriginalFilename();
+			String fname = temp.substring(temp.lastIndexOf("//") + 1);
+			String fpath = path + "//" + courseCode + " " + fname;
+			String uploadName = courseCode + " " + fname;
+			//String fpath = path + "//" + fname;
+			InputStream ins = file.getInputStream();
+			OutputStream outs = new FileOutputStream(fpath);
+
+			byte[] bowl = new byte[1024];
+			int len = 0;
+
+			while((len = ins.read(bowl, 0, 1024)) >= 0)
+				outs.write(bowl, 0, len);
+
+			outs.flush();
+			outs.close();
+			ins.close();
+
+			//사진 추가
+			courseDao.addPic(courseCode, uploadName);
+		}
+		
+		
+		if(option.equals("course")){
+			return "redirect:postCourseWrite";
+		}
+		else if (option.equals("afterword")) {
+			return "redirect:postAfterwordWrite";
+			//return "redirect:postAfterwordWrite?${lastCode}";
+		} else {
+			return "redirect:/main/travelMain";
+		}
+	}
+	
+	/*복수 파일 업로드*/
+	/*@RequestMapping(value = "postCourseWrite", method = RequestMethod.POST)
+	public String postCourseWrite(Course course, Principal principal, String option, String areaName,
+			MultipartFile[] files, HttpServletRequest req) throws IOException{
+		
+		//로그인한 멤버의 id를 얻어옴
+		String memberID = principal.getName();
+		
+		//전달된 areaName을 토대로 areCode를 구한다
+		String areaCode = areasDao.getAreaCode(areaName);
+		course.setAreasCode(areaCode);
+		
+		//해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴
+		String lastCode = dao.getLastCode(memberID);
+		//얻어온 DiaryCode를 추가
+		course.setTravelCode(lastCode);
+		courseDao.addCourse(course);
+		
+		
+		//--------------------사진 추가 부분--------------------
+		ServletContext application = req.getServletContext();
+		//멤버의 마지막 courseCode 구하기
+		String courseCode = courseDao.getLastCode(lastCode);
+		
+		String url = "/resource/customer/upload/coursePic";
+		String path = application.getRealPath(url);
+		
+		for (int i = 0; i < files.length; i++) {
+			//files가 비어있지 않을 때 업로드 실행
+			//if(!files[i].isEmpty()) {
+				MultipartFile file = files[i];
+
+				String temp = file.getOriginalFilename();
+				String fname = temp.substring(temp.lastIndexOf("//") + 1);
+				String fpath = path + "//" + courseCode +fname;
+				InputStream ins = file.getInputStream();
+				OutputStream outs = new FileOutputStream(fpath);
+
+				byte[] bowl = new byte[1024];
+				int len = 0;
+
+				while((len = ins.read(bowl, 0, 1024)) >= 0)
+					outs.write(bowl, 0, len);
+
+				outs.flush();
+				outs.close();
+				ins.close();
+
+				courseDao.addPic(courseCode, fpath);
+			//}
+		}
+		
 		
 		if(option.equals("course")){
 			return "redirect:postCourseWrite";
@@ -119,16 +224,16 @@ public class PostWriteController{
 		} else {
 			return "redirect:/main/travelMain";
 		}
-	}
+	}*/
 
-	@RequestMapping(value = "addPost", method = RequestMethod.POST)
+	/*@RequestMapping(value = "addPost", method = RequestMethod.POST)
 	public String addPost(Course course, Principal principal){
-		/*로그인한 멤버의 id를 얻어옴*/
+		로그인한 멤버의 id를 얻어옴
 		String memberID = principal.getName();
 		
-		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴
 		String lastCode = dao.getLastCode(memberID);
-		/*얻어온 DiaryCode를 추가*/
+		얻어온 DiaryCode를 추가
 		course.setTravelCode(lastCode);
 		
 		courseDao.addCourse(course);
@@ -138,18 +243,18 @@ public class PostWriteController{
 	
 	@RequestMapping(value = "writeAfterword", method = RequestMethod.POST)
 	public String writeAfterword(Course course, Principal principal){
-		/*로그인한 멤버의 id를 얻어옴*/
+		로그인한 멤버의 id를 얻어옴
 		String memberID = principal.getName();
 		
-		/*해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴*/
+		해당 멤버가 가장 마지막으로 쓴 tarvelDiary의 코드를 얻어옴
 		String lastCode = dao.getLastCode(memberID);
-		/*얻어온 DiaryCode를 추가*/
+		얻어온 DiaryCode를 추가
 		course.setTravelCode(lastCode);
 		
 		courseDao.addCourse(course);
 		
 		return "redirect:/main/travelMain";
-	}
+	}*/
 
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.GET)
 	public String postAfterwordWrite(Member m, Principal principal, HttpServletRequest request) {
@@ -161,14 +266,11 @@ public class PostWriteController{
 	}
 
 	
-	/*----------------작성중인 부분입니다.----------------*/
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.POST)
 	public String postAfterwordWrite(String memo, Principal principal, HttpServletRequest req) {
 		String travelCode = dao.getLastCode(principal.getName());
+		dao.addAfterword(travelCode, memo);
 		
-		/*총 경비 계산 로직은 작성 중*/
-		String totalCost = "1";
-		dao.addAfterword(travelCode, memo, totalCost);
 		return "redirect:/main/travelMain";
 	}
 	
