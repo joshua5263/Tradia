@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+#main h1 {
+	margin-top: 10px;
+	font-size: 30px;
+	text-indent: 25px;
+	line-height: 40px;	
+	color: green;
+	width: 180px;
+	display: inline-block;
+}
+
+#main h2 {
+	margin-top: 20px;
+	font-size: 18px;
+	display: inline-block;	
+}
+
+#main > section > div {
+	border-bottom: 4px green solid;
+}
+
+#main section{
+	width : 680px;
+	margin-left : auto;
+	margin-right : auto;
+	color: green;
+	/* border: 1px blue solid;	 */
+}
+
+#main section section{
+	/* border-left: 1px green solid; */
+	/* border: 1px blue solid;	 */
+	position: relative;
+	width: 600px;
+	height: 620px;
+}
+
+#course-info {
+	/* border: 1px gold solid; */
+	width: 450px;
+	position: absolute;
+}
+
+#course-info div {
+	/* border: 1px blue solid; */
+	width : 600px;
+	height : 30px;
+	font-size: 16px;
+}
+
+#course-info div+div {
+	height : auto;
+	display: inline-block;
+}
+
+#course-info div+div+div {
+	/* border: 2px red solid; */
+	height : auto;
+	text-align: center;
+	display: inline-block;
+}
+
+#course-info p {
+	/* border: 1px red solid; */
+	width : 100px;
+	float: left;
+	font-size: 16px;
+	text-align: center;
+}
+
+#course-info p:nth-child(2) {
+	color: red;
+	width: 480px;
+	text-align: left;
+	margin-left: 10px;
+}
+
+#course-info textarea {
+	margin-left: 90px;
+}
+
+#course-info input[type="submit"] {
+	width: 80px;
+	height: 40px;
+	margin-left: 80px;
+/* 	border: 1px red solid; */
+}

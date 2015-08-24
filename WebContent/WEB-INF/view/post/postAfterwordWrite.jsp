@@ -21,23 +21,27 @@
 	
 	<main id="main">
 		<section>
+			<div>
 			<h1>포스트 쓰기</h1>
-			<section>
-			<h1>코스 정보</h1>
+			<h2>후기 작성</h2>
+			</div>
+			<section id="course-info">
+			<h1 class="hidden">코스 정보</h1>
 		      
 				<form method="post">
-					<legend>총경비</legend>
-					<label>경비</label> 원
-					
-					<p>
-						<label>후기</label>
-						*후기는 필수가 아닙니다.<br>
-						<textarea name="memo" rows="10" cols="50"></textarea>
-					</p>
-					<h1>버튼 목록</h1>
-					<p>
-						<input type="submit" value="작성 완료">
-					</p>
+					<div>
+					<p>총경비</p>
+					<legend class="hidden">>경비입력</legend>
+					<p class="hidden">경비</p> <input name="cost" type="text"
+						placeholder="ex)50000" /> 원
+					</div>
+					<div>
+					<p>후기</p>
+						<p>*후기는 필수가 아닙니다.</p>
+						<textarea name="memo" rows="28" cols="64"></textarea>
+					</div>
+					<h1 class="hidden">버튼 목록</h1>
+					<input type="submit" value="작성 완료">
 				</form>         
 			</section>
 		</section>

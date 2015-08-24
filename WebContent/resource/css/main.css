@@ -4,7 +4,14 @@
 	
 	border: 2px soild red;
 } */
-
+	#main p {
+		border-bottom: 4px skyblue solid;
+		margin-top: 10px;
+		font-size: 30px;
+		text-indent: 25px;
+		line-height: 40px;	
+	}
+	
 	#travel-diary{
 		float: left;
 		width: 1020px;
