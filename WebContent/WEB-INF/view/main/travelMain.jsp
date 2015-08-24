@@ -156,21 +156,21 @@
 					<section id="travel-course-pic">
 						<h1 class="hidden">코스별 이미지</h1>
 						<section>						
-							<%-- <c:forEach var="c" items ="${n.oneCourse}" varStatus="cc">
+							<c:forEach var="c" items ="${n.oneCourse}" varStatus="cc">
 							
-							<h1 class="hidden">${tc.count} - ${cc.count}코스 이미지</h1> --%>
+							<h1 class="hidden">${tc.count} - ${cc.count}코스 이미지</h1>
 							<ul>
-					 			<li>사진1<%-- ${c.pic1} --%></li>
-								<li>사진2<%-- ${c.pic2} --%></li>
-								<li>사진3<%-- ${c.pic3} --%></li>
-								<li>사진4<%-- ${c.pic4} --%></li> 
+					 			<li>사진1 ${c.pic1} </li>
+								<li>사진2 ${c.pic2} </li>
+								<li>사진3 ${c.pic3} </li>
+								<li>사진4 ${c.pic4} </li> 
 							</ul>
-							<%-- </c:forEach> --%>
+							 </c:forEach> 
 						</section>
 					</section>
 					</c:forEach>
 					</div>
-							</c:forEach>
+				</c:forEach>
 				
 		</section>
 
