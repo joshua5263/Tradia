@@ -7,7 +7,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 
@@ -19,47 +19,58 @@
 
 <link href="../resource/css/reset.css" rel="stylesheet" type="text/css"></link>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
-<link href="../resource/mypage/mypage.css" rel="stylesheet" type="text/css"></link>
+<link href="../resource/mypage/mypage.css" rel="stylesheet"
+	type="text/css"></link>
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../resource/js/header.js"></script>
 
 <script type="text/javascript">
-window.addEventListener("load", function(){
-	var btnProBgFile = document.querySelector("#profile-bg > div > form > span");
-	btnProBgFile.onclick = function(){
-		//alert("안녕");
-		
-		//클릭 이벤트 객체 만들기
-		var event = new MouseEvent("click", {
-			'view' : window,
-			'bubbles' : true,
-			'cancelable' : true				
-		});
-		
-		//파일 업로드 기능 가져오기
-		var inputFile = document.querySelector("#profile-bg-file-upload");
-		inputFile.dispatchEvent(event);
-	};
-	
-	var btnProFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > span");
-	btnProFile.onclick = function(){
-		//alert("안녕");
-		
-		//클릭 이벤트 객체 만들기
-		var event = new MouseEvent("click", {
-			'view' : window,
-			'bubbles' : true,
-			'cancelable' : true				
-		});
-		
-		//파일 업로드 기능 가져오기
-		var inputFile = document.querySelector("#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD");
-		inputFile.dispatchEvent(event);
-	};
-});
+	window
+			.addEventListener(
+					"load",
+					function() {
+						var btnProBgFile = document
+								.querySelector("#profile-bg > div > form > span");
+						btnProBgFile.onclick = function() {
+							//alert("안녕");
+
+							//클릭 이벤트 객체 만들기
+							var event = new MouseEvent("click", {
+								'view' : window,
+								'bubbles' : true,
+								'cancelable' : true
+							});
+
+							//파일 업로드 기능 가져오기
+							var inputFile = document
+									.querySelector("#profile-bg-file-upload");
+							inputFile.dispatchEvent(event);
+						};
+
+						var btnProFile = document
+								.querySelector("#profile > li:FIRST-CHILD+li > form > span");
+						btnProFile.onclick = function() {
+							//alert("안녕");
+
+							//클릭 이벤트 객체 만들기
+							var event = new MouseEvent("click", {
+								'view' : window,
+								'bubbles' : true,
+								'cancelable' : true
+							});
+
+							//파일 업로드 기능 가져오기
+							var inputFile = document
+									.querySelector("#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD");
+							inputFile.dispatchEvent(event);
+						};
+					});
 </script>
 
 <style>
+#main>section>h1 {
+	border-bottom: 4px skyblue solid;
+}
 
 .quick-menu {
 	height: 65px;
@@ -89,16 +100,16 @@ window.addEventListener("load", function(){
 }
 
 #normal-info {
-	height: inherit;
+
 	width: 700px;
 	float: left;
-	min-height: 300px;
+	min-height: 360px;
 	background: white;
 	margin-top: 10px;
 	font-family: SeoulNamsan;
 	font-size: 15px;
 	font-weight: bold;
-/* 	border: 1px dotted red; */
+	/* 	border: 1px dotted red; */
 }
 
 #normal-info-title {
@@ -106,29 +117,92 @@ window.addEventListener("load", function(){
 	font-size: 20px;
 }
 
-#normal-info nav {
-/* 	border: 1px solid blue; */
+#normal-info div {
+	
+	/* display: inline-block; */
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#normal-info div ul{
+	border-bottom: 1px skyblue dotted;
 	display: inline-block;
-	width: 700px;
+	width: 600px;
 }
 
-#normal-info dt, dd {
-/* 	border: 1px dotted blue; */
-	display: inline-block;
-}
-
-#normal-info dt {
-	width: 80px;
+#info-id li {
+	
+	line-height: 30px;	
+	width: 100px;
 	text-align: center;
-	margin-top: 10px;
+	float: left;
 }
 
-#normal-info dd {
+#info-id li:nth-child(2) {
+	width: 400px;
+	text-align: left;
+}
+
+#info-pwd li {
+	
+	line-height: 60px;	
+	width: 100px;
 	text-align: center;
+	float: left;
+}
+
+#info-pwd li:nth-child(2), #info-pwd li:nth-child(4) {
+	width: 140px;
+	text-align: left;
+	line-height: 30px;	
+}
+
+#info-pwd li:nth-child(3), #info-pwd li:nth-child(5) {
+	width: 270px;
+	text-align: left;
+	line-height: 30px;	
+}
+
+#info-birth li {
+	
+	line-height: 30px;	
+	width: 100px;
+	text-align: center;
+	float: left;
+}
+
+#info-birth li:nth-child(2) {
+	width: 140px;
+	text-align: left;
+}
+
+#info-birth li:nth-child(3) {
+	width: 270px;
+	text-align: left;
+	margin-left: 100px;
+}
+
+#info-gender li {
+	
+	line-height: 30px;	
+	width: 100px;
+	text-align: center;
+	float: left;
+}
+
+#info-gender li:nth-child(2) {
+	width: 140px;
+	text-align: left;
+}
+
+#info-gender li:nth-child(3) {
+	width: 200px;
+	text-align: left;
 }
 
 #normal-info input[type="text"] {
-	background: grey;
+	background: #e0e0e0;
 	width: 130px;
 	height: 20px;
 	border: 1px solid #50b4ff;
@@ -153,17 +227,16 @@ window.addEventListener("load", function(){
 	float: left;
 }
 
-#profile-bg-file-upload,
-#profile > li:FIRST-CHILD+li > form > input:FIRST-CHILD{
+#profile-bg-file-upload, #profile>li:FIRST-CHILD+li>form>input:FIRST-CHILD
+	{
 	display: none;
 }
 
-#profile-bg > div > form > span,
-#profile > li:FIRST-CHILD+li > form > span{
+#profile-bg>div>form>span, #profile>li:FIRST-CHILD+li>form>span {
 	background: pink;
 	cursor: pointer;
 	font-size: 15px;
-	color:black;
+	color: black;
 }
 </style>
 </head>
@@ -182,37 +255,40 @@ window.addEventListener("load", function(){
 
 		<main id="main" class="clearfix">
 
+		<section>
+			<h1 class="hidden">프로필정보</h1>
+
 			<section>
-				<h1 class="hidden">프로필정보</h1>
-	
-				<section>
-					<h1 class="hidden">프로필배경</h1>
-					<div id="profile-bg">
-						<img src="../resource/upload/profileBackground/${m.background}"/>
-						<form id="profile-bg-back" action="profileBgFileUpload" method="post" enctype="multipart/form-data">
-							<input type="file" id="profile-bg-file-upload" name="file" />
-							<span>배경파일선택</span>
-							<input type="submit" value="배경적용" />
-						</form>
-					</div>
-					<div id="profile-image">
-						<h1 class="hidden">프로필사진</h1>
-											
-							<p id="profile-pic">							
-								<img src="../resource/upload/profilePicture/${m.picture}" /></p>
-							
-							
-								<form id="profile-pic-back" action="fileUpload" method="post" enctype="multipart/form-data">
-									<input type="file" id="file-upload" name="file" />
-									<span>프로필파일선택</span>
-									<input type="submit" value="프로필적용" />
-								</form>
-							<p id="profile-name"><security:authentication property="name" /></p>
-					</div>
-				</section>
+				<h1 class="hidden">프로필배경</h1>
+				<div id="profile-bg">
+					<img src="../resource/upload/profileBackground/${m.background}" />
+					<form id="profile-bg-back" action="profileBgFileUpload"
+						method="post" enctype="multipart/form-data">
+						<input type="file" id="profile-bg-file-upload" name="file" /> <span>배경파일선택</span>
+						<input type="submit" value="배경적용" />
+					</form>
+				</div>
+				<div id="profile-image">
+					<h1 class="hidden">프로필사진</h1>
+
+					<p id="profile-pic">
+						<img src="../resource/upload/profilePicture/${m.picture}" />
+					</p>
+
+
+					<form id="profile-pic-back" action="fileUpload" method="post"
+						enctype="multipart/form-data">
+						<input type="file" id="file-upload" name="file" /> <span>프로필파일선택</span>
+						<input type="submit" value="프로필적용" />
+					</form>
+					<p id="profile-name">
+						<security:authentication property="name" />
+					</p>
+				</div>
 			</section>
-	
-				<!--  <nav id="profile">
+		</section>
+
+		<!--  <nav id="profile">
 	         <h1 class="hidden">프로필</h1>
 	         <form method="post">
 	            <ul>
@@ -227,82 +303,78 @@ window.addEventListener("load", function(){
 	            </ul>
 	         </form>
 	      </nav> -->
-				<section id="information">
-					<section id="my-info">
-						<div>
-							<form action="update_member_profile2" method="post">
-							<div class="hidden">내 소개</div>
-							<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
-							<label class="hidden">수정</label> 
-							<input id="myProfile" type="submit" value="수정"/>
-							</form>
-						</div>
-						<div>
-							<dd>
-								<a href="mypage">My Page</a>
-							</dd>
-							<dd>
-								<a href="myinfo">내 정보</a>
-							</dd>
-							<dd>
-								<a href="scrapinfo">스크랩 목록</a>
-							</dd>
-						</div>
-					</section>
-				</section>
-	
-					<section id="normal-info">
-						<h1 class="hidden">기본정보</h1>
-							<h1 id="normal-info-title">프로필정보</h1>
-	
-						<form action="modMyInfo" method="post">
-							<ul>						
-								<li>ID</li>
-								<li class="first-info">${m.id}</li>
-							
-								<li>비밀번호</li>
-								<li class="first-info">새 비밀번호</li>
-								<li><input type="text" name="password" /></li>
-								<li class="first-info">새 비밀번호 확인</li>
-								<li><input type="text" name="password2" /></li>
-								
-							</ul>
-						
-							<ul>
-								
-							
-								<li>생년월일</li>
-								<li class="first-info">${m.birthday}</li>
-								<li class="hidden">생년월일 입력</li>
-								<li><input type="date" name="birthday"></li>
-							</ul>
-							
-							
-							<ul>
-								<li>성별</li>
-								<c:if test="${m.gender == 0}">
-									<li class="first-info">남</li>
-								</c:if>
-								<c:if test="${m.gender == 1}">
-									<li class="first-info">여</li>
-								</c:if>
-							
-								<li>
-									<fieldset>
-										<legend class="hidden">지역선택</legend>
-										<label class="지역선택  hidden" for="gender-check">성별선택</label> 
-											<input type="radio" name="gender-check" value="0" checked>남
-											<input type="radio" name="gender-check" value="1">여
-									</fieldset>
-								</li>
-							</ul>
-							
-							<label class="hidden">수정</label> 
-							<input id="button" type="submit" value="수정" />
-						</form>
-					</section>
-				</section>
+		<section id="information">
+			<section id="my-info">
+				<div>
+					<form action="update_member_profile2" method="post">
+						<div class="hidden">내 소개</div>
+						<textarea rows="15" cols="16" name="myProfile">${m.profile }</textarea>
+						<label class="hidden">수정</label> <input id="myProfile"
+							type="submit" value="수정" />
+					</form>
+				</div>
+				<div>
+					<dd>
+						<a href="mypage">My Page</a>
+					</dd>
+					<dd>
+						<a href="myinfo">내 정보</a>
+					</dd>
+					<dd>
+						<a href="scrapinfo">스크랩 목록</a>
+					</dd>
+				</div>
 			</section>
+		</section>
+
+		<section id="normal-info">
+			<h1 class="hidden">기본정보</h1>
+			<h1 id="normal-info-title">프로필정보</h1>
+
+			<form action="modMyInfo" method="post">
+				<div>
+					<ul id="info-id">
+						<li>ID</li>
+						<li class="first-info">${m.id}</li>
+					</ul>
+					<ul id="info-pwd">
+						<li>비밀번호</li>
+						<li class="first-info">새 비밀번호</li>
+						<li><input type="text" name="password" /></li>
+						<li class="first-info">새 비밀번호 확인</li>
+						<li><input type="text" name="password2" /></li>
+					</ul>
+					<ul id="info-birth">
+						<li>생년월일</li>
+						<li class="first-info">${m.birthday}</li>
+						<li class="hidden">생년월일 입력</li>
+						<li><input type="date" name="birthday"></li>
+					</ul>
+					<ul id="info-gender">
+						<li>성별</li>
+						<c:if test="${m.gender == 0}">
+							<li class="first-info">남</li>
+						</c:if>
+						<c:if test="${m.gender == 1}">
+							<li class="first-info">여</li>
+						</c:if>
+
+						<li>
+							<fieldset>
+								<legend class="hidden">지역선택</legend>
+								<label class="지역선택  hidden" for="gender-check">성별선택</label> <input
+									type="radio" name="gender-check" value="0" checked>남 <input
+									type="radio" name="gender-check" value="1">여
+							</fieldset>
+						</li>
+					</ul>
+				</div>
+				<label class="hidden">수정</label> <input id="button" type="submit"
+					value="수정" />
+			</form>
+		</section>
+		</section>
+		</section>
 		</main>
 	</div>
 	<!-- -------------------------------------------------------------------------------------------- -->

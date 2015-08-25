@@ -167,17 +167,21 @@
 	}
 	
 	#travel-course {
-		border:1px solid red;
+		/* border:1px solid red; */
+		margin-left: 4px;
+		width: 470px;
 		min-height: 30px;
-		line-height: 30px;		
+		line-height: 30px;	
+		background: #f0f0f0;	
 		/* display: inline-block;
 		height: inherit; */
 	}
 	
 	#travel-course li {
-		border:1px solid blue;
+		/* border:1px solid blue; */
 		display: inline-block;
 		margin-left: 10px;
+		background: #e0e0e0;	
 	}
 	
 	#travel-course li:FIRST-CHILD {
@@ -185,10 +189,11 @@
 	}
 	
 	#travel-course-pic li {
-		border:1px solid red;
-		width: 230px;
+		/* border:1px solid red; */
+		width: 232px;
 		height: 190px;
 		float: left;
 		margin-top: 11px;
 		margin-left: 5px;
+		background: #f0f0f0;
 	}
