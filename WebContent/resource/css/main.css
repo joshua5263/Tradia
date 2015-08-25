@@ -6,10 +6,26 @@
 } */
 	#main p {
 		border-bottom: 4px skyblue solid;
-		margin-top: 10px;
+		/* margin-top: 10px; */
 		font-size: 30px;
 		text-indent: 25px;
-		line-height: 40px;	
+		line-height: 60px;	
+	}
+	
+	#search-list {
+		width: 270px;
+		height: 46px;
+		margin-left: 720px;	
+	}
+
+	#search-list input[type="submit"] {
+		width: 130px;
+		height: 44px;
+		background: url("../images/btn-list.png");
+		float: left;
+		font-size: 18px;
+		font-family: 서울남산체 EB, 맑은 고딕, sans-serif;
+		margin-top: 10px;
 	}
 	
 	#travel-diary{
@@ -29,10 +45,12 @@
 		margin-left: 19px;
 		margin-top: 5px;
 		float: left;
+		border: 2px solid white;
 	}
 	
 	#travel-diary-fieldset:HOVER{
-		border: 1px solid blue;
+		border-right: 2px solid grey;
+		border-bottom: 2px solid grey;
 	}
 	
 	#travel-diary nav {
