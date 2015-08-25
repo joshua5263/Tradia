@@ -32,8 +32,8 @@
 					<div>
 					<p>총경비</p>
 					<legend class="hidden">>경비입력</legend>
-					<p class="hidden">경비</p> <input name="cost" type="text"
-						placeholder="ex)50000" /> 원
+					<!-- <p class="hidden">경비</p> <input name="cost" type="text" placeholder="ex)50000" /> 원 -->
+					<p class="hidden">경비</p>${totalCost} 원
 					</div>
 					<div>
 					<p>후기</p>
