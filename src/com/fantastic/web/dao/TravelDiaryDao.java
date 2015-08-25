@@ -43,4 +43,6 @@ public interface TravelDiaryDao {
 	/*post에 후기 부분을 업데이트 by한*/
 	public void addAfterword(String travelCode, String memo);
 	
+	public int getTotalCost (String travelCode);
+	
 }

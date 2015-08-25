@@ -258,9 +258,12 @@ public class PostWriteController{
 
 	@RequestMapping(value = "postAfterwordWrite", method = RequestMethod.GET)
 	public String postAfterwordWrite(Member m, Principal principal, HttpServletRequest request) {
-		
 		m = memberDao.getMember(principal.getName());
+		String travelCode = dao.getLastCode(principal.getName());
+		int totalCost = dao.getTotalCost(travelCode);
+		
 		request.setAttribute("m", m);
+		request.setAttribute("totalCost", totalCost);
 		
 		return "/WEB-INF/view/post/postAfterwordWrite.jsp";
 	}

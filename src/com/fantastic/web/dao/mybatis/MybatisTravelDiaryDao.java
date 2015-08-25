@@ -162,4 +162,13 @@ public class MybatisTravelDiaryDao implements TravelDiaryDao {
 		
 		dao.addAfterword(travelCode, memo);
 	}
+
+	/*토탈 코스트 계산*/
+	@Override
+	public int getTotalCost(String travelCode) {
+		TravelDiaryDao dao = session.getMapper(TravelDiaryDao.class);
+		int result = dao.getTotalCost(travelCode);
+		
+		return result;
+	}
 }

@@ -62,5 +62,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="addAfterword" parameterType="String">
 		 update TravelDiary set TotalCost = (select sum(Cost) from Course where TravelCode = #{param1}), Memo = #{param2} where Code = #{param1}
 	</update>
+	
+	<select id="getTotalCost" parameterType="String" resultType="int">
+		select sum(Cost) from Course where TravelCode = #{param1}
+	</select>
 
 </mapper>
