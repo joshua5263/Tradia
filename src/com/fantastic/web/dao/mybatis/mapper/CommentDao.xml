@@ -31,4 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="removeComment" parameterType="string">
       DELETE Comment WHERE Code = #{code}
     </delete>
+    
+   <delete id="editCommnet" parameterType="string">
+      Update Comment set Contents = #{contents} Where Code = #{code}
+         
+    </delete>
+    
+    
 </mapper>

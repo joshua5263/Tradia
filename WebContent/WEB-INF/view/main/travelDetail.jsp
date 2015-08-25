@@ -28,30 +28,32 @@
 
        window.addEventListener("load",function(){
     	   
-    	   var comDel = document.getElementById("com-del");
+    	  //var comDel = document.getElementById("com-del");
+    	   var comDel = document.querySelector("#com-del");
     	   		 comDel.onclick = function(){
     	   			 
     	   			var a = confirm("댓글을 삭제하시겠습니까?");
     	   			if(a== false)
     	   			 	  return false;
     	   			
-    	   			
     	   		};
     	   		
-    	   		
-    	   var diaryDel = document.getElementById("diary-del");
-  	   			 diaryDel.onclick = function(){
-  	   				
-  	   			  	var b = confirm("게시글을 삭제하시겠습니까?");
-  	   					if(b== false)	
-  	   					     return false;
-  	   					
-  	   		};
+    	   var diaryDel = document.querySelector("#diary-del");
+   	   		 	diaryDel.onclick = function(){
+   	   			 
+   	   			var b = confirm("게시글을 삭제하시겠습니까?");
+   	   			   if(b== false)
+   	   			 	  return false;
+   	   			
+   	   		};		
+    	
+ 	   		
+  	   		var comEdit = document.querySelector("#comments ul > input");
+  	   		     comEdit.onclick = function(){
+  	   		    	 
+  	   		    	alert("111"); 
+  	   		     };
   	   		
-  	   		var comEdit = document.getElementById("com-edit");
-  	   		        comEdit.onclick = function(){
-  	   		        	
-  	   		        }
   	   		        
        });
 
@@ -146,28 +148,32 @@
 	            <form method="post" action="com_reg?tcode=${td.code}">
 	               <legend class="hidden">댓글입력란</legend>
 	                <label>댓글쓰기</label> 
-	               <input type="text" name="contents"/> 
+	               <textarea rows="3" cols="80"  name="contents"></textarea> 
 	               <input type="submit"   value="확인" />
 	           </form>
 	      </section>
 	      
-	       <section>
+	       <section id="comments">
 	         <h1> 댓글내용 </h1>
 	           <c:forEach var="cm" items="${td.travelCommnet}" >
 	            <ul>
 	               <li>${cm.mpic}</li>
 	               <li>${cm.memberID}</li>
 	               <c:if test="${loginID == cm.memberID }">
-	               <form id="com-edit" method="post" name="com_edit">
-	               <input type="submit"   value="수정" />
-	               </form>
-	               <form id="com-del" method="post" action="com_del?cmcode=${cm.code}">
+	            <%--    <form method="post" action="com_edit?cmcode=${cm.code}">
 	               <input type="hidden" name="tcode" value = "${td.code}"/>
-	               <input type="submit"   value="삭제" />
+	               <input type="submit" value="수정" />  
+	               </form> --%>
+	               
+	               <input type="button" value="수정" />
+	               
+	               <form id="com-del" method="post" action="com_del?cmcode=${cm.code}">
+	               		<input type="hidden" name="tcode" value = "${td.code}"/>
+	                  	<input type="submit"   value="삭제" />
 	               </form>
 	               </c:if>
-	               <li><fmt:formatDate value="${cm.regDate}" pattern="yyyy.MM.dd hh:mm" /></li>
 	               <li>${cm.contents }</li>
+	               <li><fmt:formatDate value="${cm.regDate}" pattern="yyyy.MM.dd hh:mm" /></li>
 	            </ul>
 	            <br />
 	           </c:forEach>

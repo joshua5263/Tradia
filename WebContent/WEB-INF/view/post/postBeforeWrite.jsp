@@ -12,21 +12,29 @@
 <link href="../resource/css/shared.css" type="text/css" rel="stylesheet" />
 <link href="../resource/postWrite/postBeforeWrite.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../resource/js/modernizr.js"></script>
+<script type="text/javascript" src="../resource/js/jquery-1.11.3.js"></script>
 <script type="text/javascript">
 	window.addEventListener("load", function() {
-		var submitAddCourse = document.getElementById("submit-add-course");
-		var submitTempSave = document.getElementById("submit-temp-save");
-		var option = document.getElementById("option");
+		var submitAddCourse = $("#submit-add-course")//document.getElementById("submit-add-course");
+		var submitTempSave = $("#submit-temp-save")//document.getElementById("submit-temp-save");
+		var option = $("#option")//document.getElementById("option");
 
 		/* 코스 추가 버튼을 누를경우 option의 value를 course로 변경 */
-		submitAddCourse.onclick = function() {
+		submitAddCourse.click(function() {
+			option.val("course");
+		});
+		/* submitAddCourse.onclick = function() {
 			option.value = "course";
-		};
+		}; */
 		/* 임시 저장 버튼을 누를경우 option의 value를 save로 변경 */
-		submitTempSave.onclick = function() {
+		submitTempSave.click(function() {
+			option.val("save");
+			alert("임시 저장합니다.")
+		});
+		/* submitTempSave.onclick = function() {
 			alert("임시 저장합니다!");
 			option.value = "save";
-		};
+		}; */
 
 	});
 </script>

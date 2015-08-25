@@ -65,6 +65,7 @@
 	<jsp:include page="/WEB-INF/view/inc/header.jsp"></jsp:include>
 	<div id="body" class="wrap-content">
 
+
 		<!-- 어사이드영역 -->
 		<jsp:include page="/WEB-INF/view/inc/aside.jsp"></jsp:include>
 
@@ -118,6 +119,7 @@
 						<legend class="hidden">>사진입력</legend>
 						<p>사진</p> <input type="file" name="file" /><br>
 						<!-- <label>사진 2</label> <input type="file" name="files"/><br>
+
 			            <label>사진 3</label> <input type="file" name="files"/><br>
 			            <label>사진 4</label> <input type="file" name="files"/><br>
 			            <label>사진 5</label> <input type="file" name="files"/><br> -->

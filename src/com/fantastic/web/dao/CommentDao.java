@@ -23,5 +23,7 @@ public interface CommentDao {
 	public List<Comment> getComment(String travelCode);
 	
 	public Comment getOneComment(String memberID, String code);
+	
+	public int editCommnet(String contents, String code);
 }
 

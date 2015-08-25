@@ -98,9 +98,10 @@ public class MainController {
 	
 	//메인화면(인기순)
 	@RequestMapping(value="travelMainPop", method=RequestMethod.GET)
-	public String travelMainPop(Model model, Member m, Principal principal, String preferLocation){
+	public String travelMainPop(Model model, Member m, Principal principal, String preferLocation, HttpServletRequest request){
 
 		m = memberDao.getMember(principal.getName());
+		model.addAttribute("m", m);
 		String preLoca = m.getPreferLocation();
 
 		if(m.getPreferLocation().equals("전국")){
@@ -147,8 +148,20 @@ public class MainController {
 
 		c.setMemberID(principal.getName());
 		c.setTravelCode(tcode);
+		
 
 		commentDao.addComment(c);
+		model.addAttribute("tcode",tcode);
+
+		return "redirect:travelDetail";
+
+	}
+	
+	//댓글수정
+	@RequestMapping(value="com_edit", method=RequestMethod.POST)
+	public String travelDetail(Model model, String contents, String tcode, String cmcode, Principal principal){
+
+		commentDao.editCommnet(contents, cmcode);
 		model.addAttribute("tcode",tcode);
 
 		return "redirect:travelDetail";
