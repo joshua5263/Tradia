@@ -37,8 +37,7 @@
 					</div>
 					<div>
 					<p>후기</p>
-						<p>*후기는 필수가 아닙니다.</p>
-						<textarea name="memo" rows="28" cols="64"></textarea>
+						<textarea name="memo" rows="28" cols="64" placeholder="*후기는 필수가 아닙니다."></textarea>
 					</div>
 					<h1 class="hidden">버튼 목록</h1>
 					<input type="submit" value="작성 완료">
