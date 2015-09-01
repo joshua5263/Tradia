@@ -13,6 +13,7 @@
 	}
 	
 	#search-list {
+		/* border: red 1px solid; */
 		width: 270px;
 		height: 46px;
 		margin-left: 720px;	
